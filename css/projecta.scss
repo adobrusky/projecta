@@ -53,6 +53,7 @@ body {
 
 .carousel {
   width: 100%;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,33 +61,40 @@ body {
   overflow: hidden;
   list-style-type: none;
   li {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     .fa {
-      border: 1px solid $tcolor;
+      border: 1px solid $dcolor;
       border-radius: 5px;
       padding: 0px 15px 0px 15px;
       transition: background-color 0.2s ease-in-out;
       &:hover {
-        background-color: $dcolor;
+        background-color: $lcolor;
       }
     }
     img {
       position: relative;
       display: none;
       flex-shrink: 0;
+      max-width: 100%;
     }
+  }
+  .active-img {
+    width: 50%;
   }
   .active-img img {
     display: flex;
-    width:100%;
+    height: auto;
+    max-height: 100%;
   }
   li.slider-right {
-    margin-left: 10%;
+    margin-left: 5%;
   }
   li.slider-left {
-    margin-right: 10%;
+    margin-right: 5%;
   }
+
 }
 @import "media";

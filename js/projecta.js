@@ -40,6 +40,7 @@ function resize() {
     item_width = 50/item_count;
   };
   if (w <= 435) { //I'm using 436 pixels as the mobile margin
+  $('.carousel > li > i.fa').removeClass('fa-5x').addClass('fa-3x')
   $('.nav-c').css('right', -$('.nav-c').width());
   $('.content').css('marginTop', $('.nav').height());
   $('body').removeClass('noScroll');
@@ -50,6 +51,7 @@ function resize() {
   } else {
     item_width = 80/item_count;
   };
+  $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-5x')
   $('.nav-c').css('right', 0);
   $('.content').css('marginTop', navHeight);
 };
@@ -141,9 +143,12 @@ function slideLeft() {
     new_index = $('.carousel').children().length - 2;
   }
   var new_active = $('.carousel').children().get(new_index);
-  $(".active-img").removeClass('active-img');
-  $(new_active).addClass('active-img');
-}
+  $(".active-img").fadeOut(200, function() {
+    $(".active-img").removeClass('active-img');
+    $(new_active).addClass('active-img').hide();
+    $(new_active).fadeIn(200);
+  });
+};
 //Slide Right
 function slideRight() {
   var active_index = $(".active-img").index();
@@ -152,13 +157,20 @@ function slideRight() {
     new_index = 1;
   }
   var new_active = $('.carousel').children().get(new_index);
-  $(".active-img").removeClass('active-img');
-  $(new_active).addClass('active-img');
-}
+  $(".active-img").fadeOut(200, function() {
+    $(".active-img").removeClass('active-img');
+    $(new_active).addClass('active-img').hide();
+    $(new_active).fadeIn(200);
+  });
+};
 
 $(document).ready(function() {
-  window.addEventListener("orientationchange", function() {}, false);
   //Ready Functions
+  window.addEventListener("orientationchange", function() {}, false);
+  //Essentially hits right slider every 10 seconds
+  /*setInterval(function(){
+    slideRight();
+  }, 10000);*/
   $('.overlay').hide();
   resize();
   logoMove();
