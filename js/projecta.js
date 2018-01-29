@@ -141,14 +141,19 @@ function slideLeft() {
     new_index = $('.carousel').children().length - 2;
   }
   var new_active = $('.carousel').children().get(new_index);
-  console.log(new_active);
   $(".active-img").removeClass('active-img');
   $(new_active).addClass('active-img');
 }
 //Slide Right
 function slideRight() {
   var active_index = $(".active-img").index();
-  console.log(active_index);
+  var new_index = active_index + 1;
+  if (new_index == $('.carousel').children().length - 1) {
+    new_index = 1;
+  }
+  var new_active = $('.carousel').children().get(new_index);
+  $(".active-img").removeClass('active-img');
+  $(new_active).addClass('active-img');
 }
 
 $(document).ready(function() {
