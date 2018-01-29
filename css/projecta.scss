@@ -22,7 +22,7 @@ body {
     background-color: $lcolor;
     border-top: 1px solid $dcolor;
     box-sizing: border-box;
-    height: 100px;
+    height: 70px;
     margin-top: auto;
     width: 100%;
     align-self: flex-end;
@@ -48,6 +48,45 @@ body {
       color:$dcolor;
       text-decoration: none;
     }
+  }
+}
+
+.carousel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  overflow: hidden;
+  list-style-type: none;
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .fa {
+      border: 1px solid $tcolor;
+      border-radius: 5px;
+      padding: 0px 15px 0px 15px;
+      transition: background-color 0.2s ease-in-out;
+      &:hover {
+        background-color: $dcolor;
+      }
+    }
+    img {
+      position: relative;
+      display: none;
+      flex-shrink: 0;
+    }
+  }
+  .active-img img {
+    display: flex;
+    width:100%;
+  }
+  li.slider-right {
+    margin-left: 10%;
+  }
+  li.slider-left {
+    margin-right: 10%;
   }
 }
 @import "media";

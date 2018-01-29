@@ -58,7 +58,6 @@ function resize() {
   $('.last').css('marginRight', 0);
 };
   $('.item').css('width', item_width + '%');
-  console.log(item_width);
 };
 //Navscroll Function
 function navScroll(scroll) {
@@ -134,6 +133,24 @@ function logoMove() {
   };
 };
 
+//Slide Left
+function slideLeft() {
+  var active_index = $(".active-img").index();
+  var new_index = active_index - 1;
+  if (new_index == 0) {
+    new_index = $('.carousel').children().length - 2;
+  }
+  var new_active = $('.carousel').children().get(new_index);
+  console.log(new_active);
+  $(".active-img").removeClass('active-img');
+  $(new_active).addClass('active-img');
+}
+//Slide Right
+function slideRight() {
+  var active_index = $(".active-img").index();
+  console.log(active_index);
+}
+
 $(document).ready(function() {
   window.addEventListener("orientationchange", function() {}, false);
   //Ready Functions
@@ -160,6 +177,14 @@ $(document).ready(function() {
   //Close by clicking Overlay
   $('.overlay').click(function() {
     navClose();
+  });
+  //Slide Right
+  $('.slider-right').click(function() {
+    slideRight();
+  });
+  //Slide Left
+  $('.slider-left').click(function() {
+    slideLeft();
   });
   //Navbar Slides up or down on scroll
   $(window).scroll(function() {
