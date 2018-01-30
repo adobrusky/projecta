@@ -57,11 +57,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 50vh;
   overflow: hidden;
   list-style-type: none;
   li {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +81,7 @@ body {
     }
   }
   .active-img {
-    width: 50%;
+    height: 100%;
   }
   .active-img img {
     display: flex;
