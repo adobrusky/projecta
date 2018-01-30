@@ -65,6 +65,7 @@
     }
     .item.close {
       display:flex;
+      padding-right: 8px;
       color:$dcolor;
       justify-content: flex-end;
       &:hover {
