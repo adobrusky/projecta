@@ -164,6 +164,13 @@ function slideRight() {
   });
 };
 
+function disableButton(ele, dur) { //Two arguments are the element to disabl (ele) and duration (dur)
+  ele.addClass('disabled');
+  setTimeout(function(){
+    ele.removeClass('disabled');
+  },dur);
+};
+
 $(document).ready(function() {
   //Ready Functions
   window.addEventListener("orientationchange", function() {}, false);
@@ -185,6 +192,7 @@ $(document).ready(function() {
   });
   //Clicking on burger function
   $('.nav-t').click(function() {
+    disableButton($(this), 1500);
     navOpen();
   });
   //Close burger navbar function
@@ -197,10 +205,12 @@ $(document).ready(function() {
   });
   //Slide Right
   $('.slider-right').click(function() {
+    disableButton($(this), 500);
     slideRight();
   });
   //Slide Left
   $('.slider-left').click(function() {
+    disableButton($(this), 500);
     slideLeft();
   });
   //Navbar Slides up or down on scroll
