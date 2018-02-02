@@ -29,6 +29,8 @@ function navOpen() {
     $('.overlay').css('transition', 'background-color .6s');
   }, 600);
 };
+//Carousel Image height
+function carResize() {$('.active-img img').css('height', $('.carousel').height());}
 //Resize Function
 function resize() {
   var w = window.innerWidth;
@@ -148,6 +150,7 @@ function slideLeft() {
     $(new_active).addClass('active-img').hide();
     $(new_active).fadeIn(200);
   });
+  carResize();
 };
 //Slide Right
 function slideRight() {
@@ -162,6 +165,7 @@ function slideRight() {
     $(new_active).addClass('active-img').hide();
     $(new_active).fadeIn(200);
   });
+  carResize();
 };
 
 function disableButton(ele, dur) { //Two arguments are the element to disabl (ele) and duration (dur)
@@ -181,6 +185,7 @@ $(document).ready(function() {
   $('.overlay').hide();
   resize();
   logoMove();
+  carResize();
   //On Resize
   $(window).resize(function() {
     resize();

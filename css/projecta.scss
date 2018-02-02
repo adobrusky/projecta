@@ -57,7 +57,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  max-height: 50vh;
   overflow: hidden;
   list-style-type: none;
   li {
@@ -81,7 +81,7 @@ body {
     }
   }
   .active-img {
-    width: 50%;
+    width:50%;
     height: 100%;
   }
   .active-img img {
