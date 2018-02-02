@@ -8,7 +8,7 @@ var require=false;
 function countFunc() {
   var w = window.innerWidth;
   var x = $('.nav-c > li > a').length;
-    return (x)/2;
+  return (x)/2;
 };
 //Closing & Opening Functions
 function navClose() {
@@ -30,9 +30,18 @@ function navOpen() {
   }, 600);
 };
 //Carousel Image height
-function carResize() {$('.active-img img').css('height', $('.carousel').height());}
+function carResize() {
+  var imgHeight = $('.carousel img').height();
+  var carouselHeight = $('.carousel').height();
+  if(imgHeight >= carouselHeight) {
+    $('.carousel img').css('height', $('.carousel').height());
+  } else {
+    $('.carousel img').css('height', "auto");
+  }
+}
 //Resize Function
 function resize() {
+  carResize();
   var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var item_count = $('.nav-c > li > a').length;
@@ -57,11 +66,11 @@ function resize() {
   $('.nav-c').css('right', 0);
   $('.content').css('marginTop', navHeight);
 };
-  if (w > 1023 && ($('.brand').hasClass('brand-left') === false) && ($('.brand').hasClass('brand-right') === false)) {
+if (w > 1023 && ($('.brand').hasClass('brand-left') === false) && ($('.brand').hasClass('brand-right') === false)) {
   $('.first').css('marginLeft', 0);
   $('.last').css('marginRight', 0);
 };
-  $('.item').css('width', item_width + '%');
+$('.item').css('width', item_width + '%');
 };
 //Navscroll Function
 function navScroll(scroll) {
@@ -112,8 +121,8 @@ function logoMove() {
       $('.last').css('marginRight', '25%');
       $('.brand').css('marginLeft', 'auto');
     } else {
-       $('.last').css('marginRight', '0');
-     }
+      $('.last').css('marginRight', '0');
+    }
 
   } else {
     brand_pos = count+1;
@@ -139,6 +148,7 @@ function logoMove() {
 
 //Slide Left
 function slideLeft() {
+  carResize();
   var active_index = $(".active-img").index();
   var new_index = active_index - 1;
   if (new_index == 0) {
@@ -150,10 +160,10 @@ function slideLeft() {
     $(new_active).addClass('active-img').hide();
     $(new_active).fadeIn(200);
   });
-  carResize();
 };
 //Slide Right
 function slideRight() {
+  carResize();
   var active_index = $(".active-img").index();
   var new_index = active_index + 1;
   if (new_index == $('.carousel').children().length - 1) {
@@ -165,7 +175,6 @@ function slideRight() {
     $(new_active).addClass('active-img').hide();
     $(new_active).fadeIn(200);
   });
-  carResize();
 };
 
 function disableButton(ele, dur) { //Two arguments are the element to disabl (ele) and duration (dur)

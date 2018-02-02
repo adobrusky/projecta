@@ -133,7 +133,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 50vh;
+  max-height: 50vw;
   overflow: hidden;
   list-style-type: none; }
   .carousel li {
