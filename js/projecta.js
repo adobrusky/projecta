@@ -42,7 +42,7 @@ function carResize() {
 //Resize Function
 function resize() {
   carResize();
-  //setCarouselMin();
+  setCarouselMin();
   var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var item_count = $('.nav-c > li > a').length;
@@ -180,14 +180,23 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
 };
 
 function setCarouselMin() {
-  var max = $('.carousel img').css('height', 'auto').height();
-  $('.carousel').css('min-height', max);
-  console.log(max);
+  var tallest = null;
+  var hi = 0;
+  $(".carousel img").each(function(){
+    var h = $(this).height();
+    if(h > hi){
+       hi = h;
+       tallest = $(this);
+       console.log(tallest.attr('src'), hi);
+    }
+  });
+  //console.log(tallest.attr('src'));
+  //$(".carousel").css('minHeight', hi);
 }
 
 $(document).ready(function() {
   //Ready Functions
-  //setCarouselMin();
+  setCarouselMin();
   window.addEventListener("orientationchange", function() {}, false);
   //Essentially hits right slider every 10 seconds
   setInterval(function(){
