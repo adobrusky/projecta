@@ -31,17 +31,18 @@ function navOpen() {
 };
 //Carousel Image height
 function carResize() {
-  var imgHeight = $('.carousel img').height();
-  var carouselHeight = $('.carousel').height();
-  if(imgHeight >= carouselHeight) {
-    $('.carousel img').css('height', $('.carousel').height());
+  var img = $('.active-img img');
+  var carouselMaxHeight = parseInt($('.carousel').css('max-height'));
+  if(img.css('height', 'auto').height() > carouselMaxHeight) {
+    img.css('height', carouselMaxHeight);
   } else {
-    $('.carousel img').css('height', "auto");
+    img.css('height', "auto");
   }
 }
 //Resize Function
 function resize() {
   carResize();
+  //setCarouselMin();
   var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var item_count = $('.nav-c > li > a').length;
@@ -146,36 +147,30 @@ function logoMove() {
   };
 };
 
-//Slide Left
-function slideLeft() {
-  carResize();
+
+//slider for carousel
+function slide(dir) {
   var active_index = $(".active-img").index();
-  var new_index = active_index - 1;
-  if (new_index == 0) {
-    new_index = $('.carousel').children().length - 2;
+  if (dir == 'right') {
+    var new_index = active_index - 1;
+    if (new_index == 0) {
+      new_index = $('.carousel').children().length - 2;
+    }
+  }
+  else if (dir == 'left') {
+    var new_index = active_index + 1;
+    if (new_index == $('.carousel').children().length - 1) {
+      new_index = 1;
+    }
   }
   var new_active = $('.carousel').children().get(new_index);
   $(".active-img").fadeOut(200, function() {
     $(".active-img").removeClass('active-img');
     $(new_active).addClass('active-img').hide();
     $(new_active).fadeIn(200);
+    carResize();
   });
-};
-//Slide Right
-function slideRight() {
-  carResize();
-  var active_index = $(".active-img").index();
-  var new_index = active_index + 1;
-  if (new_index == $('.carousel').children().length - 1) {
-    new_index = 1;
-  }
-  var new_active = $('.carousel').children().get(new_index);
-  $(".active-img").fadeOut(200, function() {
-    $(".active-img").removeClass('active-img');
-    $(new_active).addClass('active-img').hide();
-    $(new_active).fadeIn(200);
-  });
-};
+}
 
 function disableButton(ele, dur) { //Two arguments are the element to disabl (ele) and duration (dur)
   ele.addClass('disabled');
@@ -184,12 +179,19 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
   },dur);
 };
 
+function setCarouselMin() {
+  var max = $('.carousel img').css('height', 'auto').height();
+  $('.carousel').css('min-height', max);
+  console.log(max);
+}
+
 $(document).ready(function() {
   //Ready Functions
+  //setCarouselMin();
   window.addEventListener("orientationchange", function() {}, false);
   //Essentially hits right slider every 10 seconds
   setInterval(function(){
-    slideRight();
+    slide('right');
   }, 10000);
   $('.overlay').hide();
   resize();
@@ -206,11 +208,12 @@ $(document).ready(function() {
   });
   //Clicking on burger function
   $('.nav-t').click(function() {
-    disableButton($(this), 1500);
+    disableButton($('.close'), 1000);
     navOpen();
   });
   //Close burger navbar function
   $('.close').click(function() {
+    disableButton($('.nav-t'), 1000);
     navClose();
   });
   //Close by clicking Overlay
@@ -220,12 +223,12 @@ $(document).ready(function() {
   //Slide Right
   $('.slider-right').click(function() {
     disableButton($(this), 500);
-    slideRight();
+    slide('right');
   });
   //Slide Left
   $('.slider-left').click(function() {
     disableButton($(this), 500);
-    slideLeft();
+    slide('left');
   });
   //Navbar Slides up or down on scroll
   $(window).scroll(function() {
