@@ -185,7 +185,6 @@ body .footer {
 }
 
 .carousel li {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -208,6 +207,11 @@ body .footer {
   flex-shrink: 0;
   max-width: 100%;
   max-height: 100%;
+}
+
+.carousel .active-img {
+  width: 50%;
+  height: 100%;
 }
 
 .carousel .active-img img {
