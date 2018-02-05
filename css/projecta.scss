@@ -81,17 +81,16 @@ body {
     img {
       position: relative;
       display: none;
-      flex-shrink: 0;
       max-width: 100%;
       max-height: 100%;
     }
   }
   .active-img {
-    width:50%;
+    width: 50%;
     height: 100%;
   }
   .active-img img {
-    display: flex;
+    display: block;
 
   }
   li.slider-right {
