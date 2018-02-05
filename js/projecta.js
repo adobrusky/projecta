@@ -31,18 +31,21 @@ function navOpen() {
 };
 //Carousel Image height
 function carResize() {
+  /*
   var img = $('.active-img img');
   var carouselMaxHeight = parseInt($('.carousel').css('max-height'));
-  if(img.css('height', 'auto').height() > carouselMaxHeight) {
+  var carouselHeight = $('.carousel').outerHeight();
+  console.log(img.height())
+  if (img.height() > carouselMaxHeight) {
     img.css('height', carouselMaxHeight);
   } else {
-    img.css('height', "auto");
+    img.css('height', '100%');
   }
+  */
 }
 //Resize Function
 function resize() {
   carResize();
-  setCarouselMin();
   var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var item_count = $('.nav-c > li > a').length;
@@ -52,7 +55,7 @@ function resize() {
     item_width = 50/item_count;
   };
   if (w <= 435) { //I'm using 436 pixels as the mobile margin
-  $('.carousel > li > i.fa').removeClass('fa-5x').addClass('fa-3x')
+  $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
   $('.nav-c').css('right', -$('.nav-c').width());
   $('.content').css('marginTop', $('.nav').height());
   $('body').removeClass('noScroll');
@@ -63,7 +66,7 @@ function resize() {
   } else {
     item_width = 80/item_count;
   };
-  $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-5x')
+  $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
   $('.nav-c').css('right', 0);
   $('.content').css('marginTop', navHeight);
 };
@@ -179,29 +182,13 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
   },dur);
 };
 
-function setCarouselMin() {
-  var tallest = null;
-  var hi = 0;
-  $(".carousel img").each(function(){
-    var h = $(this).height();
-    if(h > hi){
-       hi = h;
-       tallest = $(this);
-       console.log(tallest.attr('src'), hi);
-    }
-  });
-  //console.log(tallest.attr('src'));
-  //$(".carousel").css('minHeight', hi);
-}
-
 $(document).ready(function() {
   //Ready Functions
-  setCarouselMin();
   window.addEventListener("orientationchange", function() {}, false);
   //Essentially hits right slider every 10 seconds
-  setInterval(function(){
+  /*setInterval(function(){
     slide('right');
-  }, 10000);
+  }, 10000);*/
   $('.overlay').hide();
   resize();
   logoMove();
