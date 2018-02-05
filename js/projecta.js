@@ -180,9 +180,9 @@ $(document).ready(function() {
   //Ready Functions
   window.addEventListener("orientationchange", function() {}, false);
   //Essentially hits right slider every 10 seconds
-  /*setInterval(function(){
+  setInterval(function(){
     slide('right');
-  }, 10000);*/
+  }, 10000);
   $('.overlay').hide();
   resize();
   logoMove();

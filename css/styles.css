@@ -1,3 +1,16 @@
 .carousel {
-  margin-bottom: 10px;
-}
+  margin-bottom: 10px; }
+
+.job-finder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border: 1px solid #e2e2e2;
+  padding: 10px;
+  text-align: center; }
