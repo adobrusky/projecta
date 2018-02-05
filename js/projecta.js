@@ -136,6 +136,15 @@ function logoMove() {
   };
 };
 
+function carResize() {
+  var img_li = $('.active-img');
+  var img = $('.active-img img');
+  console.log(img.height(), img.width(), parseInt($('.carousel').css('maxHeight')));
+  if (img.height() == parseInt($('.carousel').css('maxHeight'))) {
+    img_li.css('maxWidth', img.width());
+  };
+};
+
 
 //slider for carousel
 function slide(dir) {
@@ -180,6 +189,7 @@ $(document).ready(function() {
   //On Resize
   $(window).resize(function() {
     resize();
+    carResize();
     logoMove();
   });
   //On Orientation Change
