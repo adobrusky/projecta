@@ -144,7 +144,7 @@ function carResize() {
     img_li.css('maxWidth', img.width());
   };
 };
-
+600
 
 //slider for carousel
 function slide(dir) {
@@ -198,23 +198,23 @@ $(document).ready(function() {
   });
   //Clicking on burger function
   $('.nav-t').click(function() {
-    disableButton($('.close'), 1000);
-    disableButton($('.nav-t'), 1000);
-    disableButton($('.overlay'), 1000);
+    disableButton($('.close'), 600);
+    disableButton($('.nav-t'), 600);
+    disableButton($('.overlay'), 600);
     navOpen();
   });
   //Close burger navbar function
   $('.close').click(function() {
-    disableButton($('.nav-t'), 1000);
-    disableButton($('.close'), 1000);
-    disableButton($('.overlay'), 1000);
+    disableButton($('.nav-t'), 600);
+    disableButton($('.close'), 600);
+    disableButton($('.overlay'), 600);
     navClose();
   });
   //Close by clicking Overlay
   $('.overlay').click(function() {
-    disableButton($('.close'), 1000);
-    disableButton($('.nav-t'), 1000);
-    disableButton($('.overlay'), 1000);
+    disableButton($('.close'), 600);
+    disableButton($('.nav-t'), 600);
+    disableButton($('.overlay'), 600);
     navClose();
   });
   //Slide Right
