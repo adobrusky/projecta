@@ -199,15 +199,22 @@ $(document).ready(function() {
   //Clicking on burger function
   $('.nav-t').click(function() {
     disableButton($('.close'), 1000);
+    disableButton($('.nav-t'), 1000);
+    disableButton($('.overlay'), 1000);
     navOpen();
   });
   //Close burger navbar function
   $('.close').click(function() {
     disableButton($('.nav-t'), 1000);
+    disableButton($('.close'), 1000);
+    disableButton($('.overlay'), 1000);
     navClose();
   });
   //Close by clicking Overlay
   $('.overlay').click(function() {
+    disableButton($('.close'), 1000);
+    disableButton($('.nav-t'), 1000);
+    disableButton($('.overlay'), 1000);
     navClose();
   });
   //Slide Right
