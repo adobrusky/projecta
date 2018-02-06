@@ -32,6 +32,7 @@
     padding: 10px;
     margin: 10px;
     background-color: $lcolor;
+    transition: background-color .2s ease-in-out;
     border-radius: 5px;
     &:hover {
       background-color: $ldcolor;
