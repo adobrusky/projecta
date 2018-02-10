@@ -2,7 +2,7 @@
 
 @media only screen and (max-width: 435px) {
   .nav {
-    border-bottom: 2px solid $dcolor;
+    border-bottom: 1px solid $dcolor;
   }
   .footer ul {
     li {
@@ -19,7 +19,7 @@
     height:10vh;
     flex-wrap: wrap;
     justify-content: center;
-    border-bottom: 1px solid $lcolor;
+    border-bottom: 2px solid $lcolor;
     .nav-c {
       flex-direction: row;
       justify-content: center;
