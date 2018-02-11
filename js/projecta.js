@@ -43,7 +43,7 @@ function resize() {
   if (w <= 435) { //I'm using 436 pixels as the mobile margin
   $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
   $('.nav-c').css('right', -$('.nav-c').width());
-  if (window.location.pathname != '/home.html') {
+  if (window.location.pathname != '/index.html') {
     $('.content').css('marginTop', $('.nav').height());
   }
   $('body').removeClass('noScroll');
@@ -56,7 +56,7 @@ function resize() {
   };
   $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
   $('.nav-c').css('right', 0);
-  if (window.location.pathname != '/home.html') {
+  if (window.location.pathname != '/index.html') {
     $('.content').css('marginTop', navHeight);
   }
 };
