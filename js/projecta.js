@@ -32,7 +32,6 @@ function navOpen() {
 
 //Resize Function
 function resize() {
-  console.log("Suicide is not the answer");
   var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var item_count = $('.nav-c > li > a').length;
@@ -44,10 +43,7 @@ function resize() {
   if (w <= 435) { //I'm using 436 pixels as the mobile margin
   $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
   $('.nav-c').css('right', -$('.nav-c').width());
-  if (window.location.pathname != '/index.html') {
-    $('.content').css('marginTop', $('.nav').height());
-    console.log("Suicide is not the answer 2");
-  }
+  $('.content').css('marginTop', $('.nav').height());
   $('body').removeClass('noScroll');
   $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
 } else {
@@ -58,10 +54,7 @@ function resize() {
   };
   $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
   $('.nav-c').css('right', 0);
-  if (window.location.pathname != '/index.html') {
-    console.log("Suicide is not the answer 3");
-    $('.content').css('marginTop', navHeight);
-  }
+  $('.content').css('marginTop', navHeight);
 };
 if (w > 1023 && ($('.brand').hasClass('brand-left') === false) && ($('.brand').hasClass('brand-right') === false)) {
   $('.first').css('marginLeft', 0);
@@ -146,7 +139,6 @@ function logoMove() {
 function carResize() {
   var img_li = $('.active-img');
   var img = $('.active-img img');
-  console.log(img.height(), img.width(), parseInt($('.carousel').css('maxHeight')));
   if (img.height() == parseInt($('.carousel').css('maxHeight'))) {
     img_li.css('maxWidth', img.width());
   };
