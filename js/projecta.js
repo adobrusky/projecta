@@ -151,12 +151,12 @@ function slide(dir) {
   if (dir == 'right') {
     var new_index = active_index - 1;
     if (new_index == 0) {
-      new_index = $('.carousel').children().length/2;
+      new_index = $('.carousel').children().length/2 + 1;
     }
   }
   else if (dir == 'left') {
     var new_index = active_index + 1;
-    if (new_index == $('.carousel').children().length/2) {
+    if (new_index == $('.carousel').children().length/2 + 1) {
       new_index = 1;
     }
   }
