@@ -32,6 +32,7 @@ function navOpen() {
 
 //Resize Function
 function resize() {
+  console.log("Suicide is not the answer");
   var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var item_count = $('.nav-c > li > a').length;
@@ -45,6 +46,7 @@ function resize() {
   $('.nav-c').css('right', -$('.nav-c').width());
   if (window.location.pathname != '/index.html') {
     $('.content').css('marginTop', $('.nav').height());
+    console.log("Suicide is not the answer 2");
   }
   $('body').removeClass('noScroll');
   $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
@@ -57,6 +59,7 @@ function resize() {
   $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
   $('.nav-c').css('right', 0);
   if (window.location.pathname != '/index.html') {
+    console.log("Suicide is not the answer 3");
     $('.content').css('marginTop', navHeight);
   }
 };
