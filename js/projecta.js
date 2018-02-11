@@ -43,7 +43,9 @@ function resize() {
   if (w <= 435) { //I'm using 436 pixels as the mobile margin
   $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
   $('.nav-c').css('right', -$('.nav-c').width());
-  $('.content').css('marginTop', $('.nav').height());
+  if (window.location.pathname != '/home.html') {
+    $('.content').css('marginTop', $('.nav').height());
+  }
   $('body').removeClass('noScroll');
   $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
 } else {
@@ -54,7 +56,9 @@ function resize() {
   };
   $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
   $('.nav-c').css('right', 0);
-  $('.content').css('marginTop', navHeight);
+  if (window.location.pathname != '/home.html') {
+    $('.content').css('marginTop', navHeight);
+  }
 };
 if (w > 1023 && ($('.brand').hasClass('brand-left') === false) && ($('.brand').hasClass('brand-right') === false)) {
   $('.first').css('marginLeft', 0);
