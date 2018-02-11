@@ -149,24 +149,41 @@ function carResize() {
 function slide(dir) {
   var active_index = $(".active-img").index();
   if (dir == 'right') {
-    var new_index = active_index - 1;
-    if (new_index == 0) {
-      new_index = $('.carousel').children().length/2 + 1;
+    var new_index = active_index + 1;
+    if (new_index == $('.carousel').children().length -1) {
+      new_index = 0;
     }
   }
   else if (dir == 'left') {
-    var new_index = active_index + 1;
-    if (new_index == $('.carousel').children().length/2 + 1) {
-      new_index = 1;
+    var new_index = active_index - 1;
+    if (new_index == 0) {
+      new_index = $('.carousel').children().length -1;
     }
   }
-  var new_active = $('.carousel').children().get(new_index);
+
+  switchIndicator(new_index);
+
+  slideTo(new_index);
+}
+
+function slideTo(index) {
+  switchIndicator(index);
   $(".active-img").fadeOut(200, function() {
     $(".active-img").removeClass('active-img');
+    var new_active = $('.carousel').children().get(index);
     $(new_active).addClass('active-img').hide();
     $(new_active).fadeIn(200);
   });
-}
+};
+
+function switchIndicator(index) {
+  $('.active-indicator i').removeClass('fa-circle').addClass('fa-circle-o');
+  $('.active-indicator').removeClass('active-indicator');
+  var new_active_indicator = $('.indicators').children().get(index);
+  var indicator = $(new_active_indicator).children().get(0);
+  $(indicator).removeClass('fa-circle-o').addClass('fa-circle');
+  $(new_active_indicator).addClass('active-indicator');
+};
 
 function disableButton(ele, dur) { //Two arguments are the element to disabl (ele) and duration (dur)
   ele.addClass('disabled');
@@ -174,6 +191,7 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
     ele.removeClass('disabled');
   },dur);
 };
+
 
 $(document).ready(function() {
   //Ready Functions
@@ -216,15 +234,10 @@ $(document).ready(function() {
     disableButton($('.overlay'), 600);
     navClose();
   });
-  //Slide Right
-  $('.slider-right').click(function() {
-    disableButton($(this), 500);
-    slide('right');
-  });
-  //Slide Left
-  $('.slider-left').click(function() {
-    disableButton($(this), 500);
-    slide('left');
+  //Indicator for Carousel
+  $('.indicator').click(function() {
+    var index = $(this).index();
+    slideTo(index);
   });
   //Navbar Slides up or down on scroll
   $(window).scroll(function() {
