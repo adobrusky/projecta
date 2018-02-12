@@ -34,7 +34,9 @@ body {
   padding: 10px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .footer ul {
