@@ -58,7 +58,8 @@ body {
 
 .carousel {
   height: 50vw;
-  max-height: 500px;
+  max-height: 700px;
+  flex-grow: 1;
   width: auto;
   padding: 10px;
   display: flex;
