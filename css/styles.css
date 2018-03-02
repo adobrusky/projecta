@@ -18,6 +18,9 @@
   margin-top: 10px;
   padding: 10px; }
 
+.placeholderimg {
+  width: 50%; }
+
 .form {
   display: -webkit-box;
   display: -ms-flexbox;
