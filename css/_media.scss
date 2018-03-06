@@ -3,6 +3,16 @@
 @media only screen and (max-width: 435px) {
   .nav {
     border-bottom: 1px solid $dcolor;
+    .nav-c {
+      .item {
+        .dropdown {
+          position: relative;
+          .subitem {
+            border: none;
+          }
+        }
+      }
+    }
   }
   .footer ul {
     li {
@@ -30,9 +40,16 @@
         font-size: 3vw;
         border-bottom:2px solid $lcolor;
         transition:border-bottom .25s;
+        justify-content: flex-start;
+        align-items: center;
         display:flex;
         height:100%;
         width:25%;
+        .dropdown {
+          .subitem {
+            padding-left: 0px;
+          }
+        }
         a {
           text-align:center;
           width:100%;
@@ -90,8 +107,8 @@
         background-size: 100% 200%;
         background-image: linear-gradient(to bottom, $lcolor 50%, $ldcolor 50%);
         width:12%;
-        padding:0,0,0,0;
-        a {
+        padding: 0;
+        a, p {
           font-size:1.4vw;
           justify-content: center;
           align-items:center;
@@ -100,7 +117,7 @@
         &:hover {
           background-position:0 -100%;
           border-bottom:2px solid $dcolor;
-          a {
+          a, p {
             transform:none;
             color:$dcolor;
           }
@@ -109,7 +126,7 @@
       .item.active {
         border-bottom:2px solid $dcolor;
         background-position:0 -100%;
-        a {
+        a, p {
           color:$dcolor;
           transform:none;
         }

@@ -7,7 +7,7 @@ var require=false;
 //Count
 function countFunc() {
   var w = window.innerWidth;
-  var x = $('.nav-c > li > a').length;
+  var x = ($('.nav-c > li > a').length) + ($('.nav-c > li > p').length);
   return (x)/2;
 };
 //Closing & Opening Functions
@@ -41,12 +41,14 @@ function resize() {
     item_width = 50/item_count;
   };
   if (w <= 435) { //I'm using 436 pixels as the mobile margin
+  $('.dropdown').css('marginTop', 0);
   $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
   $('.nav-c').css('right', -$('.nav-c').width());
   $('.content').css('marginTop', $('.nav').height());
   $('body').removeClass('noScroll');
   $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
 } else {
+  $('.dropdown').css('marginTop', $('.nav-c').height());
   if (w < 648) {
     item_width = 100/item_count;
   } else {
@@ -128,11 +130,11 @@ function logoMove() {
   if(require===true && enabled===false) {
     enabled=true;
     $('.nav > li:first-child').remove(); //taking logo out of nav
-    $('.nav-c li:nth-child('+ (brand_pos) + ')').after(logo); //place in nav-c
+    $('.nav-c > li:nth-child('+ (brand_pos) + ')').after(logo); //place in nav-c
   } else if(require===false && enabled===true) {
     enabled=false;
     $('.nav > li').before(logo); //place back in nav
-    $('.nav-c li:nth-child(' + (brand_pos + logo_offset) + ')').remove();
+    $('.nav-c > li:nth-child(' + (brand_pos + logo_offset) + ')').remove();
   };
 };
 
