@@ -14,6 +14,7 @@
 }
 
 .nav {
+  box-sizing: content-box;
   display:flex;
   align-items:center;
   justify-content: flex-start;
@@ -87,7 +88,7 @@
         }
       }
       &.active {
-        a, p {
+        & > a, p {
           color: $tcolor;
           transform:scale(1.1);
         }
@@ -98,9 +99,6 @@
         }
         & > .dropdown {
           display: flex;
-          a {
-            transform:none;
-          }
         }
       }
     }
