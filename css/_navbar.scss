@@ -96,9 +96,10 @@
     }
     .item.close {
       width: 25%;
-      height: 100px;
+      height: auto;
       display:flex;
       padding-left: 10px;
+      padding-bottom: 10px;
       color:$dcolor;
       justify-content: flex-start;
       &:hover {
