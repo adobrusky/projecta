@@ -48,6 +48,12 @@
         .dropdown {
           .subitem {
             padding-left: 0px;
+            .dropdown {
+              left: calc(100% - 1px);
+              .subitem:first-child {
+                border-top: 2px solid $dcolor;
+              }
+            }
           }
         }
         a {

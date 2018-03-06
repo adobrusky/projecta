@@ -48,7 +48,7 @@ function resize() {
   $('body').removeClass('noScroll');
   $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
 } else {
-  $('.dropdown').css('marginTop', $('.nav-c').height());
+  $('.item > .dropdown').css('marginTop', $('.nav-c').height());
   if (w < 648) {
     item_width = 100/item_count;
   } else {
