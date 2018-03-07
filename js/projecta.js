@@ -1,16 +1,18 @@
-//Global variables
+//----------- Global variables ---------------
 var prev = 0;
 var logo = $('.nav li:first-child')[0].outerHTML;
 var count = countFunc();
 var enabled=false;
 var require=false;
-//Count
+
+//------------ Navbar ---------
 function countFunc() {
   var w = window.innerWidth;
   var x = ($('.nav-c > li > a').length) + ($('.nav-c > li > p').length);
   return (x)/2;
 };
-//Closing & Opening Functions
+
+//Nav Open and Close
 function navClose() {
   $('.nav-c').css('transition', 'right .6s').css('right', -$('.nav-c').width());
   $('.overlay').css('backgroundColor', 'rgba(255, 255, 255, 0)');
@@ -20,6 +22,7 @@ function navClose() {
     $('.nav-c').css('transition', 'none');
   }, 600);
 };
+
 function navOpen() {
   $('.nav-c').css('transition', 'right .6s').css('right', '0');
   $('.overlay').show().css('backgroundColor', 'rgba(0, 0, 0, 0.5)');
@@ -30,41 +33,7 @@ function navOpen() {
   }, 600);
 };
 
-//Resize Function
-function resize() {
-  var w = window.innerWidth;
-  var navHeight = $('.nav').height()+$('.nav-c').height();
-  var item_count = $('.nav-c > li > a').length;
-  item_width = 100;
-  if (w > 1023) {
-    navHeight = $('.nav-c').height();
-    item_width = 50/item_count;
-  };
-  if (w <= 435) { //I'm using 436 pixels as the mobile margin
-  $('.dropdown').css('marginTop', 0);
-  $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
-  $('.nav-c').css('right', -$('.nav-c').width());
-  $('.content').css('marginTop', $('.nav').height());
-  $('body').removeClass('noScroll');
-  $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
-} else {
-  $('.item > .dropdown').css('marginTop', $('.nav-c').height());
-  if (w < 648) {
-    item_width = 100/item_count;
-  } else {
-    item_width = 80/item_count;
-  };
-  $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
-  $('.nav-c').css('right', 0);
-  $('.content').css('marginTop', navHeight);
-};
-if (w > 1023 && ($('.brand').hasClass('brand-left') === false) && ($('.brand').hasClass('brand-right') === false)) {
-  $('.first').css('marginLeft', 0);
-  $('.last').css('marginRight', 0);
-};
-$('.item').css('width', item_width + '%');
-};
-//Navscroll Function
+//Nav Scroll Function
 function navScroll(scroll) {
   var w = window.innerWidth;
   var current = $(window).scrollTop();
@@ -85,7 +54,8 @@ function navScroll(scroll) {
   };
   return current;
 };
-//Logo Thing
+
+//Nav Logo Controller
 function logoMove() {
   //Test Width
   var w = window.innerWidth;
@@ -115,7 +85,6 @@ function logoMove() {
     } else {
       $('.last').css('marginRight', '0');
     }
-
   } else {
     brand_pos = count+1;
     if (w < 1024) {
@@ -126,6 +95,7 @@ function logoMove() {
       $('.first').css('marginLeft', '25%');
     }
   };
+
   //Enable/Disable
   if(require===true && enabled===false) {
     enabled=true;
@@ -138,6 +108,43 @@ function logoMove() {
   };
 };
 
+
+//--------- Resize Function ---------
+function resize() {
+  var w = window.innerWidth;
+  var navHeight = $('.nav').height()+$('.nav-c').height();
+  var item_count = $('.nav-c > li > a').length;
+  item_width = 100;
+  if (w > 1023) {
+    navHeight = $('.nav-c').height();
+    item_width = 50/item_count;
+  };
+  if (w <= 435) { //I'm using 436 pixels as the mobile margin
+  $('.dropdown').css('height', '0px');
+  $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
+  $('.nav-c').css('right', -$('.nav-c').width());
+  $('.content').css('marginTop', $('.nav').height());
+  $('body').removeClass('noScroll');
+  $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
+} else {
+  if (w < 648) {
+    item_width = 100/item_count;
+  } else {
+    item_width = 80/item_count;
+  };
+  $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
+  $('.nav-c').css('right', 0);
+  $('.content').css('marginTop', navHeight);
+};
+if (w > 1023 && ($('.brand').hasClass('brand-left') === false) && ($('.brand').hasClass('brand-right') === false)) {
+  $('.first').css('marginLeft', 0);
+  $('.last').css('marginRight', 0);
+};
+$('.item').css('width', item_width + '%');
+};
+
+
+//---------- Carousel--------------------
 function carResize() {
   var img_li = $('.active-img');
   var img = $('.active-img img');
@@ -145,7 +152,6 @@ function carResize() {
     img_li.css('maxWidth', img.width());
   };
 };
-600
 
 //slider for carousel
 function slide(dir) {
@@ -162,9 +168,7 @@ function slide(dir) {
       new_index = $('.carousel').children().length -1;
     }
   }
-
   switchIndicator(new_index);
-
   slideTo(new_index);
 }
 
@@ -195,9 +199,32 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
 };
 
 
+//---------------- Drop-drown -----------
+function dropdown() {
+  $('.item-dropdown a').click(function() {
+      var clicked = $(this).parent('.item-dropdown').children('.dropdown');
+      if(clicked.height() == '0') {
+        clicked.css('height', '100%');
+        $(this).css('transform', 'scale(1.1)');
+      } else {
+        clicked.css('height', '0px');
+        $(this).css('transform', 'none');
+      }
+  });
+  $('.subitem a').click(function() {
+    var clicked = $(this).parent('.subitem').children('.dropdown');
+    if(clicked.height() == '0') {
+      clicked.css('height', '100%');
+    } else {
+      clicked.css('height', '0px');
+    }
+  });
+};
+
+//---------------- On Ready ----------------
 $(document).ready(function() {
-  //Ready Functions
   window.addEventListener("orientationchange", function() {}, false);
+
   //Essentially hits right slider every 10 seconds
   setInterval(function(){
     slide('right');
@@ -205,16 +232,21 @@ $(document).ready(function() {
   $('.overlay').hide();
   resize();
   logoMove();
+
+  //Dropdown
+  dropdown();
   //On Resize
   $(window).resize(function() {
     resize();
     carResize();
     logoMove();
   });
+
   //On Orientation Change
   $(window).on( "orientationchange", function() {
     resize();
   });
+
   //Clicking on burger function
   $('.nav-t').click(function() {
     disableButton($('.close'), 600);
@@ -222,6 +254,7 @@ $(document).ready(function() {
     disableButton($('.overlay'), 600);
     navOpen();
   });
+
   //Close burger navbar function
   $('.close').click(function() {
     disableButton($('.nav-t'), 600);
@@ -229,6 +262,7 @@ $(document).ready(function() {
     disableButton($('.overlay'), 600);
     navClose();
   });
+
   //Close by clicking Overlay
   $('.overlay').click(function() {
     disableButton($('.close'), 600);
@@ -236,11 +270,13 @@ $(document).ready(function() {
     disableButton($('.overlay'), 600);
     navClose();
   });
+
   //Indicator for Carousel
   $('.indicator').click(function() {
     var index = $(this).index();
     slideTo(index);
   });
+
   //Navbar Slides up or down on scroll
   $(window).scroll(function() {
     prev = navScroll(prev);

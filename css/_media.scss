@@ -3,16 +3,6 @@
 @media only screen and (max-width: 435px) {
   .nav {
     border-bottom: 1px solid $dcolor;
-    .nav-c {
-      .item {
-        .dropdown {
-          position: relative;
-          .subitem {
-            border: none;
-          }
-        }
-      }
-    }
   }
   .footer ul {
     li {
@@ -44,18 +34,6 @@
         display:flex;
         height:100%;
         width:25%;
-        .dropdown {
-          .subitem {
-            padding-left: 0px;
-            .dropdown {
-              left: calc(100% - 1px);
-              .subitem:first-child {
-                border-top: 1px solid $dcolor;
-              }
-              //top: calc(100% - 1px);
-            }
-          }
-        }
         a {
           text-align:center;
           width:100%;
@@ -114,7 +92,7 @@
         background-image: linear-gradient(to bottom, $lcolor 50%, $ldcolor 50%);
         width:12%;
         padding: 0;
-        a, p {
+        a {
           font-size:1.4vw;
           justify-content: center;
           align-items:center;
@@ -123,7 +101,7 @@
         &:hover {
           background-position:0 -100%;
           border-bottom:2px solid $dcolor;
-          a, p {
+          a {
             transform:none;
             color:$dcolor;
           }
@@ -132,7 +110,7 @@
       .item.active {
         border-bottom:2px solid $dcolor;
         background-position:0 -100%;
-        a, p {
+        a {
           color:$dcolor;
           transform:none;
         }
