@@ -17,9 +17,9 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    height:0px;
-    transition: height .4s;
     overflow:hidden;
+    height:0px;
+    transition:height .4s;
     padding-left: 5px;
     .subitem {
       flex-basis:100%;
@@ -28,16 +28,16 @@
       a {
         border-left:3px solid $tcolor;
         transform:none;
-        &:hover {
-          transform:none;
-        }
       }
     }
     &:hover {
-      height:100%;
+      height:calc(100%);
       a {
         transform: none;
       }
     }
+  }
+  .dropdown-a {
+    height:calc(100%);
   }
 }

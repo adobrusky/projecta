@@ -120,7 +120,8 @@ function resize() {
     item_width = 50/item_count;
   };
   if (w <= 435) { //I'm using 436 pixels as the mobile margin
-  $('.dropdown').css('height', '0px');
+  $('.dropdown').removeClass('dropdown-a');
+  $('.item-dropdown a').css('transform', 'none');
   $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
   $('.nav-c').css('right', -$('.nav-c').width());
   $('.content').css('marginTop', $('.nav').height());
@@ -204,22 +205,23 @@ function dropdown() {
   $('.item-dropdown a').click(function() {
       var clicked = $(this).parent('.item-dropdown').children('.dropdown');
       if(clicked.height() == '0') {
-        clicked.css('height', '100%');
+        clicked.addClass('dropdown-a');
         $(this).css('transform', 'scale(1.1)');
       } else {
-        clicked.css('height', '0px');
+        $('.dropdown').removeClass('dropdown-a');
         $(this).css('transform', 'none');
       }
   });
   $('.subitem a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
     if(clicked.height() == '0') {
-      clicked.css('height', '100%');
+      clicked.addClass('dropdown-a');
     } else {
-      clicked.css('height', '0px');
+      clicked.removeClass('dropdown-a');
     }
   });
 };
+
 
 //---------------- On Ready ----------------
 $(document).ready(function() {
@@ -260,6 +262,8 @@ $(document).ready(function() {
     disableButton($('.nav-t'), 600);
     disableButton($('.close'), 600);
     disableButton($('.overlay'), 600);
+    $('.item-dropdown a').css('transform', 'none');
+    $('.dropdown').removeClass('dropdown-a');
     navClose();
   });
 
@@ -268,6 +272,8 @@ $(document).ready(function() {
     disableButton($('.close'), 600);
     disableButton($('.nav-t'), 600);
     disableButton($('.overlay'), 600);
+    $('.item-dropdown a').css('transform', 'none');
+    $('.dropdown').removeClass('dropdown-a');
     navClose();
   });
 
