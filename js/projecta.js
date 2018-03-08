@@ -120,7 +120,6 @@ function resize() {
     item_width = 50/item_count;
   };
   if (w <= 435) { //I'm using 436 pixels as the mobile margin
-  $('.dropdown').removeClass('dropdown-a');
   $('.item-dropdown a').css('transform', 'none');
   $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
   $('.nav-c').css('right', -$('.nav-c').width());
@@ -204,20 +203,26 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
 function dropdown() {
   $('.item-dropdown a').click(function() {
       var clicked = $(this).parent('.item-dropdown').children('.dropdown');
-      if(clicked.height() == '0') {
-        clicked.addClass('dropdown-a');
+      console.log(clicked.height());
+      if(clicked.height() == 0) {
+        clicked.css('height', '100%');
+        clicked.css('transform', 'scaleY(1)');
         $(this).css('transform', 'scale(1.1)');
       } else {
-        $('.dropdown').removeClass('dropdown-a');
+        $('.dropdown').css('transform', 'scaleY(0)');
+        setInterval(function() {
+            clicked.css('height', '0px');
+        }, 400);
         $(this).css('transform', 'none');
       }
   });
   $('.subitem a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
-    if(clicked.height() == '0') {
-      clicked.addClass('dropdown-a');
+    if(clicked.height() == 0) {
+      clicked.css('height', '100%');
+      clicked.css('transform', 'scaleY(1)');
     } else {
-      clicked.removeClass('dropdown-a');
+      clicked.css('transform', 'scaleY(0)');
     }
   });
 };
