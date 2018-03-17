@@ -19,7 +19,8 @@
     justify-content: left;
     overflow:hidden;
     height:0px;
-    transition:height .4s;
+    transform: scaleY(0);
+    transition:transform .4s ease-in-out;
     padding-left: 5px;
     .subitem {
       flex-basis:100%;
@@ -31,13 +32,9 @@
       }
     }
     &:hover {
-      height:calc(100%);
       a {
         transform: none;
       }
     }
-  }
-  .dropdown-a {
-    height:calc(100%);
   }
 }
