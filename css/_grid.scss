@@ -3,29 +3,84 @@
   flex-basis:100%;
   flex-direction:column;
   padding:10px;
-  .col-2 {
+  .col-2, .col-3, .col-4 {
     display:flex;
     flex-direction:column;
-    flex-basis:50%;
+    flex-basis:100%;
     padding:5px;
   }
-
-  .col-3 {
-    @extend .col-2;
-    flex-basis:33%;
-  }
-
-  .col-4 {
-    @extend .col-2;
-    flex-basis:25%;
-  }
-
+  
   .row-col {
     @extend .container;
   }
 
-  .row {
+  .row-s, .row-ms, .row-m, .row-l {
     @extend .container;
+    flex-wrap:wrap;
     flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 436px) {
+  .row-s {
+    .col-2 {
+      flex-basis:50%;
+    }
+
+    .col-3 {
+      flex-basis:33%;
+    }
+
+    .col-4 {
+      flex-basis:25%;
+    }
+  }
+}
+
+@media only screen and (min-width: 620px) {
+  .row-ms {
+    .col-2 {
+      flex-basis:50%;
+    }
+
+    .col-3 {
+      flex-basis:33%;
+    }
+
+    .col-4 {
+      flex-basis:25%;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .row-m {
+    .col-2 {
+      flex-basis:50%;
+    }
+
+    .col-3 {
+      flex-basis:33%;
+    }
+
+    .col-4 {
+      flex-basis:25%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .row-l {
+    .col-2 {
+      flex-basis:50%;
+    }
+
+    .col-3 {
+      flex-basis:33%;
+    }
+
+    .col-4 {
+      flex-basis:25%;
+    }
   }
 }

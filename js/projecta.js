@@ -128,7 +128,7 @@ function resize() {
   $('body').removeClass('noScroll');
   $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
 } else {
-  if (w < 648) {
+  if (w < 620) {
     item_width = 100/item_count;
   } else {
     item_width = 80/item_count;
