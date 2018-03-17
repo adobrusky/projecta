@@ -1,6 +1,6 @@
 //----------- Global variables ---------------
+var setItemWidth = 80;
 var prev = 0;
-var logo = $('.nav li:first-child')[0].outerHTML;
 var count = countFunc();
 var enabled=false;
 var require=false;
@@ -8,7 +8,7 @@ var require=false;
 //------------ Navbar ---------
 function countFunc() {
   var w = window.innerWidth;
-  var x = ($('.nav-c > li > a').length) + ($('.nav-c > li > p').length);
+  var x = $('.item').length;
   return (x)/2;
 };
 
@@ -64,83 +64,65 @@ function logoMove() {
   } else {
     require=false;
   };
-  var brand_pos = 0;
-  var logo_offset = 1;
+  var brandPos = 0;
   if ($('.brand').hasClass('brand-left')) {
-    logo_offset = 1;
-    brand_pos = 1;
+    brandPos = 1;
     if (w > 1023) {
-      $('.first').css('marginLeft', '25%');
       $('.brand').css('marginRight', 'auto');
-      $('.brand').css('marginRight', parseInt($('.brand').css('marginRight'))-10);
     } else {
-      $('.first').css('marginLeft', '0');
-    }
+      $('.brand').css('marginRight', '0');
+    };
   } else if ($('.brand').hasClass('brand-right')) {
-    logo_offset = 0;
-    brand_pos = $('.nav-c > li').length;
+    brandPos = $('.nav-c > li').length;
     if (w > 1023) {
-      $('.last').css('marginRight', '25%');
       $('.brand').css('marginLeft', 'auto');
     } else {
-      $('.last').css('marginRight', '0');
-    }
+      $('.brand').css('marginLeft', '0');
+    };
   } else {
-    brand_pos = count+1;
-    if (w < 1024) {
-      $('.last').css('marginRight', '0');
-      $('.first').css('marginLeft', '0');
-    } else {
-      $('.last').css('marginRight', '25%');
-      $('.first').css('marginLeft', '25%');
-    }
+    brandPos = count+1;
   };
 
   //Enable/Disable
   if(require===true && enabled===false) {
     enabled=true;
-    $('.nav > li:first-child').remove(); //taking logo out of nav
-    $('.nav-c > li:nth-child('+ (brand_pos) + ')').after(logo); //place in nav-c
+    $('.nav-c > li:nth-child('+ brandPos + ')').after($('.nav > .brand'));
   } else if(require===false && enabled===true) {
     enabled=false;
-    $('.nav > li').before(logo); //place back in nav
-    $('.nav-c > li:nth-child(' + (brand_pos + logo_offset) + ')').remove();
+    $('.nav > li').before($('.nav-c > .brand'));
   };
 };
-
 
 //--------- Resize Function ---------
 function resize() {
   var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
-  var item_count = $('.nav-c > li > a').length;
-  item_width = 100;
+  var itemCount = count*2;
+  var itemWidth;
   if (w > 1023) {
     navHeight = $('.nav-c').height();
-    item_width = 50/item_count;
   };
-  if (w <= 435) { //I'm using 436 pixels as the mobile margin
-  $('.item-dropdown a').css('transform', 'none');
-  $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
-  $('.nav-c').css('right', -$('.nav-c').width());
-  $('.content').css('marginTop', $('.nav').height());
-  $('body').removeClass('noScroll');
-  $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
-} else {
-  if (w < 620) {
-    item_width = 100/item_count;
+  //436 is mobile margin
+  if (w < 436) {
+    $('.item-dropdown a').css('transform', 'none');
+    $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
+    $('.nav-c').css('right', -$('.nav-c').width());
+    $('.content').css('marginTop', $('.nav').height());
+    $('body').removeClass('noScroll');
+    $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
   } else {
-    item_width = 80/item_count;
+    $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
+    $('.nav-c').css('right', 0);
+    $('.content').css('marginTop', navHeight);
   };
-  $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
-  $('.nav-c').css('right', 0);
-  $('.content').css('marginTop', navHeight);
-};
-if (w > 1023 && ($('.brand').hasClass('brand-left') === false) && ($('.brand').hasClass('brand-right') === false)) {
-  $('.first').css('marginLeft', 0);
-  $('.last').css('marginRight', 0);
-};
-$('.item').css('width', item_width + '%');
+  if (w > 436 && w < 620) {
+    itemWidth = 100/itemCount;
+  } else if(w > 620 && w < 1024) {
+    itemWidth = setItemWidth/itemCount;
+  } else if(w > 1023) {
+    itemWidth=(setItemWidth-30)/itemCount;
+  };
+  $('.item').css('width', itemWidth + '%');
 };
 
 
@@ -200,21 +182,25 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
 
 
 //---------------- Drop-drown -----------
+function dropClose() {
+  $('.dropdown').css('transform', 'scaleY(0)');
+  setTimeout(function() {
+    $('.dropdown').css('height', '0px');
+  }, 400);
+  $('.item-dropdown > a').css('transform', 'none');
+};
+
 function dropdown() {
-  $('.item-dropdown a').click(function() {
-      var clicked = $(this).parent('.item-dropdown').children('.dropdown');
-      console.log(clicked.height());
-      if(clicked.height() == 0) {
-        clicked.css('height', '100%');
-        clicked.css('transform', 'scaleY(1)');
-        $(this).css('transform', 'scale(1.1)');
-      } else {
-        $('.dropdown').css('transform', 'scaleY(0)');
-        setInterval(function() {
-            clicked.css('height', '0px');
-        }, 400);
-        $(this).css('transform', 'none');
-      }
+  $('.item-dropdown > a').click(function() {
+    var clicked = $(this).parent('.item-dropdown').children('.dropdown');
+    console.log(clicked.height());
+    if(clicked.height() == 0) {
+      clicked.css('height', '100%');
+      clicked.css('transform', 'scaleY(1)');
+      $(this).css('transform', 'scale(1.1)');
+    } else {
+      dropClose();
+    };
   });
   $('.subitem a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
@@ -223,7 +209,7 @@ function dropdown() {
       clicked.css('transform', 'scaleY(1)');
     } else {
       clicked.css('transform', 'scaleY(0)');
-    }
+    };
   });
 };
 
@@ -247,6 +233,7 @@ $(document).ready(function() {
     resize();
     carResize();
     logoMove();
+    console.log(count);
   });
 
   //On Orientation Change
@@ -267,8 +254,7 @@ $(document).ready(function() {
     disableButton($('.nav-t'), 600);
     disableButton($('.close'), 600);
     disableButton($('.overlay'), 600);
-    $('.item-dropdown a').css('transform', 'none');
-    $('.dropdown').removeClass('dropdown-a');
+    dropClose();
     navClose();
   });
 
@@ -277,8 +263,7 @@ $(document).ready(function() {
     disableButton($('.close'), 600);
     disableButton($('.nav-t'), 600);
     disableButton($('.overlay'), 600);
-    $('.item-dropdown a').css('transform', 'none');
-    $('.dropdown').removeClass('dropdown-a');
+    dropClose();
     navClose();
   });
 

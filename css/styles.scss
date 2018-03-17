@@ -1,42 +1,9 @@
 @import 'variables';
-.carousel {
-  margin-bottom: 10px;
-}
-
-.job-finder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  padding: 10px;
-}
 .placeholderimg {
   width:50%;
   margin:auto;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  border: 1px solid $lcolor;
-  padding: 10px;
-  text-align: center;
-
-  h3 {
-    padding: 5px;
-  }
-
-  .submit {
-    list-style-type: none;
-    padding: 10px;
-    margin: 10px;
-    background-color: $lcolor;
-    transition: background-color .2s ease-in-out;
-    border-radius: 5px;
-    &:hover {
-      background-color: $ldcolor;
-    }
-  }
+h3 {
+  padding: 5px;
 }

@@ -15,6 +15,7 @@
 
 @media only screen and (min-width: 436px) {
   .nav {
+    border:none;
     min-height:75px;
     height:10vh;
     flex-wrap: wrap;
@@ -33,7 +34,6 @@
         align-items: center;
         display:flex;
         height:100%;
-        width:25%;
         a {
           text-align:center;
           width:100%;
@@ -47,14 +47,14 @@
           }
         }
       }
+      .close {
+        display:none;
+      }
       .item.active {
         border-bottom:2px solid $dcolor;
         a {
           transform:scale(1.1);
         }
-      }
-      .item.close {
-        display: none;
       }
     }
     .nav-t {
@@ -87,31 +87,35 @@
       justify-content:center;
       .item {
         display:flex;
-        transition:background-position .2s ease-in-out;
-        background-size: 100% 200%;
-        background-image: linear-gradient(to bottom, $lcolor 50%, $ldcolor 50%);
-        width:12%;
         padding: 0;
+        margin-top:-1px;
+        border: none;
         a {
           font-size:1.4vw;
+          height:100%;
+          padding:0px;
           justify-content: center;
           align-items:center;
+          transition:background-position .2s ease-in-out;
+          background-size: 100% 200%;
+          background-image: linear-gradient(to bottom, transparent 50%, $ldcolor 50%);
           width:100%;
-        }
-        &:hover {
-          background-position:0 -100%;
-          border-bottom:2px solid $dcolor;
-          a {
+          border:none;
+          &:hover {
+            background-position:0 -100%;
             transform:none;
             color:$dcolor;
           }
         }
+        &:hover {
+          border:none;
+        }
       }
       .item.active {
         border-bottom:2px solid $dcolor;
-        background-position:0 -100%;
         a {
           color:$dcolor;
+          background-position:0 -100%;
           transform:none;
         }
       }
