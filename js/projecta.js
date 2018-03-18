@@ -186,8 +186,8 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
 
 //---------------- Drop-drown -----------
 function dropClose() {
+    $('.item-dropdown > a').css('transform', 'scale(1)');
   $('.dropdown').css('max-height', '0px');
-  $('.item-dropdown > a').css('transform', 'scale(1)');
 };
 
 function dropdown() {
@@ -196,7 +196,7 @@ function dropdown() {
     if(parseInt(clicked.css('maxHeight')) == 0) {
       $('.item-dropdown > a').css('transform', 'scale(1)');
       $('.dropdown').css('max-height', '0px');
-      clicked.css('max-height', '500px');
+      clicked.css('max-height', '50px');
       $(this).css('transform', 'scale(1.1)');
     } else {
       dropClose();
@@ -205,7 +205,7 @@ function dropdown() {
   $('.subitem a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
     if(parseInt(clicked.css('maxHeight')) == 0) {
-      clicked.css('max-height', '500px');
+      clicked.css('max-height', '50px');
     } else {
       clicked.css('max-height', '0px');
     };
