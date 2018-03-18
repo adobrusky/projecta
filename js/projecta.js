@@ -1,5 +1,6 @@
 //----------- Global variables ---------------
-var setItemWidth = 80;
+var setItemWidth = 80; //Adjustable Navbar Item Variable
+var carouselInterval = 10000; //Adjustable Carousel Interval Variable
 var prev = 0;
 var count = countFunc();
 var enabled=false;
@@ -121,6 +122,8 @@ function resize() {
     itemWidth = setItemWidth/itemCount;
   } else if(w > 1023) {
     itemWidth=(setItemWidth-30)/itemCount;
+  } else {
+    itemWidth = 100;
   };
   $('.item').css('width', itemWidth + '%');
 };
@@ -183,20 +186,17 @@ function disableButton(ele, dur) { //Two arguments are the element to disabl (el
 
 //---------------- Drop-drown -----------
 function dropClose() {
-  $('.dropdown').css('transform', 'scaleY(0)');
-  setTimeout(function() {
-    $('.dropdown').css('height', '0px');
-  }, 400);
-  $('.item-dropdown > a').css('transform', 'none');
+  $('.dropdown').css('max-height', '0px');
+  $('.item-dropdown > a').css('transform', 'scale(1)');
 };
 
 function dropdown() {
   $('.item-dropdown > a').click(function() {
     var clicked = $(this).parent('.item-dropdown').children('.dropdown');
-    console.log(clicked.height());
-    if(clicked.height() == 0) {
-      clicked.css('height', '100%');
-      clicked.css('transform', 'scaleY(1)');
+    if(parseInt(clicked.css('maxHeight')) == 0) {
+      $('.item-dropdown > a').css('transform', 'scale(1)');
+      $('.dropdown').css('max-height', '0px');
+      clicked.css('max-height', '500px');
       $(this).css('transform', 'scale(1.1)');
     } else {
       dropClose();
@@ -204,11 +204,10 @@ function dropdown() {
   });
   $('.subitem a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
-    if(clicked.height() == 0) {
-      clicked.css('height', '100%');
-      clicked.css('transform', 'scaleY(1)');
+    if(parseInt(clicked.css('maxHeight')) == 0) {
+      clicked.css('max-height', '500px');
     } else {
-      clicked.css('transform', 'scaleY(0)');
+      clicked.css('max-height', '0px');
     };
   });
 };
@@ -221,7 +220,7 @@ $(document).ready(function() {
   //Essentially hits right slider every 10 seconds
   setInterval(function(){
     slide('right');
-  }, 10000);
+  }, carouselInterval);
   $('.overlay').hide();
   resize();
   logoMove();

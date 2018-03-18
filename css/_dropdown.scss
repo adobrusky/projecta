@@ -1,7 +1,7 @@
 @import "variables";
 .nav-c > .item-dropdown {
   a {
-    transition: transform .4s
+    transition: transform .8s
   }
   &:hover {
     a {
@@ -18,9 +18,10 @@
     flex-direction: column;
     justify-content: left;
     overflow:hidden;
-    height:0px;
-    transform: scaleY(0);
-    transition:transform .4s ease-in-out;
+    height:100%;
+    max-height:0px;
+    transition:max-height .8s;
+    transition-delay: none;
     padding-left: 5px;
     .subitem {
       flex-basis:100%;
