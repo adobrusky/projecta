@@ -1,6 +1,6 @@
 //----------- Global variables ---------------
-var setItemWidth = 80; //Adjustable Navbar Item Variable
-var carouselInterval = 10000; //Adjustable Carousel Interval Variable
+var setItemWidth = 80;
+var carouselInterval = 10000;
 var prev = 0;
 var count = countFunc();
 var enabled=false;
@@ -198,7 +198,6 @@ function dropdown() {
       $('.item-dropdown > a').css('transform', 'scale(1)');
       $('.dropdown').css('max-height', '0px');
       var dropHeight = linkHeight * (clicked.children('li').length);
-      console.log(clicked.children('li').length + " " + linkHeight + " " + dropHeight);
       clicked.css('max-height', dropHeight);
       $(this).css('transform', 'scale(1.1)');
     } else {
@@ -208,11 +207,19 @@ function dropdown() {
   $('.subitem > a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
     var closest = $(this).closest('.dropdown');
+    var parentHeight = $(this).parents('.dropdown').css('maxHeight') + linkHeight * amount;
     if(parseInt(clicked.css('maxHeight')) == 0) {
-      var dropHeightClicked = linkHeight * clicked.find('li').length;
-      var dropHeightClosest = linkHeight * closest.find('li').length;
-      closest.css('maxHeight', dropHeightClosest);
-      clicked.css('maxHeight', dropHeightClicked);
+      //var dropHeightClicked = linkHeight * clicked.children('li').length;
+      //var dropHeightClosest = linkHeight * closest.children('li').length;
+      var i = $(this).parents('.dropdown').length;
+
+      closest.css('backgroundColor', 'white');
+      console.log(i + " " +  parents.css('maxHeight'));
+      var amount = clicked.children('li').length;
+      var closestAmount = closest.children('li').length;
+      //closest.css('maxHeight', linkHeight * (closestAmount + amount));
+      clicked.css('maxHeight', linkHeight * amount);
+      $(this).parents('.dropdown').css('maxHeight', parentHeight);
     } else {
       clicked.css('max-height', '0px');
       clicked.find('.dropdown').css('max-height', '0px');
