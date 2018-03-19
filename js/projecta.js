@@ -207,11 +207,12 @@ function dropdown() {
   });
   $('.subitem > a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
+    var closest = $(this).closest('.dropdown');
     if(parseInt(clicked.css('maxHeight')) == 0) {
-      var dropHeight = linkHeight * clicked.find('li').length;
-      $(this).closest('.dropdown').css('maxHeight', dropHeight+linkHeight);
-      clicked.css('maxHeight', dropHeight);
-      console.log($('.dropdown').has(this).height() + clicked.css('maxHeight') + " " + " " + (dropHeight+linkHeight));
+      var dropHeightClicked = linkHeight * clicked.find('li').length;
+      var dropHeightClosest = linkHeight * closest.find('li').length;
+      closest.css('maxHeight', dropHeightClosest);
+      clicked.css('maxHeight', dropHeightClicked);
     } else {
       clicked.css('max-height', '0px');
     };
