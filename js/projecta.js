@@ -215,6 +215,7 @@ function dropdown() {
       clicked.css('maxHeight', dropHeightClicked);
     } else {
       clicked.css('max-height', '0px');
+      clicked.find('.dropdown').css('max-height', '0px');
     };
   });
 };
@@ -239,6 +240,7 @@ $(document).ready(function() {
     resize();
     carResize();
     logoMove();
+    dropClose();
     console.log(count);
   });
 
