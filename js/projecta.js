@@ -191,21 +191,27 @@ function dropClose() {
 };
 
 function dropdown() {
+  var linkHeight = $('.item-dropdown').height();
   $('.item-dropdown > a').click(function() {
     var clicked = $(this).parent('.item-dropdown').children('.dropdown');
     if(parseInt(clicked.css('maxHeight')) == 0) {
       $('.item-dropdown > a').css('transform', 'scale(1)');
       $('.dropdown').css('max-height', '0px');
-      clicked.css('max-height', '50px');
+      var dropHeight = linkHeight * (clicked.children('li').length);
+      console.log(clicked.children('li').length + " " + linkHeight + " " + dropHeight);
+      clicked.css('max-height', dropHeight);
       $(this).css('transform', 'scale(1.1)');
     } else {
       dropClose();
     };
   });
-  $('.subitem a').click(function() {
+  $('.subitem > a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
     if(parseInt(clicked.css('maxHeight')) == 0) {
-      clicked.css('max-height', '50px');
+      var dropHeight = linkHeight * clicked.find('li').length;
+      $(this).closest('.dropdown').css('maxHeight', dropHeight+linkHeight);
+      clicked.css('maxHeight', dropHeight);
+      console.log($('.dropdown').has(this).height() + clicked.css('maxHeight') + " " + " " + (dropHeight+linkHeight));
     } else {
       clicked.css('max-height', '0px');
     };
