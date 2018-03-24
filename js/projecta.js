@@ -200,15 +200,15 @@ function dropClose() {
   $('.dropdown').css('max-height', '0px');
 };
 
-function adjustDropdowns(linkHeight, amount) {
+function adjustExpand(linkHeight, amount) {
   $('.dropdown').each(function() {
     if (parseInt($(this).css('maxHeight')) != 0) {
       var addHeight = parseInt($(this).css('maxHeight')) + linkHeight * amount;
-      console.log(addHeight);
       $(this).css('maxHeight', addHeight);
     }
   });
 };
+
 
 function dropdown() {
   var linkHeight = $('.item-dropdown').height();
@@ -227,13 +227,18 @@ function dropdown() {
   $('.subitem > a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown'); //Gets the dropdown that was clicked on
     var closest = $(this).closest('.dropdown'); //Gets the dropdown
+    var amount = clicked.children('li').length; //Number of children in dropdown
     if(parseInt(clicked.css('maxHeight')) == 0) {
-      var amount = clicked.children('li').length;
       clicked.css('maxHeight', linkHeight * amount);
-      adjustDropdowns(linkHeight, amount, 0);
+      adjustExpand(linkHeight, amount);
     } else {
       clicked.css('max-height', '0px');
       clicked.find('.dropdown').css('max-height', '0px');
+      clicked.parents('.dropdown').each(function() {
+          var subtractHeight = parseInt($(this).css('maxHeight')) - linkHeight * amount;
+          console.log(subtractHeight, amount);
+          $(this).css('maxHeight', subtractHeight);
+      });
     };
   });
 };
