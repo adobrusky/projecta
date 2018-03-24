@@ -1,1 +1,0 @@
-navItemWidth = 70;
