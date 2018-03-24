@@ -1,1 +1,1 @@
-var setItemWidth = 100;
+navItemWidth = 70;

@@ -1,10 +1,15 @@
 //----------- Global variables ---------------
-var setItemWidth = 80; //Adjustable Navbar Item Variable
-var carouselInterval = 10000; //Adjustable Carousel Interval Variable
 var prev = 0;
 var count = countFunc();
 var enabled=false;
 var require=false;
+
+//-------------------- Editable JS Variables for External Use ---------------------------
+var navItemWidth = 80;
+var carouselInterval = 10000;
+var disableDuration = 600;
+var navDuration = 600;
+var navShrink = 2.5;
 
 //------------ Navbar ---------
 function countFunc() {
@@ -15,23 +20,25 @@ function countFunc() {
 
 //Nav Open and Close
 function navClose() {
-  $('.nav-c').css('transition', 'right .6s').css('right', -$('.nav-c').width());
+  var navTransition = String(navDuration/1000) + 's';
+  $('.nav-c').css('transition', 'right ' + navTransition).css('right', -$('.nav-c').width());
   $('.overlay').css('backgroundColor', 'rgba(255, 255, 255, 0)');
   $('body').removeClass('noScroll');
   setTimeout(function() {
-    $('.overlay').hide().css('transition', 'background-color .6s');
+    $('.overlay').hide().css('transition', 'background-color ' + navTransition);
     $('.nav-c').css('transition', 'none');
-  }, 600);
+  }, navDuration);
 };
 
 function navOpen() {
-  $('.nav-c').css('transition', 'right .6s').css('right', '0');
+  var navTransition = String(navDuration/1000) + 's';
+  $('.nav-c').css('transition', 'right ' + navTransition).css('right', '0');
   $('.overlay').show().css('backgroundColor', 'rgba(0, 0, 0, 0.5)');
   $('body').addClass('noScroll');
   setTimeout(function() {
     $('.nav-c').css('transition', 'none');
-    $('.overlay').css('transition', 'background-color .6s');
-  }, 600);
+    $('.overlay').css('transition', 'background-color ' + navTransition);
+  }, navDuration);
 };
 
 //Nav Scroll Function
@@ -100,6 +107,9 @@ function resize() {
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var itemCount = count*2;
   var itemWidth;
+  if(navItemWidth > 100) {
+    navItemWidth = 100;
+  };
   if (w > 1023) {
     navHeight = $('.nav-c').height();
   };
@@ -119,9 +129,9 @@ function resize() {
   if (w > 436 && w < 620) {
     itemWidth = 100/itemCount;
   } else if(w > 620 && w < 1024) {
-    itemWidth = setItemWidth/itemCount;
+    itemWidth = navItemWidth/itemCount;
   } else if(w > 1023) {
-    itemWidth=(setItemWidth-30)/itemCount;
+    itemWidth=(navItemWidth-(navItemWidth/navShrink))/itemCount;
   } else {
     itemWidth = 100;
   };
@@ -176,7 +186,7 @@ function switchIndicator(index) {
   $(new_active_indicator).addClass('active-indicator');
 };
 
-function disableButton(ele, dur) { //Two arguments are the element to disabl (ele) and duration (dur)
+function disableButton(ele, dur) { //Two arguments are the element to disable (ele) and duration (dur)
   ele.addClass('disabled');
   setTimeout(function(){
     ele.removeClass('disabled');
@@ -190,6 +200,16 @@ function dropClose() {
   $('.dropdown').css('max-height', '0px');
 };
 
+function adjustDropdowns(linkHeight, amount) {
+  $('.dropdown').each(function() {
+    if (parseInt($(this).css('maxHeight')) != 0) {
+      var addHeight = parseInt($(this).css('maxHeight')) + linkHeight * amount;
+      console.log(addHeight);
+      $(this).css('maxHeight', addHeight);
+    }
+  });
+};
+
 function dropdown() {
   var linkHeight = $('.item-dropdown').height();
   $('.item-dropdown > a').click(function() {
@@ -198,7 +218,6 @@ function dropdown() {
       $('.item-dropdown > a').css('transform', 'scale(1)');
       $('.dropdown').css('max-height', '0px');
       var dropHeight = linkHeight * (clicked.children('li').length);
-      console.log(clicked.children('li').length + " " + linkHeight + " " + dropHeight);
       clicked.css('max-height', dropHeight);
       $(this).css('transform', 'scale(1.1)');
     } else {
@@ -206,19 +225,19 @@ function dropdown() {
     };
   });
   $('.subitem > a').click(function() {
-    var clicked = $(this).parent('.subitem').children('.dropdown');
-    var closest = $(this).closest('.dropdown');
+    var clicked = $(this).parent('.subitem').children('.dropdown'); //Gets the dropdown that was clicked on
+    var closest = $(this).closest('.dropdown'); //Gets the dropdown
     if(parseInt(clicked.css('maxHeight')) == 0) {
-      var dropHeightClicked = linkHeight * clicked.find('li').length;
-      var dropHeightClosest = linkHeight * closest.find('li').length;
-      closest.css('maxHeight', dropHeightClosest);
-      clicked.css('maxHeight', dropHeightClicked);
+      var amount = clicked.children('li').length;
+      clicked.css('maxHeight', linkHeight * amount);
+      adjustDropdowns(linkHeight, amount, 0);
     } else {
       clicked.css('max-height', '0px');
       clicked.find('.dropdown').css('max-height', '0px');
     };
   });
 };
+
 
 
 //---------------- On Ready ----------------
@@ -251,26 +270,26 @@ $(document).ready(function() {
 
   //Clicking on burger function
   $('.nav-t').click(function() {
-    disableButton($('.close'), 600);
-    disableButton($('.nav-t'), 600);
-    disableButton($('.overlay'), 600);
+    disableButton($('.close'), disableDuration);
+    disableButton($('.nav-t'), disableDuration);
+    disableButton($('.overlay'), disableDuration);
     navOpen();
   });
 
   //Close burger navbar function
   $('.close').click(function() {
-    disableButton($('.nav-t'), 600);
-    disableButton($('.close'), 600);
-    disableButton($('.overlay'), 600);
+    disableButton($('.nav-t'), disableDuration);
+    disableButton($('.close'), disableDuration);
+    disableButton($('.overlay'), disableDuration);
     dropClose();
     navClose();
   });
 
   //Close by clicking Overlay
   $('.overlay').click(function() {
-    disableButton($('.close'), 600);
-    disableButton($('.nav-t'), 600);
-    disableButton($('.overlay'), 600);
+    disableButton($('.close'), disableDuration);
+    disableButton($('.nav-t'), disableDuration);
+    disableButton($('.overlay'), disableDuration);
     dropClose();
     navClose();
   });
