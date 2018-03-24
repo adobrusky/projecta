@@ -26,12 +26,51 @@
       <li class="active item"><a href="howto.html">HOW TO</a></li>
     </ul>
   </ul>
+
   <!-- Content Area -->
   <div class="content">
     <div class="container">
       <div>
         <h1>ProjectA Documentation</h1>
-        <p>I will try to keep this updated with the documentation as new things are added</p>
+        <p>I will try to keep this updated with the documentation as new things are added.</p>
+      </div>
+      <br>
+      <div>
+        <h3>Dynamic Variables</h3>
+        <p>We have a few dynamic variables in ProjectA. These are varaibles you can change in an external javascript sheet to change some of the default properties of ProjectA. If you can't understand my descriptions you can just play with them and you will understand what they do.</p>
+        <br>
+        <ul style="list-style-position:inside">
+          <li>carouselInterval: this is the interval at which a carousel changes slides.
+            <p>Default: 1000</p>
+          </li>
+          <br>
+          <li>navItemWidth: this is factor in which you change the percentage of the width of the navbar items when not collapsed.
+            <p>Default: 80</p>
+          </li>
+          <br>
+          <li>navDuration: this is the duration of all of the collapsed navbar transitions
+            <p>Default: 600</p>
+          </li>
+          <br>
+          <li>navShrink: this is the shrink factor of all of the navbar items when expanded
+            <p>Default: 2.5</p>
+          </li>
+        </ul>
+      </div>
+      <br>
+      <div>
+        <h3>Atom Snippets</h3>
+        <p>We have immensily sped up the process of working with ProjectA if you are using Atom as a text editor. At the github master branch for ProjectA we will have access to the downloads for our snippets. A guide on how to install will be up shortly. Once the snippets are installed, simply type the keyword and press tab.</p>
+        <br>
+        <ul>
+          <li>projecta: generates a full html structure while referencing projecta and jquery along with it</li>
+          <li>nav: generates a projecta navbar</li>
+          <li>content: generates the content section of the webpage</li>
+          <li>dropdown: generates a navbar dropdown in place of a normal list item</li>
+          <li>sub: generates a dropdown sub-menu in place of a list item inside of a dropdown</li>
+          <li>vars: generates all of the dynamic variables. use this in a javascript file</li>
+          <li>carousel: generates a carousel</li>
+        </ul>
       </div>
     </div>
   </div>

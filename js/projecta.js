@@ -7,7 +7,6 @@ var require=false;
 //-------------------- Editable JS Variables for External Use ---------------------------
 var navItemWidth = 80;
 var carouselInterval = 10000;
-var disableDuration = 600;
 var navDuration = 600;
 var navShrink = 2.5;
 
@@ -107,9 +106,6 @@ function resize() {
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var itemCount = count*2;
   var itemWidth;
-  if(navItemWidth > 100) {
-    navItemWidth = 100;
-  };
   if (w > 1023) {
     navHeight = $('.nav-c').height();
   };
@@ -143,34 +139,33 @@ function resize() {
 function carResize() {
   var img_li = $('.active-img');
   var img = $('.active-img img');
-  if (img.height() == parseInt($('.carousel').css('maxHeight'))) {
+  if (img.height() > (parseInt($('.carousel').css('maxHeight')))) {
     img_li.css('maxWidth', img.width());
   };
 };
 
 //slider for carousel
 function slide(dir) {
-  var active_index = $(".active-img").index();
+  var active_index = $('.active-img').index();
   if (dir == 'right') {
     var new_index = active_index + 1;
-    if (new_index == $('.carousel').children().length -1) {
+    if (new_index == $('.carousel').children('li').length) {
       new_index = 0;
     }
   }
   else if (dir == 'left') {
     var new_index = active_index - 1;
     if (new_index == 0) {
-      new_index = $('.carousel').children().length -1;
+      new_index = $('.carousel').children('li').length;
     }
   }
-  switchIndicator(new_index);
   slideTo(new_index);
 }
 
 function slideTo(index) {
   switchIndicator(index);
-  $(".active-img").fadeOut(200, function() {
-    $(".active-img").removeClass('active-img');
+  $('.active-img').fadeOut(200, function() {
+    $('.active-img').removeClass('active-img');
     var new_active = $('.carousel').children().get(index);
     $(new_active).addClass('active-img').hide();
     $(new_active).fadeIn(200);
@@ -239,10 +234,9 @@ function dropdown() {
 };
 
 
-
 //---------------- On Ready ----------------
 $(document).ready(function() {
-  window.addEventListener("orientationchange", function() {}, false);
+  window.addEventListener('orientationchange', function() {}, false);
 
   //Essentially hits right slider every 10 seconds
   setInterval(function(){
@@ -264,32 +258,32 @@ $(document).ready(function() {
   });
 
   //On Orientation Change
-  $(window).on( "orientationchange", function() {
+  $(window).on( 'orientationchange', function() {
     resize();
   });
 
   //Clicking on burger function
   $('.nav-t').click(function() {
-    disableButton($('.close'), disableDuration);
-    disableButton($('.nav-t'), disableDuration);
-    disableButton($('.overlay'), disableDuration);
+    disableButton($('.close'), 600);
+    disableButton($('.nav-t'), 600);
+    disableButton($('.overlay'), 600);
     navOpen();
   });
 
   //Close burger navbar function
   $('.close').click(function() {
-    disableButton($('.nav-t'), disableDuration);
-    disableButton($('.close'), disableDuration);
-    disableButton($('.overlay'), disableDuration);
+    disableButton($('.nav-t'), 600);
+    disableButton($('.close'), 600);
+    disableButton($('.overlay'), 600);
     dropClose();
     navClose();
   });
 
   //Close by clicking Overlay
   $('.overlay').click(function() {
-    disableButton($('.close'), disableDuration);
-    disableButton($('.nav-t'), disableDuration);
-    disableButton($('.overlay'), disableDuration);
+    disableButton($('.close'), 600);
+    disableButton($('.nav-t'), 600);
+    disableButton($('.overlay'), 600);
     dropClose();
     navClose();
   });
