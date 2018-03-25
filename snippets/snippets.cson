@@ -95,8 +95,8 @@
     'body': """
       <div class="carousel-container">
         <ul class="carousel">
-          <li class="active-img"><a href=""><img src="" alt=""></a></li>
-          <li><a href=""><img src="" alt=""></a></li>
+          <li class="active-img"><a href=""><img src=""></a></li>
+          <li><a href=""><img src=""></a></li>
           <div class="indicators">
             <li class="indicator active-indicator"><i class="fa fa-circle"></i></li>
             <li class="indicator"><i class="fa fa-circle-o"></i></li>
@@ -115,4 +115,5 @@
       var carouselInterval = 10000;
       var navDuration = 600;
       var navShrink = 2.5;
+      var carouselDirection = 'right'; //Accepts 'right' or 'left'
       """
