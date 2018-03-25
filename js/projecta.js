@@ -223,6 +223,7 @@ function dropdown() {
     var clicked = $(this).parent('.subitem').children('.dropdown'); //Gets the dropdown that was clicked on
     var closest = $(this).closest('.dropdown'); //Gets the dropdown
     var amount = clicked.children('li').length; //Number of children in dropdown
+    var adjust = 0;
     if(parseInt(clicked.css('maxHeight')) == 0) {
       clicked.css('maxHeight', linkHeight * amount);
       adjustExpand(linkHeight, amount);
@@ -230,9 +231,13 @@ function dropdown() {
       clicked.css('max-height', '0px');
       clicked.find('.dropdown').css('max-height', '0px');
       clicked.parents('.dropdown').each(function() {
-          var subtractHeight = parseInt($(this).css('maxHeight')) - linkHeight * amount;
-          console.log(subtractHeight, amount);
-          $(this).css('maxHeight', subtractHeight);
+        amount = $(this).children('li').length;
+        $(this).find('.dropdown').not(clicked).each(function() { //adjusts amount to equal total number of expanded items
+          if ( (parseInt($(this).css('maxHeight')) > 0) && (clicked.has($(this)).length == 0) ) {
+            amount += $(this).children('li').length;
+          };
+        });
+        $(this).css('maxHeight', amount * linkHeight);
       });
     };
   });
