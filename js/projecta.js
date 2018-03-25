@@ -137,14 +137,26 @@ function resize() {
 
 
 //---------- Carousel--------------------
-function carResize() {
-  var img_li = $('.active-img');
-  var img = $('.active-img img');
-  if (img.height() > (parseInt($('.carousel').css('maxHeight')))) {
-    img_li.css('maxWidth', img.width());
+var changeWidth = false;
+function carouselResize() {
+  var carouselImg = $('.carousel img');
+  var carousel = $('.carousel');
+  var indicators = $('.indicators').height()+5;
+  if(carouselImg.height() > carousel.height() && changeWidth == false) {
+    carouselImg.css('maxHeight', carousel.height()-indicators).css('width', 'auto');
+    changeWidth = true;
+  } else if(carouselImg.height() < carousel.height() && changeWidth == true){
+    var width = carouselImg.css('width');
+    carouselImg.css('width', '100%');
+    var fullWidth = carouselImg.css('width');
+    if(parseInt(width) < parseInt(fullWidth)) {
+      carouselImg.css('width', 'auto');
+    } else {
+      changeWidth = false;
+      carouselImg.css('maxHeight', 'none');
+    };
   };
 };
-
 //slider for carousel
 function slide(dir) {
   var active_index = $('.active-img').index();
@@ -255,13 +267,13 @@ $(document).ready(function() {
   $('.overlay').hide();
   resize();
   logoMove();
-
+  carouselResize();
   //Dropdown
   dropdown();
   //On Resize
   $(window).resize(function() {
     resize();
-    carResize();
+    carouselResize();
     logoMove();
     dropClose();
   });
