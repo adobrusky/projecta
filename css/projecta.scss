@@ -2,6 +2,7 @@
 @import "navbar";
 @import "grid";
 @import "dropdown";
+@import "carousel";
 * {
   margin:0px;
   padding:0px;
@@ -25,8 +26,8 @@ body {
     background-color: $lcolor;
     border-top: 1px solid $dcolor;
     height: 70px;
-    margin-top: auto;
     width: 100%;
+    margin-top: auto;
     align-self: flex-end;
     justify-content: center;
   }

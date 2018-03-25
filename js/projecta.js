@@ -204,7 +204,6 @@ function adjustExpand(linkHeight, amount) {
   });
 };
 
-
 function dropdown() {
   var linkHeight = $('.item-dropdown').height();
   $('.item-dropdown > a').click(function() {
@@ -264,7 +263,6 @@ $(document).ready(function() {
     carResize();
     logoMove();
     dropClose();
-    console.log(count);
   });
 
   //On Orientation Change
