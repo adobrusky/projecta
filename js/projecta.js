@@ -9,6 +9,7 @@ var navItemWidth = 80;
 var carouselInterval = 10000;
 var navDuration = 600;
 var navShrink = 2.5;
+var carouselDirection = 'right';
 
 //------------ Navbar ---------
 function countFunc() {
@@ -249,7 +250,7 @@ $(document).ready(function() {
 
   //Essentially hits right slider every 10 seconds
   setInterval(function(){
-    slide('right');
+    slide(carouselDirection);
   }, carouselInterval);
   $('.overlay').hide();
   resize();
