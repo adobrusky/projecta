@@ -3,6 +3,8 @@ var prev = 0;
 var count = countFunc();
 var enabled=false;
 var require=false;
+var itemWidth;
+var itemDefault = false;
 
 //-------------------- Editable JS Variables for External Use ---------------------------
 var navItemWidth = 80;
@@ -77,12 +79,16 @@ function logoMove() {
     brandPos = 1;
     if (w > 1023) {
       $('.brand').css('marginRight', 'auto');
+      $('.item').css('width', 'auto');
+      itemDefault = true;
     } else {
       $('.brand').css('marginRight', '0');
     };
   } else if ($('.brand').hasClass('brand-right')) {
     brandPos = $('.nav-c > li').length;
     if (w > 1023) {
+      itemDefault = true;
+      $('.item').css('width', 'auto');
       $('.brand').css('marginLeft', 'auto');
     } else {
       $('.brand').css('marginLeft', '0');
@@ -106,7 +112,6 @@ function resize() {
   var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var itemCount = count*2;
-  var itemWidth;
   if (w > 1023) {
     navHeight = $('.nav-c').height();
   };
@@ -129,6 +134,9 @@ function resize() {
     itemWidth = navItemWidth/itemCount;
   } else if(w > 1023) {
     itemWidth=(navItemWidth-(navItemWidth/navShrink))/itemCount;
+    if(itemDefault == true) {
+      $('.item').css('width', 'auto');
+    }
   } else {
     itemWidth = 100;
   };
@@ -137,26 +145,7 @@ function resize() {
 
 
 //---------- Carousel--------------------
-var changeWidth = false;
-function carouselResize() {
-  var carouselImg = $('.carousel img');
-  var carousel = $('.carousel');
-  var indicators = $('.indicators').height()+5;
-  if(carouselImg.height() > carousel.height() && changeWidth == false) {
-    carouselImg.css('maxHeight', carousel.height()-indicators).css('width', 'auto');
-    changeWidth = true;
-  } else if(carouselImg.height() < carousel.height() && changeWidth == true){
-    var width = carouselImg.css('width');
-    carouselImg.css('width', '100%');
-    var fullWidth = carouselImg.css('width');
-    if(parseInt(width) < parseInt(fullWidth)) {
-      carouselImg.css('width', 'auto');
-    } else {
-      changeWidth = false;
-      carouselImg.css('maxHeight', 'none');
-    };
-  };
-};
+
 //slider for carousel
 function slide(dir) {
   var active_index = $('.active-img').index();
@@ -204,7 +193,7 @@ function disableButton(ele, dur) { //Two arguments are the element to disable (e
 
 //---------------- Drop-drown -----------
 function dropClose() {
-    $('.item-dropdown > a').css('transform', 'scale(1)');
+  $('.item-dropdown > a').css('transform', 'scale(1)');
   $('.dropdown').css('max-height', '0px');
 };
 
@@ -267,13 +256,11 @@ $(document).ready(function() {
   $('.overlay').hide();
   resize();
   logoMove();
-  carouselResize();
   //Dropdown
   dropdown();
   //On Resize
   $(window).resize(function() {
     resize();
-    carouselResize();
     logoMove();
     dropClose();
   });

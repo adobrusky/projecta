@@ -93,18 +93,197 @@
   'Carousel':
     'prefix': 'carousel'
     'body': """
-      <div class="carousel-container">
-        <ul class="carousel">
-          <li class="active-img"><a href=""><img src=""></a></li>
-          <li><a href=""><img src=""></a></li>
-          <div class="indicators">
-            <li class="indicator active-indicator"><i class="fa fa-circle"></i></li>
-            <li class="indicator"><i class="fa fa-circle-o"></i></li>
-          </div>
-        </ul>
-      </div>
+      <ul class="carousel">
+        <li class="active-img"><a href=" "><div class='image' style="background-image: url('');"></div></a></li>
+        <li><a href=" "><div class='image' style="background-image: url('');"></div></a></li>
+        <div class="indicators">
+          <li class="indicator active-indicator"><i class="fa fa-circle"></i></li>
+          <li class="indicator"><i class="fa fa-circle-o"></i></li>
+        </div>
+      </ul>
       """
 
+#Gridsystem
+  'Row-S 2 Columns':
+    'prefix': 'row-s-2'
+    'body': """
+      <div class="row-s">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      """
+  'Row-MS 2 Columns':
+    'prefix': 'row-ms-2'
+    'body': """
+      <div class="row-ms">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      """
+  'Row-M 2 Columns':
+    'prefix': 'row-m-2'
+    'body': """
+      <div class="row-m">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      """
+  'Row-L 2 Columns':
+    'prefix': 'row-l-2'
+    'body': """
+      <div class="row-l">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      """
+  'Row-S 3 Columns':
+    'prefix': 'row-s-3'
+    'body': """
+      <div class="row-s">
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+      """
+  'Row-MS 3 Columns':
+    'prefix': 'row-ms-3'
+    'body': """
+      <div class="row-ms">
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+      """
+  'Row-M 3 Columns':
+    'prefix': 'row-m-3'
+    'body': """
+      <div class="row-m">
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+      """
+  'Row-L 3 Columns':
+    'prefix': 'row-l-3'
+    'body': """
+      <div class="row-l">
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+      """
+  'Row-S 4 Columns':
+    'prefix': 'row-s-4'
+    'body': """
+      <div class="row-s">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
+      """
+  'Row-MS 4 Columns':
+    'prefix': 'row-ms-4'
+    'body': """
+      <div class="row-ms">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
+      """
+  'Row-M 4 Columns':
+    'prefix': 'row-m-4'
+    'body': """
+      <div class="row-m">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
+      """
+  'Row-L 4 Columns':
+    'prefix': 'row-l-4'
+    'body': """
+      <div class="row-l">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
+      """
 # Javascript snippets
 '.source.js':
   'Dynamic Variables':

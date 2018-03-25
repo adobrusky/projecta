@@ -36,6 +36,7 @@
     position:fixed;
     transition: none;
     top:0;
+    overflow-y:scroll;
     height:100%;
     background-color:$lcolor;
   }
