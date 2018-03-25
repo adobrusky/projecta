@@ -2,16 +2,15 @@
   display:flex;
   flex-basis:100%;
   flex-direction:column;
-  padding:10px;
   .col-2, .col-3, .col-4 {
     display:flex;
     flex-direction:column;
     flex-basis:100%;
-    padding:5px;
   }
 
   .row-s, .row-ms, .row-m, .row-l {
-    @extend .container;
+    display:flex;
+    flex-basis:100%;
     flex-wrap:wrap;
     flex-direction: row;
   }
