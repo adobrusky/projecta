@@ -26,6 +26,7 @@
   width:100%;
   background-color:$lcolor;
   list-style-type: none;
+  border-bottom: 1px solid $dcolor;
   transition: top .4s ease-in-out;
   .nav-c {
     flex-basis:100%;
