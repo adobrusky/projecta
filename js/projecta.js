@@ -205,6 +205,7 @@ function dropdown() {
   $('.item-dropdown > a').click(function() {
     var clicked = $(this).parent('.item-dropdown').children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
+    $('.dropdown').slideUp(400);
     clicked.slideToggle(400, function() {
       clickedChildren.slideUp();
     });
@@ -212,6 +213,7 @@ function dropdown() {
   $('.subitem > a').click(function() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
+    var parent = $(this).closest('.dropdown').find('.dropdown');
     clicked.slideToggle(400, function() {
       clickedChildren.slideUp();
     });
