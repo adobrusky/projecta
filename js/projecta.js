@@ -12,6 +12,7 @@ var carouselInterval = 10000;
 var navDuration = 600;
 var navShrink = 2.5;
 var carouselDirection = 'right';
+var carouselFade = 200;
 
 //------------ Navbar ---------
 function countFunc() {
@@ -166,11 +167,11 @@ function slide(dir) {
 
 function slideTo(index) {
   switchIndicator(index);
-  $('.active-img').fadeOut(200, function() {
+  $('.active-img').fadeOut(carouselFade, function() {
     $('.active-img').removeClass('active-img');
     var new_active = $('.carousel').children().get(index);
     $(new_active).addClass('active-img').hide();
-    $(new_active).fadeIn(200);
+    $(new_active).fadeIn(carouselFade);
   });
 };
 
