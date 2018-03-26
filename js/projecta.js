@@ -5,6 +5,7 @@ var enabled=false;
 var require=false;
 var itemWidth;
 var itemDefault = false;
+var navWidth;
 
 //-------------------- Editable JS Variables for External Use ---------------------------
 var navItemWidth = 80;
@@ -195,53 +196,25 @@ function disableButton(ele, dur) { //Two arguments are the element to disable (e
 //---------------- Drop-drown -----------
 function dropClose() {
   $('.item-dropdown > a').css('transform', 'scale(1)');
-  $('.dropdown').css('max-height', '0px');
-};
-
-function adjustExpand(linkHeight, amount) {
-  $('.dropdown').each(function() {
-    if (parseInt($(this).css('maxHeight')) != 0) {
-      var addHeight = parseInt($(this).css('maxHeight')) + linkHeight * amount;
-      $(this).css('maxHeight', addHeight);
-    }
-  });
+  navWidth = $('.nav-c').width();
+  $('.nav-c').css('width', navWidth);
+  $('.dropdown').slideUp();
 };
 
 function dropdown() {
-  var linkHeight = $('.item-dropdown').height();
   $('.item-dropdown > a').click(function() {
     var clicked = $(this).parent('.item-dropdown').children('.dropdown');
-    if(parseInt(clicked.css('maxHeight')) == 0) {
-      $('.item-dropdown > a').css('transform', 'scale(1)');
-      $('.dropdown').css('max-height', '0px');
-      var dropHeight = linkHeight * (clicked.children('li').length);
-      clicked.css('max-height', dropHeight);
-      $(this).css('transform', 'scale(1.1)');
-    } else {
-      dropClose();
-    };
+    var clickedChildren = clicked.find('.dropdown');
+    clicked.slideToggle(400, function() {
+      clickedChildren.slideUp();
+    });
   });
   $('.subitem > a').click(function() {
-    var clicked = $(this).parent('.subitem').children('.dropdown'); //Gets the dropdown that was clicked on
-    var closest = $(this).closest('.dropdown'); //Gets the dropdown
-    var amount = clicked.children('li').length; //Number of children in dropdown
-    var adjust = 0;
-    if(parseInt(clicked.css('maxHeight')) == 0) {
-      clicked.css('maxHeight', linkHeight * amount);
-      adjustExpand(linkHeight, amount);
-    } else {
-      clicked.css('max-height', '0px');
-      clicked.find('.dropdown').css('max-height', '0px');
-      clicked.parents('.dropdown').each(function() {
-        amount = $(this).children('li').length;
-        $(this).find('.dropdown').not(clicked).each(function() { //adjusts amount to equal total number of expanded items
-          if ( (parseInt($(this).css('maxHeight')) > 0) && (clicked.has($(this)).length == 0) ) {
-            amount += $(this).children('li').length;
-          };
-        });
-        $(this).css('maxHeight', amount * linkHeight);
-      });
-    };
+    var clicked = $(this).parent('.subitem').children('.dropdown');
+    var clickedChildren = clicked.find('.dropdown');
+    clicked.slideToggle(400, function() {
+      clickedChildren.slideUp();
+    });
   });
 };
 
@@ -249,7 +222,7 @@ function dropdown() {
 //---------------- On Ready ----------------
 $(document).ready(function() {
   window.addEventListener('orientationchange', function() {}, false);
-
+  dropClose();
   //Essentially hits right slider every 10 seconds
   setInterval(function(){
     slide(carouselDirection);
