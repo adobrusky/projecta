@@ -214,6 +214,7 @@ function dropdown() {
     var clicked = $(this).parent('.subitem').children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var parent = $(this).closest('.dropdown').find('.dropdown');
+    parent.slideUp(400);
     clicked.slideToggle(400, function() {
       clickedChildren.slideUp();
     });
