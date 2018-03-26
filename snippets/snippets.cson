@@ -1,0 +1,281 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+#HTML Snippets
+'.text.html.basic':
+  'Navbar':
+    'prefix': 'nav'
+    'body': """
+      <!-- Navbar -->
+      <ul class="nav">
+        <li class="brand"><img src="" alt=""></li>
+        <li class="nav-t"><i class="fa fa-2x fa-bars"></i></li>
+        <div class="overlay"></div>
+        <ul class="nav-c">
+          <li class="close"><i class="fa fa-2x fa-close"></i></li>
+          <li class="item active"><a href="">LINK</a></li>
+          <li class="item"><a href="">LINK</a></li>
+        </ul>
+      </ul>
+      """
+  'Content':
+    'prefix': 'content'
+    'body': """
+
+      <!-- Content -->
+      <div class="content">
+        <div class="container">
+
+        </div>
+      </div>
+      """
+  'ProjectA Frame':
+    'prefix': 'projecta'
+    'body': """
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/pip-delorean/projecta/master/projecta.css">
+        <title>Document</title>
+      </head>
+      <body>
+
+
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdn.rawgit.com/pip-delorean/projecta/master/projecta.js"></script>
+      </body>
+      </html>
+      """
+  'Carousel':
+    'prefix': 'carousel'
+    'body': """
+      <ul class="carousel">
+        <li class="active-img"><a href=" "><div class='image' style="background-image: url('');"></div></a></li>
+        <li><a href=" "><div class='image' style="background-image: url('');"></div></a></li>
+        <div class="indicators">
+          <li class="indicator active-indicator"><i class="fa fa-circle"></i></li>
+          <li class="indicator"><i class="fa fa-circle-o"></i></li>
+        </div>
+      </ul>
+      """
+
+#Gridsystem
+  'Row-S 2 Columns':
+    'prefix': 'row-s-2'
+    'body': """
+      <div class="row-s">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      """
+  'Row-MS 2 Columns':
+    'prefix': 'row-ms-2'
+    'body': """
+      <div class="row-ms">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      """
+  'Row-M 2 Columns':
+    'prefix': 'row-m-2'
+    'body': """
+      <div class="row-m">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      """
+  'Row-L 2 Columns':
+    'prefix': 'row-l-2'
+    'body': """
+      <div class="row-l">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      """
+  'Row-S 3 Columns':
+    'prefix': 'row-s-3'
+    'body': """
+      <div class="row-s">
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+      """
+  'Row-MS 3 Columns':
+    'prefix': 'row-ms-3'
+    'body': """
+      <div class="row-ms">
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+      """
+  'Row-M 3 Columns':
+    'prefix': 'row-m-3'
+    'body': """
+      <div class="row-m">
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+      """
+  'Row-L 3 Columns':
+    'prefix': 'row-l-3'
+    'body': """
+      <div class="row-l">
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3">
+
+        </div>
+      </div>
+      """
+  'Row-S 4 Columns':
+    'prefix': 'row-s-4'
+    'body': """
+      <div class="row-s">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
+      """
+  'Row-MS 4 Columns':
+    'prefix': 'row-ms-4'
+    'body': """
+      <div class="row-ms">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
+      """
+  'Row-M 4 Columns':
+    'prefix': 'row-m-4'
+    'body': """
+      <div class="row-m">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
+      """
+  'Row-L 4 Columns':
+    'prefix': 'row-l-4'
+    'body': """
+      <div class="row-l">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
+      """
+# Javascript snippets
+'.source.js':
+  'Dynamic Variables':
+    'prefix': 'vars'
+    'body': """
+      //-------------------- ProjectA Dynamic Variables ---------------------------
+      var navItemWidth = 80;
+      var carouselInterval = 10000;
+      var carouselFade = 200;
+      var navDuration = 600;
+      var navShrink = 2.5;
+      var carouselDirection = 'right'; //Accepts 'right' or 'left'
+      """
