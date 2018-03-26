@@ -1,3 +1,3 @@
-# ProjectA ReadMe
-The only other library you need to run ProjectA is the most up to date version of Jquery.
-Just install the css and js just how you would any other library
+# ProjectA v1.1.03.25.18 README
+ProjectA is better than Bootstrap. It doesn't have as many features YET. The ones that it does have though are better than Bootstrap.
+Another plus is that it comes with snippets for the text editor Atom. These allow the creation of our features by typing one word. Bootstrap doesn't have that now does it? The installation of the snippets will be in a guide eventually on here (I'm sure you can figure it out for right now). To install ProjectA all you need is to download our projecta.css and projecta.js files and place them in your folder and reference them. It's as easy as that!
