@@ -202,19 +202,10 @@ function dropClose() {
 };
 
 function dropdown() {
-  $('.item-dropdown > a').click(function() {
-    var clicked = $(this).parent('.item-dropdown').children('.dropdown');
+  $('.item-dropdown > a, .subitem > a').click(function() {
+    var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
-    var siblings = clicked.parent('.item-dropdown').siblings().find('.dropdown');
-    siblings.slideUp(400);
-    clicked.slideToggle(400, function() {
-      clickedChildren.slideUp();
-    });
-  });
-  $('.subitem > a').click(function() {
-    var clicked = $(this).parent('.subitem').children('.dropdown');
-    var clickedChildren = clicked.find('.dropdown');
-    var siblings = clicked.parent('.subitem').siblings().find('.dropdown');
+    var siblings = clicked.parent().siblings().find('.dropdown');
     siblings.slideUp(400);
     clicked.slideToggle(400, function() {
       clickedChildren.slideUp();
