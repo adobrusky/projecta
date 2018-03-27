@@ -52,7 +52,7 @@ body {
   flex: 1;
   li {
     a {
-      font-size: 20px;
+      font-size: 4vw;
       color:$dcolor;
       text-decoration: none;
     }
@@ -61,4 +61,24 @@ body {
 
 .disabled {
   pointer-events:none;
+}
+
+@media only screen and (min-width: 436px) {
+
+}
+
+@media only screen and (min-width: 620px) {
+  .footer ul li a {
+    font-size:2vw;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+  .footer ul li a {
+    font-size:1vw;
+  }
 }
