@@ -14,6 +14,7 @@ var navDuration = 600;
 var navShrink = 2.5;
 var carouselDirection = 'right';
 var carouselFade = 200;
+var dropSpeed = 400;
 
 //------------ Navbar ---------
 function countFunc() {
@@ -192,13 +193,16 @@ function disableButton(ele, dur) { //Two arguments are the element to disable (e
   },dur);
 };
 
-
 //---------------- Drop-drown -----------
 function dropClose() {
+  var w = window.innerWidth;
   $('.item-dropdown > a').css('transform', 'scale(1)');
-  navWidth = $('.nav-c').width();
-  $('.nav-c').css('width', navWidth);
-  $('.dropdown').slideUp();
+  if(w < 436) {
+    $('.dropdown').slideDown(0);
+    navWidth = $('.nav-c').width();
+    $('.nav-c').css('width', navWidth);
+  }
+  $('.dropdown').slideUp(0);
 };
 
 function dropdown() {
@@ -206,38 +210,29 @@ function dropdown() {
     var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
-    siblings.slideUp(400);
-    clicked.slideToggle(400, function() {
+    siblings.slideUp(dropSpeed);
+    clicked.slideToggle(dropSpeed, function() {
       clickedChildren.slideUp();
     });
   });
 };
 
-
 //---------------- On Ready ----------------
 $(document).ready(function() {
   window.addEventListener('orientationchange', function() {}, false);
-  dropClose();
-  //Essentially hits right slider every 10 seconds
-  setInterval(function(){
-    slide(carouselDirection);
-  }, carouselInterval);
-  $('.overlay').hide();
-  resize();
-  logoMove();
-  //Dropdown
-  dropdown();
-  //On Resize
+  $(window).on( 'orientationchange', function() {
+    resize();
+  });
   $(window).resize(function() {
     resize();
     logoMove();
     dropClose();
   });
-
-  //On Orientation Change
-  $(window).on( 'orientationchange', function() {
-    resize();
-  });
+  resize();
+  logoMove();
+  dropdown();
+  dropClose();
+  $('.overlay').hide();
 
   //Clicking on burger function
   $('.nav-t').click(function() {
@@ -275,4 +270,9 @@ $(document).ready(function() {
   $(window).scroll(function() {
     prev = navScroll(prev);
   });
+
+  //Carousel Slider interval
+  setInterval(function(){
+    slide(carouselDirection);
+  }, carouselInterval);
 });
