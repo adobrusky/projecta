@@ -3,22 +3,50 @@
   & > a {
     transition: transform .8s
   }
-  .dropdown {
-    width: 100%;
-    list-style-type: none;
-    display: flex;
+}
+.dropdown {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  overflow:hidden;
+  height:100%;
+  padding-left: 5px;
+  .subitem {
+    flex-basis:100%;
+    display:flex;
     flex-direction: column;
-    justify-content: left;
-    overflow:hidden;
-    height:100%;
-    padding-left: 5px;
-    .subitem {
-      flex-basis:100%;
-      display:flex;
-      flex-direction: column;
-      a {
-        border-left:3px solid $tcolor;
+    a {
+      border-left:3px solid $tcolor;
+    }
+  }
+}
+
+@media only screen and (min-width: 436px) {
+  .nav-c {
+    .item-dropdown {
+      .dropdown {
+        position:absolute;
+        top:40px;
+        z-index:100;
+        display:block;
+        .subitem {
+          a {
+            border:none;
+            z-index:100;
+            display:block;
+          }
+        }
       }
     }
   }
+}
+
+@media only screen and (min-width: 620px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+
 }

@@ -6,6 +6,7 @@ var require=false;
 var itemWidth;
 var itemDefault = false;
 var navWidth;
+var dropW;
 
 //-------------------- Editable JS Variables for External Use ---------------------------
 var navItemWidth = 80;
@@ -113,6 +114,7 @@ function logoMove() {
 //--------- Resize Function ---------
 function resize() {
   var w = window.innerWidth;
+  dropW = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var itemCount = count*2;
   if (w > 1023) {
@@ -186,7 +188,7 @@ function switchIndicator(index) {
   $(new_active_indicator).addClass('active-indicator');
 };
 
-function disableButton(ele, dur) { //Two arguments are the element to disable (ele) and duration (dur)
+function disableButton(ele, dur) {
   ele.addClass('disabled');
   setTimeout(function(){
     ele.removeClass('disabled');
@@ -195,14 +197,13 @@ function disableButton(ele, dur) { //Two arguments are the element to disable (e
 
 //---------------- Drop-drown -----------
 function dropClose() {
-  var w = window.innerWidth;
   $('.item-dropdown > a').css('transform', 'scale(1)');
-  if(w < 436) {
-    $('.dropdown').slideDown(0);
+  if(dropW < 436) {
+    $('.dropdown').show();
     navWidth = $('.nav-c').width();
     $('.nav-c').css('width', navWidth);
+      $('.dropdown').hide();
   }
-  $('.dropdown').slideUp(0);
 };
 
 function dropdown() {
@@ -210,10 +211,12 @@ function dropdown() {
     var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
+    if(dropW < 436) {
     siblings.slideUp(dropSpeed);
     clicked.slideToggle(dropSpeed, function() {
       clickedChildren.slideUp();
     });
+  };
   });
 };
 
