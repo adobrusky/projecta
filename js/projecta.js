@@ -52,7 +52,7 @@ function navScroll(scroll) {
   var w = window.innerWidth;
   var current = $(window).scrollTop();
   var navHeight = $('.nav').height()+1;
-  if (w >= 435) {
+  if (w >= 768) {
     var navHeight = navHeight+$('.nav-c').height();
   };
   if(w<1024) {
@@ -120,8 +120,13 @@ function resize() {
   if (w > 1023) {
     navHeight = $('.nav-c').height();
   };
+  if(w > 620) {
+          $('.close').addClass('fa-2x');
+  } else {
+    $('.close').removeClass('fa-2x');
+  };
   //436 is mobile margin
-  if (w < 436) {
+  if (w < 768) {
     $('.item-dropdown a').css('transform', 'none');
     $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
     $('.nav-c').css('right', -$('.nav-c').width());
@@ -133,9 +138,7 @@ function resize() {
     $('.nav-c').css('right', 0);
     $('.content').css('marginTop', navHeight);
   };
-  if (w > 436 && w < 620) {
-    itemWidth = 100/itemCount;
-  } else if(w > 620 && w < 1024) {
+if(w >= 768 && w < 1024) {
     itemWidth = navItemWidth/itemCount;
   } else if(w > 1023) {
     itemWidth=(navItemWidth-(navItemWidth/navShrink))/itemCount;
@@ -198,12 +201,13 @@ function disableButton(ele, dur) {
 //---------------- Drop-drown -----------
 function dropClose() {
   $('.item-dropdown > a').css('transform', 'scale(1)');
-  if(dropW < 436) {
+  console.log(dropW);
+  if(dropW < 768) {
     $('.dropdown').show();
     navWidth = $('.nav-c').width();
     $('.nav-c').css('width', navWidth);
       $('.dropdown').hide();
-  }
+};
 };
 
 function dropdown() {
@@ -211,7 +215,7 @@ function dropdown() {
     var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
-    if(dropW < 436) {
+    if(dropW < 768) {
     siblings.slideUp(dropSpeed);
     clicked.slideToggle(dropSpeed, function() {
       clickedChildren.slideUp();

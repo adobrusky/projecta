@@ -22,8 +22,10 @@
     }
   }
 }
+@media only screen and (min-width: 620px) {
 
-@media only screen and (min-width: 436px) {
+}
+@media only screen and (min-width: 768px) {
   .nav-c {
     .item-dropdown {
       .dropdown {
@@ -43,9 +45,6 @@
   }
 }
 
-@media only screen and (min-width: 620px) {
-
-}
 
 @media only screen and (min-width: 1024px) {
 

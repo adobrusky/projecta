@@ -121,7 +121,15 @@
   }
 }
 
-@media only screen and (min-width: 436px) {
+@media only screen and (min-width: 620px) {
+  .item {
+    a {
+      font-size: 25px;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
   .nav {
     min-height:75px;
     height:10vh;
@@ -135,7 +143,6 @@
       overflow: hidden;
       position: relative;
       .item {
-        font-size: 3vw;
         border-bottom:2px solid $lcolor;
         transition:border-bottom .25s;
         justify-content: flex-start;
@@ -145,6 +152,7 @@
         a {
           text-align:center;
           width:100%;
+                  font-size: 3vw;
           align-items:center;
           justify-content:center;
         }
@@ -180,15 +188,7 @@
   }
 }
 
-@media only screen and (min-width: 620px) {
-  .nav {
-    .item {
-      a {
-        font-size: 2.5vw;
-      }
-    }
-  }
-}
+
 @media only screen and (min-width: 1024px) {
   .nav {
     .nav-c {

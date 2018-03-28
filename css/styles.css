@@ -1,1 +1,10 @@
-.placeholderimg{width:100%;max-width:50%;margin:auto}.gridsystem>div div{padding:5px}.content ul li{padding:1px}
+.gridsystem > div div {
+  padding: 5px; }
+
+.content ul li {
+  padding: 1px; }
+
+@media only screen and (min-width: 620px) {
+  .placeholderimg {
+    max-width: 50%;
+    margin: auto; } }
