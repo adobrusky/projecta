@@ -5,8 +5,8 @@ var enabled=false;
 var require=false;
 var itemWidth;
 var itemDefault = false;
-var navWidth;
-var dropW;
+var navWidth = $('.nav').outerWidth();
+var w = window.innerWidth;
 
 //-------------------- Editable JS Variables for External Use ---------------------------
 var navItemWidth = 80;
@@ -19,15 +19,24 @@ var dropSpeed = 400;
 
 //------------ Navbar ---------
 function countFunc() {
-  var w = window.innerWidth;
   var x = $('.item').length;
   return (x)/2;
+};
+
+//------------ Calculate Navbar Width ---------
+function calcNavWidth() {
+  $('.dropdown').show();
+  $('.fa-caret-down').css('width', parseInt($('.fa-caret-down').css('width')) * 2 + 1);
+  navWidth = $('.nav-c').outerWidth();
+  $('.fa-caret-down').css('width', 'auto');
+  $('.nav-c').css('width', navWidth);
+  $('.dropdown').hide();
 };
 
 //Nav Open and Close
 function navClose() {
   var navTransition = String(navDuration/1000) + 's';
-  $('.nav-c').css('transition', 'right ' + navTransition).css('right', -$('.nav-c').width());
+  $('.nav-c').css('transition', 'right ' + navTransition).css('right', -navWidth);
   $('.overlay').css('backgroundColor', 'rgba(255, 255, 255, 0)');
   $('body').removeClass('noScroll');
   setTimeout(function() {
@@ -49,7 +58,6 @@ function navOpen() {
 
 //Nav Scroll Function
 function navScroll(scroll) {
-  var w = window.innerWidth;
   var current = $(window).scrollTop();
   var navHeight = $('.nav').height()+1;
   if (w >= 768) {
@@ -72,7 +80,6 @@ function navScroll(scroll) {
 //Nav Logo Controller
 function logoMove() {
   //Test Width
-  var w = window.innerWidth;
   if(w > 1023) {
     require=true;
   } else {
@@ -113,8 +120,7 @@ function logoMove() {
 
 //--------- Resize Function ---------
 function resize() {
-  var w = window.innerWidth;
-  dropW = window.innerWidth;
+  w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var itemCount = count*2;
   if (w > 1023) {
@@ -129,7 +135,7 @@ function resize() {
   if (w < 768) {
     $('.item-dropdown a').css('transform', 'none');
     $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
-    $('.nav-c').css('right', -$('.nav-c').width());
+    $('.nav-c').css('right', -navWidth);
     $('.content').css('marginTop', $('.nav').height());
     $('body').removeClass('noScroll');
     $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
@@ -201,12 +207,8 @@ function disableButton(ele, dur) {
 //---------------- Drop-drown -----------
 function dropClose() {
   $('.item-dropdown > a').css('transform', 'scale(1)');
-  console.log(dropW);
-  if(dropW < 768) {
-    $('.dropdown').show();
-    navWidth = $('.nav-c').width();
-    $('.nav-c').css('width', navWidth);
-      $('.dropdown').hide();
+  if(w < 768) {
+    calcNavWidth();
 };
 };
 
@@ -215,7 +217,7 @@ function dropdown() {
     var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
-    if(dropW < 768) {
+    if(w < 768) {
     siblings.slideUp(dropSpeed);
     clicked.slideToggle(dropSpeed, function() {
       clickedChildren.slideUp();
@@ -235,10 +237,13 @@ $(document).ready(function() {
     logoMove();
     dropClose();
   });
+  if (w < 768) {
+    calcNavWidth();
+  }
+  dropClose();
   resize();
   logoMove();
   dropdown();
-  dropClose();
   $('.overlay').hide();
 
   //Clicking on burger function

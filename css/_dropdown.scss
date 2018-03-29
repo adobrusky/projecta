@@ -1,5 +1,6 @@
 @import "variables";
 .nav-c > .item-dropdown {
+  cursor: pointer;
   & > a {
     transition: transform .8s
   }
@@ -12,7 +13,7 @@
   justify-content: left;
   overflow:hidden;
   height:100%;
-  padding-left: 1px;
+  padding-left: 5px;
   .subitem {
     flex-basis:100%;
     display:flex;
