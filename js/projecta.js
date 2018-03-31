@@ -227,8 +227,10 @@ function dropdown() {
 function landing() {
   var winH = $(window).height();
   console.log(winH);
-  $('.landing').css('height', winH); //Not finished i know it is not taking into account the navbar yet but its like 2 in the morning so im not finishing it right now
-}
+  $('.landing').css('height', winH);
+  $('.content').has('.landing').css('marginTop', '0');
+};
+
 
 //---------------- On Ready ----------------
 $(document).ready(function() {
