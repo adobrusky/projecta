@@ -13,12 +13,13 @@
   justify-content: left;
   overflow:hidden;
   height:100%;
-  padding-left: 5px;
+  padding-left: 2px;
   .subitem {
     flex-basis:100%;
     display:flex;
     flex-direction: column;
     a {
+      font-size:18px;
       border-left:3px solid $tcolor;
     }
   }

@@ -15,6 +15,21 @@
         </ul>
       </ul>
       """
+  'Navbar Slide Up':
+    'prefix': 'nav-s'
+    'body': """
+      <!-- Navbar -->
+      <ul class="nav nav-slide">
+        <li class="brand"><img src="" alt=""></li>
+        <li class="nav-t"><i class="fa fa-2x fa-bars"></i></li>
+        <div class="overlay"></div>
+        <ul class="nav-c">
+          <li class="close"><i class="fa fa-2x fa-close"></i></li>
+          <li class="item active"><a href="">LINK</a></li>
+          <li class="item"><a href="">LINK</a></li>
+        </ul>
+      </ul>
+      """
   'Content':
     'prefix': 'content'
     'body': """
@@ -270,10 +285,11 @@
       //-------------------- ProjectA Dynamic Variables ---------------------------
       var navItemWidth = 80;
       var carouselInterval = 10000;
-      var carouselFade = 200;
       var navDuration = 600;
       var navShrink = 2.5;
-      var carouselDirection = 'right'; //Accepts 'right' or 'left'
+      var carouselDirection = 'right'; //Accepts right or left
+      var carouselFade = 200;
+      var dropSpeed = 400;
       """
 
 # CSS Snippets

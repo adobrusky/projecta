@@ -1,7 +1,6 @@
 //----------- Global variables ---------------
 var prev = 0;
 var count = countFunc();
-var enabled=false;
 var require=false;
 var itemWidth;
 var itemDefault = false;
@@ -34,9 +33,9 @@ function calcNavWidth() {
 };
 
 //Nav Open and Close
+var navTransition = String(navDuration/1000) + 's';
 function navClose() {
-  var navTransition = String(navDuration/1000) + 's';
-  $('.nav-c').css('transition', 'right ' + navTransition).css('right', -navWidth);
+  $('.nav-c').css({'transition':'right ' + navTransition, 'right':-navWidth});
   $('.overlay').css('backgroundColor', 'rgba(255, 255, 255, 0)');
   $('body').removeClass('noScroll');
   setTimeout(function() {
@@ -46,8 +45,7 @@ function navClose() {
 };
 
 function navOpen() {
-  var navTransition = String(navDuration/1000) + 's';
-  $('.nav-c').css('transition', 'right ' + navTransition).css('right', '0');
+  $('.nav-c').css({'transition':'right ' + navTransition, 'right':'0'});
   $('.overlay').show().css('backgroundColor', 'rgba(0, 0, 0, 0.5)');
   $('body').addClass('noScroll');
   setTimeout(function() {
@@ -58,23 +56,25 @@ function navOpen() {
 
 //Nav Scroll Function
 function navScroll(scroll) {
-  var current = $(window).scrollTop();
-  var navHeight = $('.nav').height()+1;
-  if (w >= 768) {
-    var navHeight = navHeight+$('.nav-c').height();
-  };
-  if(w<1024) {
-    if (current > prev) {//Scrolling Down
-      if (current < navHeight) {
-        $('.nav').css('top', -current + 'px');
-      } else {
-        $('.nav').css('top', -navHeight + 'px');
-      };
-    } else {//Scrolling Up
-      $('.nav').css('top', 0 + 'px');
+  if($('.nav').hasClass('nav-slide')) {
+    var current = $(window).scrollTop();
+    var navHeight = $('.nav').height()+1;
+    if (w >= 768) {
+      var navHeight = navHeight+$('.nav-c').height();
     };
+    if(w<1024) {
+      if (current > prev) {//Scrolling Down
+        if (current < navHeight) {
+          $('.nav').css('top', -current + 'px');
+        } else {
+          $('.nav').css('top', -navHeight + 'px');
+        };
+      } else {//Scrolling Up
+        $('.nav').css('top', 0 + 'px');
+      };
+    };
+    return current;
   };
-  return current;
 };
 
 //Nav Logo Controller
@@ -109,11 +109,9 @@ function logoMove() {
   };
 
   //Enable/Disable
-  if(require===true && enabled===false) {
-    enabled=true;
+  if(require===true) {
     $('.nav-c > li:nth-child('+ brandPos + ')').after($('.nav > .brand'));
-  } else if(require===false && enabled===true) {
-    enabled=false;
+  } else if(require===false) {
     $('.nav > li').before($('.nav-c > .brand'));
   };
 };
@@ -206,7 +204,6 @@ function disableButton(ele, dur) {
 
 //---------------- Drop-drown -----------
 function dropClose() {
-  $('.item-dropdown > a').css('transform', 'scale(1)');
   if(w < 768) {
     calcNavWidth();
   };
@@ -226,6 +223,13 @@ function dropdown() {
   });
 };
 
+//------------- Landing Page --------------
+function landing() {
+  var winH = $(window).height();
+  console.log(winH);
+  $('.landing').css('height', winH); //Not finished i know it is not taking into account the navbar yet but its like 2 in the morning so im not finishing it right now
+}
+
 //---------------- On Ready ----------------
 $(document).ready(function() {
   window.addEventListener('orientationchange', function() {}, false);
@@ -235,6 +239,7 @@ $(document).ready(function() {
   $(window).resize(function() {
     resize();
     logoMove();
+    landing();
     dropClose();
   });
   if (w < 768) {
@@ -243,6 +248,7 @@ $(document).ready(function() {
   dropClose();
   resize();
   logoMove();
+  landing();
   dropdown();
   $('.overlay').hide();
 

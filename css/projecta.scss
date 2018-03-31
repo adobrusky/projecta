@@ -1,8 +1,4 @@
 @import "variables";
-@import "navbar";
-@import "grid";
-@import "dropdown";
-@import "carousel";
 * {
   margin:0px;
   padding:0px;
@@ -34,7 +30,6 @@ body {
 }
 
 .content {
-  padding: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -88,3 +83,9 @@ body {
     font-size:1vw;
   }
 }
+
+@import "navbar";
+@import "grid";
+@import "dropdown";
+@import "carousel";
+@import "landing";
