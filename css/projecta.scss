@@ -18,6 +18,12 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
+  opacity: 1;
+  transition: 1s opacity;
+  &.fadeIn {
+    opacity: 0;
+    transition: none;
+  }
   .footer {
     background-color: $lcolor;
     border-top: 1px solid $dcolor;

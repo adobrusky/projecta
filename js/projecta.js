@@ -234,6 +234,7 @@ function landing() {
 
 //---------------- On Ready ----------------
 $(document).ready(function() {
+  $('body').removeClass('fadeIn');
   window.addEventListener('orientationchange', function() {}, false);
   $(window).on( 'orientationchange', function() {
     resize();
