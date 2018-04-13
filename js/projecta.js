@@ -231,6 +231,29 @@ function landing() {
   $('.content').has('.landing').css('marginTop', '0');
 };
 
+//-------------Smooth Scroll------------
+$('a[href^="#"]').click(function (e) {
+  e.preventDefault();
+  var s = $(window).scrollTop();
+  var winW = window.innerWidth;
+  var height = $('.nav').height();
+  var target = this.hash;
+  var $target = $(target);
+  if(winW < 1024) {
+    var height = 0;
+    if(s > ($target.offset().top)) {
+      if(winW < 436) {
+        var height = $('.nav').height();
+      } else {
+        var height = ($('.nav').height()+$('.nav-c').height());
+      }
+    }
+  }
+  $('html, body').stop().animate({
+      'scrollTop': ($target.offset().top-height)
+  }, 900, 'swing');
+});
+
 
 //---------------- On Ready ----------------
 $(document).ready(function() {
