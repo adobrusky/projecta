@@ -1,7 +1,72 @@
 @import "variables";
+
 .landing {
   background-size:cover;
   display:flex;
   align-items:center;
   justify-content: center;
+}
+
+.main {
+  padding:8% 2% 8% 2%;
+  display:flex;
+  flex-shrink:0;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  background-color:$tcolor;
+  h1 {
+    font-size:40px;
+    text-align:center;
+    color:$tcolor;
+    flex-basis:100%;
+  }
+  p {
+    font-size:22px;
+    width:100%;
+    text-align:center;
+    color:$tcolor;
+  }
+  a {
+    text-decoration:none;
+    color:$tcolor;
+    text-decoration: underline;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    list-style-position: inside;
+    list-style-type: decimal;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.landing-text {
+  padding:1%;
+  h1 , h3, a {
+    color:$tcolor;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    text-decoration:none;
+  }
+  h1 {
+    font-size:45px;
+  }
+  h3 {
+    padding-bottom:20%;
+    font-size:25px;
+  }
+  i {
+    transition:background-color .50s;
+    border:1px solid $tcolor;
+    border-radius:100px;
+    text-align: center;
+    padding:10px;
+    &:hover {
+      background-color:$lcolor;
+    }
+  }
 }
