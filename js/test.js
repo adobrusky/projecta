@@ -5,7 +5,7 @@ var carouselFade = 200;
 var navDuration = 600;
 var navShrink = 2.2;
 var carouselDirection = 'right'; //Accepts 'right' or 'left'
-
+/*
 function scrollSpy() {
   var $scroll = $(window).scrollTop(),
   $height = ($('.nav').height()+1),
@@ -35,3 +35,4 @@ function scrollSpy() {
     $('.nav-c li').removeClass('active');
   }
 };
+*/

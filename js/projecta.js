@@ -3,9 +3,8 @@ var prev = 0;
 var count = countFunc();
 var require=false;
 var itemWidth;
+var w;
 var itemDefault = false;
-var navWidth = $('.nav').outerWidth();
-var w = window.innerWidth;
 
 //-------------------- Editable JS Variables for External Use ---------------------------
 var navItemWidth = 80;
@@ -231,38 +230,23 @@ function landing() {
   if (w > 768) {
     navH += $('.nav-c').height();
   }
-  $('.landing').css('height', winH + navH);
+  $('.landing').css('height', winH);
   $('.content').has('.landing').css('marginTop', '0');
 };
 
-<<<<<<< HEAD
 function size() {
-  var winH = $(window).height();
+  var winH = $(window).innerHeight();
   var winW = window.innerWidth;
-  var height = $('.nav').height();
-  var text = 436;
   $('.landing').css('height', winH);
-  $('.main').css('min-height', winH);
   if(winW < 436) {
-    text = 435;
-  } else if (winW > 1023) {
-    text = 1023;
-  }
-  if(winW > 435 && winW < 1024) {
-    var height = $('.nav').height()+$('.nav-c').height();
-  }
-  $('body').css('marginTop', -height);
-  if(text == 436) {
-    $('.landingt').css('marginTop', height);
     $('.landingt i').removeClass('fa-3x');
-  } else if(text == 1023){
+  } else if (winW > 1023) {
     $('.landingt i').addClass('fa-3x');
   } else {
-    $('.landingt').css('marginTop', '0px');
     $('.landingt i').removeClass('fa-3x');
   }
 };
-=======
+
 //-------------Smooth Scroll------------
 $('a[href^="#"]').click(function (e) {
   e.preventDefault();
@@ -285,8 +269,6 @@ $('a[href^="#"]').click(function (e) {
       'scrollTop': ($target.offset().top-height)
   }, 900, 'swing');
 });
-
->>>>>>> 739fe3b716b84bc1dec473196a45274b38d1bb6d
 
 //---------------- On Ready ----------------
 $(document).ready(function() {
