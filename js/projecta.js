@@ -3,6 +3,7 @@ var prev = 0;
 var count = countFunc();
 var require=false;
 var itemWidth;
+var navWidth;
 var w;
 var itemDefault = false;
 
@@ -34,6 +35,7 @@ function calcNavWidth() {
 //Nav Open and Close
 var navTransition = String(navDuration/1000) + 's';
 function navClose() {
+  var navWidth = $('.nav-c').width();
   $('.nav-c').css({'transition':'right ' + navTransition, 'right':-navWidth});
   $('.overlay').css('backgroundColor', 'rgba(255, 255, 255, 0)');
   $('body').removeClass('noScroll');
@@ -55,6 +57,7 @@ function navOpen() {
 
 //Nav Scroll Function
 function navScroll(scroll) {
+    var w = window.innerWidth;
   if($('.nav').hasClass('nav-slide')) {
     var current = $(window).scrollTop();
     var navHeight = $('.nav').height()+1;
@@ -78,6 +81,7 @@ function navScroll(scroll) {
 
 //Nav Logo Controller
 function logoMove() {
+  var w = window.innerWidth;
   //Test Width
   if(w > 1023) {
     require=true;
@@ -117,9 +121,10 @@ function logoMove() {
 
 //--------- Resize Function ---------
 function resize() {
-  w = window.innerWidth;
+  var w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   var itemCount = count*2;
+  var navWidth = $('.nav-c').width();
   size();
   if (w > 1023) {
     navHeight = $('.nav-c').height();
@@ -225,6 +230,7 @@ function dropdown() {
 
 //------------- Landing Page --------------
 function landing() {
+  var w = window.innerWidth;
   var winH = $(window).height();
   var navH = $('.nav').height();
   if (w > 768) {
