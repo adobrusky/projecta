@@ -20,7 +20,7 @@ body {
   width: 100%;
   opacity: 1;
   transition: 1s opacity;
-  &.fadeIn {
+  &.fade {
     opacity: 0;
     transition: none;
   }

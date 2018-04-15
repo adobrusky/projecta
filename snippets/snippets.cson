@@ -59,30 +59,6 @@
         </ul>
       </li>
       """
-  'ProjectA Dev Frame':
-    'prefix': 'projectadev'
-    'body': """
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <!-- Meta -->
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <!-- CSS -->
-          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-          <link rel="stylesheet" href="css/projecta.css">
-          <title>Document</title>
-        </head>
-        <body>
-
-
-          <!-- JS -->
-          <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-          <script src="js/projecta.js"></script>
-        </body>
-      </html>
-      """
   'ProjectA Frame':
     'prefix': 'projecta'
     'body': """
@@ -110,6 +86,7 @@
   'Carousel':
     'prefix': 'carousel'
     'body': """
+      <!-- Carousel -->
       <ul class="carousel">
         <li class="active-img"><a href=" "><div class='image' style="background-image: url('');"></div></a></li>
         <li><a href=" "><div class='image' style="background-image: url('');"></div></a></li>
@@ -118,6 +95,16 @@
           <li class="indicator"><i class="fa fa-circle-o"></i></li>
         </div>
       </ul>
+      """
+  'Landing':
+    'prefix': 'landing'
+    'body': """
+      <!-- Landing Page -->
+      <div class="landing" style="background-image:url('img/landing.png')">
+        <div>
+
+        </div>
+      </div>
       """
 
 #Gridsystem

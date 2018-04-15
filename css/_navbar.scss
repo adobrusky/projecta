@@ -55,15 +55,17 @@
     }
     &.nav-btn {
       display:flex;
+      align-items: center;
       justify-content: center;
       button {
-        padding:10px 20px 10px 20px;
+        padding:10px;
         display: flex;
         align-items: center;
         transition: transform .4s;
         height: 100%;
+        font-size: 22px;
         text-decoration:none;
-        color:$dcolor; //not finished yet cause pubg has more priorities
+        color:$dcolor;
       }
     }
     &.active {
@@ -166,6 +168,11 @@
           align-items:center;
           justify-content:center;
         }
+        &.nav-btn {
+          button {
+            font-size: 2vw;
+          }
+        }
         &:hover {
           a {
             transform:scale(1.1);
@@ -207,7 +214,6 @@
       justify-content:center;
       .item {
         display:flex;
-        margin-top:-1px;
         border: none;
         a {
           font-size:1.2vw;
@@ -226,12 +232,21 @@
             color:$dcolor;
           }
         }
+        &.nav-btn {
+          justify-content: center;
+          padding-right:10px;
+          button {
+            padding:10px;
+            height:50%;
+            font-size:1.2vw;
+          }
+        }
         &:hover {
           border:none;
         }
       }
       .item.active {
-        border-bottom:2px solid $dcolor;
+        border-bottom:none;
         a {
           color:$dcolor;
           background-position:0 -100%;

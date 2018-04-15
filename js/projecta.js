@@ -35,7 +35,7 @@ function calcNavWidth() {
 //Nav Open and Close
 var navTransition = String(navDuration/1000) + 's';
 function navClose() {
-  var navWidth = $('.nav-c').width();
+  navWidth = $('.nav-c').width();
   $('.nav-c').css({'transition':'right ' + navTransition, 'right':-navWidth});
   $('.overlay').css('backgroundColor', 'rgba(255, 255, 255, 0)');
   $('body').removeClass('noScroll');
@@ -57,12 +57,12 @@ function navOpen() {
 
 //Nav Scroll Function
 function navScroll(scroll) {
-    var w = window.innerWidth;
+  w = window.innerWidth;
   if($('.nav').hasClass('nav-slide')) {
     var current = $(window).scrollTop();
     var navHeight = $('.nav').height()+1;
     if (w >= 768) {
-      var navHeight = navHeight+$('.nav-c').height();
+      navHeight = navHeight+$('.nav-c').height();
     };
     if(w<1024) {
       if (current > prev) {//Scrolling Down
@@ -81,7 +81,7 @@ function navScroll(scroll) {
 
 //Nav Logo Controller
 function logoMove() {
-  var w = window.innerWidth;
+  w = window.innerWidth;
   //Test Width
   if(w > 1023) {
     require=true;
@@ -121,11 +121,10 @@ function logoMove() {
 
 //--------- Resize Function ---------
 function resize() {
-  var w = window.innerWidth;
+  w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
-  var itemCount = count*2;
-  var navWidth = $('.nav-c').width();
-  size();
+  itemCount = count*2;
+  navWidth = $('.nav-c').width();
   if (w > 1023) {
     navHeight = $('.nav-c').height();
   };
@@ -209,19 +208,21 @@ function disableButton(ele, dur) {
 
 //---------------- Drop-drown -----------
 function dropClose() {
+  w = window.innerWidth;
   if(w < 768) {
     calcNavWidth();
   };
 };
 
 function dropdown() {
+  w = window.innerWidth;
   $('.item-dropdown > a, .subitem > a').click(function() {
     var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
     if(w < 768) {
-      siblings.slideUp(dropSpeed);
-      clicked.slideToggle(dropSpeed, function() {
+        siblings.slideUp(dropSpeed);
+        clicked.slideToggle(dropSpeed, function() {
         clickedChildren.slideUp();
       });
     };
@@ -230,7 +231,8 @@ function dropdown() {
 
 //------------- Landing Page --------------
 function landing() {
-  var w = window.innerWidth;
+  w = window.innerWidth;
+  var winW = window.innerWidth;
   var winH = $(window).height();
   var navH = $('.nav').height();
   if (w > 768) {
@@ -238,12 +240,6 @@ function landing() {
   }
   $('.landing').css('height', winH);
   $('.content').has('.landing').css('marginTop', '0');
-};
-
-function size() {
-  var winH = $(window).innerHeight();
-  var winW = window.innerWidth;
-  $('.landing').css('height', winH);
   if(winW < 436) {
     $('.landingt i').removeClass('fa-3x');
   } else if (winW > 1023) {
@@ -253,32 +249,9 @@ function size() {
   }
 };
 
-//-------------Smooth Scroll------------
-$('a[href^="#"]').click(function (e) {
-  e.preventDefault();
-  var s = $(window).scrollTop();
-  var winW = window.innerWidth;
-  var height = $('.nav').height();
-  var target = this.hash;
-  var $target = $(target);
-  if(winW < 1024) {
-    var height = 0;
-    if(s > ($target.offset().top)) {
-      if(winW < 436) {
-        var height = $('.nav').height();
-      } else {
-        var height = ($('.nav').height()+$('.nav-c').height());
-      }
-    }
-  }
-  $('html, body').stop().animate({
-      'scrollTop': ($target.offset().top-height)
-  }, 900, 'swing');
-});
-
 //---------------- On Ready ----------------
 $(document).ready(function() {
-  $('body').removeClass('fadeIn');
+  $('body').removeClass('fade');
   window.addEventListener('orientationchange', function() {}, false);
   $(window).on( 'orientationchange', function() {
     resize();
