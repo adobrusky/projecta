@@ -221,8 +221,8 @@ function dropdown() {
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
     if(w < 768) {
-        siblings.slideUp(dropSpeed);
-        clicked.slideToggle(dropSpeed, function() {
+      siblings.slideUp(dropSpeed);
+      clicked.slideToggle(dropSpeed, function() {
         clickedChildren.slideUp();
       });
     };
@@ -235,11 +235,13 @@ function landing() {
   var winW = window.innerWidth;
   var winH = $(window).height();
   var navH = $('.nav').height();
+  if($('.landing').hasClass('noMargin')) {
+    $('.content').has('.landing').css('marginTop', '0');
+  }
   if (w > 768) {
     navH += $('.nav-c').height();
   }
   $('.landing').css('height', winH);
-  $('.content').has('.landing').css('marginTop', '0');
   if(winW < 436) {
     $('.landingt i').removeClass('fa-3x');
   } else if (winW > 1023) {
