@@ -161,6 +161,7 @@
           font-size: 2vw;
           align-items:center;
           justify-content:center;
+          transition:transform .4s;
         }
         &.nav-btn {
           button {
