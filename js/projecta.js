@@ -274,16 +274,15 @@ function navChange(id, src, src2) {
 
 //------------------- Navbar Active Switch -------------------
 function active() {
-  var element;
+  var element = $('.item.active');
   $('.item').hover(function() {
     if(!($(this).hasClass('active'))) {
-      element = $('.item.active');
       element.removeClass('active');
       $(this).addClass('active');
     }
   }, function() {
-    $(this).removeClass('active');
-    element.addClass('active');
+      $(this).removeClass('active');
+      element.addClass('active');
   });
 }
 
