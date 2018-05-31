@@ -221,9 +221,6 @@
           &:hover {
             transform:none;
             color:$dcolor;
-            &:before {
-              height: 100%;
-            }
           }
           &:before {
             position: absolute;

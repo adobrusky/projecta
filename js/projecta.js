@@ -261,15 +261,30 @@ function parallax() {
 }
 
 //---------------- Navbar change on scroll ----------
-function navChange(id, src) {
+function navChange(id, src, src2) {
   var scroll = $(window).scrollTop();
   if(scroll > 0) {
     $(id).prop('disabled', false);
-    $('.brand img').attr('src', src);
+    $('.brand img').attr('src', src2);
   } else {
     $(id).prop('disabled', true);
     $('.brand img').attr('src', src);
   }
+}
+
+//------------------- Navbar Active Switch -------------------
+function active() {
+  var element;
+  $('.item').hover(function() {
+    if(!($(this).hasClass('active'))) {
+      element = $('.item.active');
+      element.removeClass('active');
+      $(this).addClass('active');
+    }
+  }, function() {
+    element.addClass('active');
+    $(this).removeClass('active');
+  });
 }
 
 //---------------- On Ready ----------------
@@ -279,6 +294,7 @@ $(document).ready(function() {
   $(window).on( 'orientationchange', function() {
     resize();
   });
+  active();
   $(window).resize(function() {
     resize();
     logoMove();
