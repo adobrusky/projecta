@@ -49,28 +49,35 @@
       display: flex;
       align-items: center;
       height: 100%;
+      transition: transform .4s, color .4s;
       text-decoration:none;
       color:$dcolor;
     }
     &.nav-btn {
       display:flex;
       align-items: center;
-      justify-content: center;
       button {
-        padding:10px;
-        display: flex;
-        align-items: center;
-        transition: transform .4s;
-        height: 100%;
         font-size: 22px;
-        text-decoration:none;
+        padding:10px 20px 10px 20px;
+        height: 100%;
+        background-color: $lcolor;
+        border:none;
+        box-shadow: 1px 1px 1px $dcolor;
         color:$dcolor;
+        transition: background-color .4s, transform .4s, box-shadow .4s;
       }
     }
     &.active {
       & > a {
         color: $tcolor;
         transform:scale(1.1);
+      }
+      &.nav-btn {
+        button {
+          background-color: $ldcolor;
+          transform:scale(0.95);
+          box-shadow: none;
+        }
       }
     }
   }
@@ -149,8 +156,6 @@
       overflow: hidden;
       position: relative;
       .item {
-        border-bottom:2px solid $lcolor;
-        transition:border-bottom .25s;
         justify-content: flex-start;
         align-items: center;
         display:flex;
@@ -168,11 +173,6 @@
             font-size: 2vw;
           }
         }
-        &:hover {
-          a {
-            transform:scale(1.1);
-          }
-        }
       }
       .item.item-dropdown a:hover{
         transform:scale(1);
@@ -181,9 +181,10 @@
         display:none;
       }
       .item.active {
-        border-bottom:2px solid $dcolor;
         a {
           transform:scale(1.1);
+        }
+        &.nav-btn {
         }
       }
     }
@@ -219,9 +220,6 @@
           width:100%;
           border:none;
           transition: color .4s;
-          &:hover {
-            transform:none;
-          }
         }
         &.nav-btn {
           justify-content: center;
@@ -231,9 +229,6 @@
             height:50%;
             font-size:1.2vw;
           }
-        }
-        &:hover {
-          border:none;
         }
       }
       .item.active {
@@ -256,9 +251,6 @@
     .nav-c.slideDown {
       .item {
         a {
-          &:hover {
-            color:$dcolor;
-          }
           &:before {
             position: absolute;
             width: 100%;

@@ -276,7 +276,9 @@ function navChange(id, src, src2) {
 function active() {
   var element = $('.item.active');
   $('.item').hover(function() {
-    if(!($(this).hasClass('active'))) {
+    if(($(this).hasClass('nav-btn'))) {
+      $(this).addClass('active');
+    } else if(!($(this).hasClass('active'))) {
       element.removeClass('active');
       $(this).addClass('active');
     }
