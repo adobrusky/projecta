@@ -260,6 +260,18 @@ function parallax() {
   });
 }
 
+//---------------- Navbar change on scroll ----------
+function navChange(id, src) {
+  var scroll = $(window).scrollTop();
+  if(scroll > 0) {
+    $(id).prop('disabled', false);
+    $('.brand img').attr('src', src);
+  } else {
+    $(id).prop('disabled', true);
+    $('.brand img').attr('src', src);
+  }
+}
+
 //---------------- On Ready ----------------
 $(document).ready(function() {
   $('body').removeClass('fade');

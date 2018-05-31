@@ -216,15 +216,25 @@
           padding: 10px;
           justify-content: center;
           align-items:center;
-          transition:background-position .2s ease-in-out;
-          background-size: 100% 200%;
-          background-image: linear-gradient(to bottom, transparent 50%, $ldcolor 50%);
           width:100%;
           border:none;
           &:hover {
-            background-position:0 -100%;
             transform:none;
             color:$dcolor;
+            &:before {
+              height: 100%;
+            }
+          }
+          &:before {
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+            height: 0px;
+            left: 0px;
+            top: 0px;
+            content: '';
+            background-color: $ldcolor;
+            transition: all 0.35s;
           }
         }
         &.nav-btn {
@@ -244,8 +254,10 @@
         border-bottom:none;
         a {
           color:$dcolor;
-          background-position:0 -100%;
           transform:none;
+          &:before {
+            height: 100%;
+          }
         }
       }
       .brand {
