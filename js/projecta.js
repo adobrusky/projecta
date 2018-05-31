@@ -282,8 +282,8 @@ function active() {
       $(this).addClass('active');
     }
   }, function() {
-    element.addClass('active');
     $(this).removeClass('active');
+    element.addClass('active');
   });
 }
 
