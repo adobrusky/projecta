@@ -251,6 +251,15 @@ function landing() {
   }
 };
 
+//------------------- Parallax --------------
+function parallax() {
+  $('.parallax').each(function() {
+    var top = $(window).scrollTop();
+    var offset = $(this).offset().top;
+    $(this).css('backgroundPosition', 'center ' + -((top - offset) / 5) + 'px');
+  });
+}
+
 //---------------- On Ready ----------------
 $(document).ready(function() {
   $('body').removeClass('fade');
@@ -309,6 +318,7 @@ $(document).ready(function() {
   //Navbar Slides up or down on scroll
   $(window).scroll(function() {
     prev = navScroll(prev);
+    parallax();
   });
 
   //Carousel Slider interval
