@@ -218,20 +218,9 @@
           align-items:center;
           width:100%;
           border:none;
+          transition: color .4s;
           &:hover {
             transform:none;
-            color:$dcolor;
-          }
-          &:before {
-            position: absolute;
-            width: 100%;
-            z-index: -1;
-            height: 0px;
-            left: 0px;
-            top: 0px;
-            content: '';
-            background-color: $ldcolor;
-            transition: all 0.35s;
           }
         }
         &.nav-btn {
@@ -250,17 +239,45 @@
       .item.active {
         border-bottom:none;
         a {
-          color:$dcolor;
+          color:$tcolor;
           transform:none;
-          &:before {
-            height: 100%;
-          }
         }
       }
       .brand {
         height:100%;
         img {
           height:100%;
+        }
+      }
+    }
+  }
+
+  .nav {
+    .nav-c.slideDown {
+      .item {
+        a {
+          &:hover {
+            color:$dcolor;
+          }
+          &:before {
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+            height: 0px;
+            left: 0px;
+            top: 0px;
+            content: '';
+            background-color: $ldcolor;
+            transition: all 0.35s;
+          }
+        }
+      }
+      .item.active {
+        a {
+          color:$dcolor;
+          &:before {
+            height: 100%;
+          }
         }
       }
     }

@@ -33,7 +33,7 @@ function calcNavWidth() {
 };
 
 //Nav Open and Close
-var navTransition = String(navDuration/1000) + 's';
+var navTransition = navDuration/1000 + 's';
 function navClose() {
   navWidth = $('.nav-c').width();
   $('.nav-c').css({'transition':'right ' + navTransition, 'right':-navWidth});
@@ -58,7 +58,7 @@ function navOpen() {
 //Nav Scroll Function
 function navScroll(scroll) {
   w = window.innerWidth;
-  if($('.nav').hasClass('nav-slide')) {
+  if($('.nav').hasClass('hide')) {
     var current = $(window).scrollTop();
     var navHeight = $('.nav').height()+1;
     if (w >= 768) {
