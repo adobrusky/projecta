@@ -234,21 +234,15 @@ function landing() {
   w = window.innerWidth;
   var winW = window.innerWidth;
   var winH = $(window).height();
-  var navH = $('.nav').height();
   if($('.landing').hasClass('noMargin')) {
     $('.content').has('.landing').css('marginTop', '0');
-  }
-  if (w > 768) {
-    navH += $('.nav-c').height();
+  } else {
+    winH = winH - $('.nav').height();
+    if(w > 768 && w < 1024) {
+      winH = winH - $('.nav-c').height();
+    }
   }
   $('.landing').css('height', winH);
-  if(winW < 436) {
-    $('.landingt i').removeClass('fa-3x');
-  } else if (winW > 1023) {
-    $('.landingt i').addClass('fa-3x');
-  } else {
-    $('.landingt i').removeClass('fa-3x');
-  }
 };
 
 //------------------- Parallax --------------
@@ -309,6 +303,7 @@ $(document).ready(function() {
   resize();
   logoMove();
   landing();
+  parallax();
   dropdown();
   $('.overlay').hide();
 
