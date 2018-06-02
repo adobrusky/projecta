@@ -4,7 +4,7 @@ var count = countFunc();
 var require=false;
 var itemWidth;
 var navWidth;
-var w;
+var w = window.innerWidth;
 var itemDefault = false;
 
 //-------------------- Editable JS Variables for External Use ---------------------------
@@ -63,7 +63,6 @@ function navOpen() {
 
 //Nav Scroll Function
 function navScroll(scroll) {
-  w = window.innerWidth;
   if($('.nav').hasClass('hide')) {
     var current = $(window).scrollTop();
     var navHeight = $('.nav').height()+1;
@@ -87,7 +86,6 @@ function navScroll(scroll) {
 
 //Nav Logo Controller
 function logoMove() {
-  w = window.innerWidth;
   //Test Width
   if(w > 1023) {
     require=true;
@@ -127,7 +125,6 @@ function logoMove() {
 
 //--------- Resize Function ---------
 function resize() {
-  w = window.innerWidth;
   var navHeight = $('.nav').height()+$('.nav-c').height();
   itemCount = count*2;
   navWidth = $('.nav-c').width();
@@ -214,14 +211,12 @@ function disableButton(ele, dur) {
 
 //---------------- Drop-drown -----------
 function dropClose() {
-  w = window.innerWidth;
   if(w < 768) {
     calcNavWidth();
   };
 };
 
 function dropdown() {
-  w = window.innerWidth;
   $('.item-dropdown > a, .subitem > a').click(function() {
     var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
@@ -237,7 +232,6 @@ function dropdown() {
 
 //------------- Landing Page --------------
 function landing() {
-  w = window.innerWidth;
   var winW = window.innerWidth;
   var winH = $(window).height();
   if($('.landing').hasClass('no-margin')) {
@@ -293,13 +287,27 @@ function active() {
 
 //---------------- On Ready ----------------
 $(document).ready(function() {
+  dropClose();
+  resize();
+  logoMove();
+  landing();
+  parallax();
+  dropdown();
+  active();
+  $('.overlay').hide();
   $('body').removeClass('fade');
+
   window.addEventListener('orientationchange', function() {}, false);
   $(window).on( 'orientationchange', function() {
+    w = window.innerWidth;
     resize();
+    logoMove();
+    landing();
+    dropClose();
   });
-  active();
+
   $(window).resize(function() {
+    w = window.innerWidth;
     resize();
     logoMove();
     landing();
@@ -308,13 +316,6 @@ $(document).ready(function() {
   if (w < 768) {
     calcNavWidth();
   }
-  dropClose();
-  resize();
-  logoMove();
-  landing();
-  parallax();
-  dropdown();
-  $('.overlay').hide();
 
   //Clicking on burger function
   $('.nav-t').click(function() {
