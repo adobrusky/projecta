@@ -42,10 +42,10 @@ function navClose() {
     $('body').removeClass('noScroll');
     setTimeout(function() {
       $('.overlay').hide().css('transition', 'background-color ' + navTransition);
-      $('.nav-c').css('transition', 'none');
+      $('.nav-c').css('transition', 'right 0s');
     }, navDuration);
   } else {
-    $('.nav-c').css('transition', 'none');
+    $('.nav-c').css('transition', 'right 0s');
     $('.overlay').css({'backgroundColor':'rgba(255, 255, 255, 0)','transition':'backgroundColor ' + navTransition}).hide();
     $('body').removeClass('noScroll');
   }
@@ -56,7 +56,7 @@ function navOpen() {
   $('.overlay').show().css('backgroundColor', 'rgba(0, 0, 0, 0.5)');
   $('body').addClass('noScroll');
   setTimeout(function() {
-    $('.nav-c').css('transition', 'none');
+    $('.nav-c').css('transition', 'right 0s');
     $('.overlay').css('transition', 'background-color ' + navTransition);
   }, navDuration);
 };
@@ -146,7 +146,7 @@ function resize() {
     $('.overlay').hide().css('backgroundColor', 'rgba(255, 255, 255, 0)');
   } else {
     $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
-    $('.nav-c').css('right', 0);
+    $('.nav-c').css('right', '0');
     $('.content').css('marginTop', navHeight);
   };
   if(w >= 768 && w < 1024) {
