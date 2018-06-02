@@ -69,7 +69,7 @@ function navScroll(scroll) {
     if (w >= 768) {
       navHeight = navHeight+$('.nav-c').height();
     };
-    if(w<1024) {
+    if(w < 1024) {
       if (current > prev) {//Scrolling Down
         if (current < navHeight) {
           $('.nav').css('top', -current + 'px');
@@ -160,6 +160,7 @@ function resize() {
     itemWidth = 100;
   };
   $('.item').css('width', itemWidth + '%');
+  $('.nav').css('top', 0 + 'px');
 };
 
 
