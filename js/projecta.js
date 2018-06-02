@@ -35,14 +35,20 @@ function calcNavWidth() {
 //Nav Open and Close
 var navTransition = navDuration/1000 + 's';
 function navClose() {
-  navWidth = $('.nav-c').width();
-  $('.nav-c').css({'transition':'right ' + navTransition, 'right':-navWidth});
-  $('.overlay').css('backgroundColor', 'rgba(255, 255, 255, 0)');
-  $('body').removeClass('noScroll');
-  setTimeout(function() {
-    $('.overlay').hide().css('transition', 'background-color ' + navTransition);
+  if(w < 768) {
+    navWidth = $('.nav-c').width();
+    $('.nav-c').css({'transition':'right ' + navTransition, 'right':-navWidth});
+    $('.overlay').css('backgroundColor', 'rgba(0, 0, 0, 0)');
+    $('body').removeClass('noScroll');
+    setTimeout(function() {
+      $('.overlay').hide().css('transition', 'background-color ' + navTransition);
+      $('.nav-c').css('transition', 'none');
+    }, navDuration);
+  } else {
     $('.nav-c').css('transition', 'none');
-  }, navDuration);
+    $('.overlay').css({'backgroundColor':'rgba(255, 255, 255, 0)','transition':'backgroundColor ' + navTransition}).hide();
+    $('body').removeClass('noScroll');
+  }
 };
 
 function navOpen() {
