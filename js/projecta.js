@@ -234,7 +234,7 @@ function landing() {
   w = window.innerWidth;
   var winW = window.innerWidth;
   var winH = $(window).height();
-  if($('.landing').hasClass('noMargin')) {
+  if($('.landing').hasClass('no-margin')) {
     $('.content').has('.landing').css('marginTop', '0');
   } else {
     winH = winH - $('.nav').height();
@@ -249,8 +249,11 @@ function landing() {
 function parallax() {
   $('.parallax').each(function() {
     var top = $(window).scrollTop();
-    var offset = $(this).offset().top;
-    $(this).css('backgroundPosition', 'center ' + -((top - offset) / 5) + 'px');
+    var offsetTop = $(this).offset().top;
+    var offsetLeft = $(this).offset().left;
+    var xPos = $(this).hasClass('landing') || $(this).hasClass('center') ? 'center ' : offsetLeft + 'px ';
+    $(this).css('backgroundAttachment', 'fixed');
+    $(this).css('backgroundPosition', xPos + -((top - offsetTop) / 5) + 'px');
   });
 }
 
