@@ -222,8 +222,14 @@ function dropdown() {
     var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
-      siblings.slideUp(dropSpeed);
-      clicked.slideToggle(dropSpeed, function() {
+    var mainDrop;
+    if(w > 767) {
+      mainDrop = 0;
+    } else {
+      mainDrop = dropSpeed;
+    }
+      siblings.slideUp(mainDrop);
+      clicked.slideToggle(mainDrop, function() {
         clickedChildren.slideUp();
       });
   });
@@ -308,7 +314,7 @@ $(document).ready(function() {
   $('.overlay').hide();
 
   window.addEventListener('orientationchange', function() {}, false);
-  $(window).on( 'orientationchange', function() {
+  $(window).on('orientationchange', function() {
     w = window.innerWidth;
     resize();
     logoMove();

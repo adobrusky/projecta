@@ -33,6 +33,11 @@
     .nav-c {
       overflow: visible;
       .item-dropdown {
+        &.active {
+          .dropdown {
+            transform: scale(1);
+          }
+        }
         .dropdown {
           height: auto;
           padding: 0px;
