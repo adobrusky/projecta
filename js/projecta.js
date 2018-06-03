@@ -222,20 +222,10 @@ function dropdown() {
     var clicked = $(this).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
-    if(w < 768) {
       siblings.slideUp(dropSpeed);
       clicked.slideToggle(dropSpeed, function() {
         clickedChildren.slideUp();
       });
-    }
-    else {
-      var height = $('.item-dropdown > .dropdown').height();
-      //$('.item-dropdown').children('.dropdown').css();
-      siblings.slideUp(dropSpeed);
-      clicked.slideToggle(dropSpeed, function() {
-        clickedChildren.slideUp();
-      });
-    };
   });
 };
 
