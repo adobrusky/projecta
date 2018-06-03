@@ -227,6 +227,14 @@ function dropdown() {
       clicked.slideToggle(dropSpeed, function() {
         clickedChildren.slideUp();
       });
+    }
+    else {
+      var height = $('.item-dropdown > .dropdown').height();
+      //$('.item-dropdown').children('.dropdown').css();
+      siblings.slideUp(dropSpeed);
+      clicked.slideToggle(dropSpeed, function() {
+        clickedChildren.slideUp();
+      });
     };
   });
 };

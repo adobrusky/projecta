@@ -28,20 +28,33 @@
 
 }
 @media only screen and (min-width: 768px) {
-  .nav-c {
-    .item-dropdown {
-      .dropdown {
-        position:absolute;
-        top:40px;
-        z-index:100;
-        display:block;
-        .subitem {
-          a {
-            border:none;
-            z-index:100;
-            display:block;
+  .nav {
+    overflow: visible;
+    .nav-c {
+      overflow: visible;
+      .item-dropdown {
+        .dropdown {
+          height: auto;
+          padding: 0px;
+          background-color: $lcolor;
+          overflow: visible;
+          position:absolute;
+          left: 100%;
+          z-index:100;
+          display:none;
+          .subitem {
+            a {
+              background-color: $lcolor;
+              border:none;
+              z-index:100;
+              display:block;
+            }
           }
         }
+      }
+      .item-dropdown > .dropdown {
+        left: 0;
+        top: 100%;
       }
     }
   }
