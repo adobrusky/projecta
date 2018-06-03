@@ -286,6 +286,17 @@ function active() {
   });
 }
 
+//------------- Fade when entering viewport ------------------
+function fade() {
+  $('.fade').each(function() {
+    var top = $(window).scrollTop() + $(window).height();
+    var offset = $(this).offset().top;
+    if(top > (offset + 1)) {
+      $(this).css('opacity', '1');
+    }
+  });
+}
+
 //---------------- On Ready ----------------
 $(document).ready(function() {
   dropClose();
@@ -295,8 +306,8 @@ $(document).ready(function() {
   parallax();
   dropdown();
   active();
+  fade();
   $('.overlay').hide();
-  $('body').removeClass('fade');
 
   window.addEventListener('orientationchange', function() {}, false);
   $(window).on( 'orientationchange', function() {
@@ -354,6 +365,7 @@ $(document).ready(function() {
   $(window).scroll(function() {
     prev = navScroll(prev);
     parallax();
+    fade();
   });
 
   //Carousel Slider interval
