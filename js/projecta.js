@@ -119,7 +119,7 @@ function logoMove() {
   if(require===true) {
     $('.nav-c > li:nth-child('+ brandPos + ')').after($('.nav > .brand'));
   } else if(require===false) {
-    $('.nav > li').before($('.nav-c > .brand'));
+    $('.nav > li:first-child').before($('.nav-c > .brand'));
   };
 };
 

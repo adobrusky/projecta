@@ -7,22 +7,7 @@
       <ul class="nav">
         <li class="brand"><img src="" alt=""></li>
         <li class="nav-t"><i class="fa fa-2x fa-bars"></i></li>
-        <div class="overlay"></div>
-        <ul class="nav-c">
-          <li class="close"><i class="fa fa-2x fa-close"></i></li>
-          <li class="item active"><a href="">LINK</a></li>
-          <li class="item"><a href="">LINK</a></li>
-        </ul>
-      </ul>
-      """
-  'Navbar Slide Up':
-    'prefix': 'nav-s'
-    'body': """
-      <!-- Navbar -->
-      <ul class="nav nav-slide">
-        <li class="brand"><img src="" alt=""></li>
-        <li class="nav-t"><i class="fa fa-2x fa-bars"></i></li>
-        <div class="overlay"></div>
+        <li class="overlay"></li>
         <ul class="nav-c">
           <li class="close"><i class="fa fa-2x fa-close"></i></li>
           <li class="item active"><a href="">LINK</a></li>
@@ -114,10 +99,12 @@
       <ul class="carousel">
         <li class="active-img"><a href=" "><div class='image' style="background-image: url('');"></div></a></li>
         <li><a href=" "><div class='image' style="background-image: url('');"></div></a></li>
-        <div class="indicators">
-          <li class="indicator active-indicator"><i class="fa fa-circle"></i></li>
-          <li class="indicator"><i class="fa fa-circle-o"></i></li>
-        </div>
+        <li>
+          <ul class="indicators">
+            <li class="indicator active-indicator"><i class="fa fa-circle"></i></li>
+            <li class="indicator"><i class="fa fa-circle-o"></i></li>
+          </ul>
+        </li>
       </ul>
       """
   'Landing':
