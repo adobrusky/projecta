@@ -149,12 +149,12 @@ function resize() {
     $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
     $('.nav-c').css('right', '0');
     $('.content').css('marginTop', navHeight);
+    $('.brand').css('height', $('.nav').height());
   };
   if(w >= 768 && w < 1024) {
     itemWidth = navItemWidth/itemCount;
   } else if(w > 1023) {
     itemWidth=(navItemWidth-(navItemWidth/navShrink))/itemCount;
-    $('.brand').css('height', $('.nav').height());
     if(itemDefault == true) {
       $('.item').css('width', 'auto');
     }
