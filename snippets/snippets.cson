@@ -8,11 +8,13 @@
         <li class="brand"><img src="" alt=""></li>
         <li class="nav-t"><i class="fa fa-2x fa-bars"></i></li>
         <li class="overlay"></li>
-        <ul class="nav-c">
-          <li class="close"><i class="fa fa-2x fa-close"></i></li>
-          <li class="item active"><a href="">LINK</a></li>
-          <li class="item"><a href="">LINK</a></li>
-        </ul>
+        <li class="nav-c">
+          <ul>
+            <li class="close"><i class="fa fa-2x fa-close"></i></li>
+            <li class="item active"><a href="">LINK</a></li>
+            <li class="item"><a href="">LINK</a></li>
+          </ul>
+        </li>
       </ul>
       """
   'Content':

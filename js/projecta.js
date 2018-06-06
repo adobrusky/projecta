@@ -144,6 +144,7 @@ function resize() {
     $('.content').css('marginTop', $('.nav').height());
     $('body').removeClass('noScroll');
     $('.overlay').hide().css('backgroundColor', 'rgba(0, 0, 0, 0)');
+    $('.brand').css('height', '100%');
   } else {
     $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
     $('.nav-c').css('right', '0');
@@ -153,6 +154,7 @@ function resize() {
     itemWidth = navItemWidth/itemCount;
   } else if(w > 1023) {
     itemWidth=(navItemWidth-(navItemWidth/navShrink))/itemCount;
+    $('.brand').css('height', $('.nav').height());
     if(itemDefault == true) {
       $('.item').css('width', 'auto');
     }
