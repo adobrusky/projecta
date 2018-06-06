@@ -117,9 +117,9 @@ function logoMove() {
 
   //Enable/Disable
   if(require===true) {
-    $('.nav-c > li:nth-child('+ brandPos + ')').after($('.nav > .brand'));
+    $('.nav-c > ul > li:nth-child('+ brandPos + ')').after($('.nav > .brand'));
   } else if(require===false) {
-    $('.nav > li:first-child').before($('.nav-c > .brand'));
+    $('.nav > li:first-child').before($('.nav-c > ul > .brand'));
   };
 };
 

@@ -37,6 +37,7 @@
     transition: none;
     top:0;
     overflow-y:scroll;
+    overflow-x:hidden;
     height:100%;
     background-color:$lcolor;
   }
@@ -103,6 +104,8 @@
   }
 }
 .brand {
+  list-style-type: none;
+  text-align: center;
   height: 100%;
   img {
     height: 100%;
@@ -155,6 +158,12 @@
       height: 55%;
       overflow: hidden;
       position: relative;
+      ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
       .item {
         justify-content: flex-start;
         align-items: center;
@@ -187,7 +196,7 @@
         &.nav-btn {
         }
       }
-    }
+  }
     .nav-t {
       display:none;
     }
