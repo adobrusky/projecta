@@ -219,9 +219,8 @@ function dropClose() {
   };
 };
 
-function dropdown() {
-  $('.item-dropdown > a, .subitem > a').click(function() {
-    var clicked = $(this).parent().children('.dropdown');
+function dropdown(element) {
+    var clicked = $(element).parent().children('.dropdown');
     var clickedChildren = clicked.find('.dropdown');
     var siblings = clicked.parent().siblings().find('.dropdown');
     var mainDrop;
@@ -234,7 +233,6 @@ function dropdown() {
       clicked.slideToggle(mainDrop, function() {
         clickedChildren.slideUp();
       });
-  });
 };
 
 //------------- Landing Page --------------
@@ -310,10 +308,13 @@ $(document).ready(function() {
   logoMove();
   landing();
   parallax();
-  dropdown();
   active();
   fade();
   $('.overlay').hide();
+
+  $('.item-dropdown > a, .subitem > a').click(function() {
+    dropdown(this);
+  });
 
   window.addEventListener('orientationchange', function() {}, false);
   $(window).on('orientationchange', function() {
@@ -378,4 +379,13 @@ $(document).ready(function() {
   setInterval(function(){
     slide(carouselDirection);
   }, carouselInterval);
+
+  $('.item-dropdown > a').keydown(function(event){
+    console.log(this);
+    var keyCode = (event.keyCode ? event.keyCode : event.which);
+    if (keyCode == 13) {
+        dropdown(this);
+    }
+  });
+
 });
