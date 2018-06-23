@@ -173,14 +173,14 @@ function slide(dir) {
   var active_index = $('.active-img').index();
   if (dir == 'right') {
     var new_index = active_index + 1;
-    if (new_index == $('.carousel').children('li').length) {
+    if (new_index == $('.carousel').children('li').length - 1) {
       new_index = 0;
     }
   }
   else if (dir == 'left') {
     var new_index = active_index - 1;
     if (new_index == 0) {
-      new_index = $('.carousel').children('li').length;
+      new_index = $('.carousel').children('li').length - 1;
     }
   }
   slideTo(new_index);
