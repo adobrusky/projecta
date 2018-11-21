@@ -20,7 +20,7 @@
 .test {
   background-image:url('../img/landing.jpg');
   background-size: cover;
-  height: 400px;
+  min-height: 400px;
 }
 
 @media only screen and (min-width: 436px) {
