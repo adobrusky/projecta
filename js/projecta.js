@@ -243,7 +243,7 @@ function landing() {
     $('.content').has('.landing').css('marginTop', '0');
   } else {
     winH = winH - $('.nav').height();
-    if(w > 768 && w < 1024) {
+    if(w >= 768 && w < 1024) {
       winH = winH - $('.nav-c').height();
     }
   }
