@@ -20,7 +20,9 @@
   justify-content: flex-start;
   flex-wrap:nowrap;
   top:0;
-  height:100px;
+  height: 11vh;
+  max-height: 100px;
+  min-height: 75px;
   z-index:1;
   position:fixed;
   width:100%;
@@ -138,6 +140,12 @@
   }
 }
 
+@media only screen and (max-width: 436px) {
+  .nav > .nav-t {
+    padding: 2.2%;
+  }
+}
+
 @media only screen and (min-width: 620px) {
   .item {
     a {
@@ -210,6 +218,31 @@
       min-height:100%;
       display:flex;
       justify-content:center;
+      &.slide-down {
+        .item {
+          a {
+            &:before {
+              position: absolute;
+              width: 100%;
+              z-index: -1;
+              height: 0px;
+              left: 0px;
+              top: 0px;
+              content: '';
+              background-color: $ldcolor;
+              transition: all 0.35s;
+            }
+          }
+        }
+        .item.active {
+          a {
+            color:$dcolor;
+            &:before {
+              height: 100%;
+            }
+          }
+        }
+      }
       .item {
         display:flex;
         border: none;
@@ -238,34 +271,6 @@
         a {
           color:$tcolor;
           transform:none;
-        }
-      }
-    }
-  }
-
-  .nav {
-    .nav-c.slide-down {
-      .item {
-        a {
-          &:before {
-            position: absolute;
-            width: 100%;
-            z-index: -1;
-            height: 0px;
-            left: 0px;
-            top: 0px;
-            content: '';
-            background-color: $ldcolor;
-            transition: all 0.35s;
-          }
-        }
-      }
-      .item.active {
-        a {
-          color:$dcolor;
-          &:before {
-            height: 100%;
-          }
         }
       }
     }

@@ -6,6 +6,7 @@ var itemWidth;
 var navWidth;
 var w = window.innerWidth;
 var itemDefault = false;
+var mobile = false;
 
 //-------------------- Editable JS Variables for External Use ---------------------------
 var navItemWidth = 80;
@@ -20,6 +21,13 @@ var dropSpeed = 400;
 function countFunc() {
   var x = $('.item').length;
   return (x)/2;
+};
+
+//--------------- Test for if the user is on a mobile device -----------
+function isMobile() {
+  if(/webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (/Android/i.test(navigator.userAgent) && w <= 768)) {
+    mobile = true;
+ };
 };
 
 //------------ Calculate Navbar Width ---------
@@ -48,7 +56,7 @@ function navClose() {
     $('.nav-c').css('transition', 'all .5s, right 0s');
     $('.overlay').css({'backgroundColor':'rgba(255, 255, 255, 0)','transition':'backgroundColor ' + navTransition}).hide();
     $('body').removeClass('noScroll');
-  }
+  };
 };
 
 function navOpen() {
@@ -157,7 +165,7 @@ function resize() {
     itemWidth=(navItemWidth-(navItemWidth/navShrink))/itemCount;
     if(itemDefault == true) {
       $('.item').css('width', 'auto');
-    }
+    };
   } else {
     itemWidth = 100;
   };
@@ -175,16 +183,15 @@ function slide(dir) {
     var new_index = active_index + 1;
     if (new_index == $('.carousel').children('li').length - 1) {
       new_index = 0;
-    }
-  }
-  else if (dir == 'left') {
+    };
+  } else if (dir == 'left') {
     var new_index = active_index - 1;
     if (new_index == 0) {
       new_index = $('.carousel').children('li').length - 1;
-    }
-  }
+    };
+  };
   slideTo(new_index);
-}
+};
 
 function slideTo(index) {
   switchIndicator(index);
@@ -228,11 +235,11 @@ function dropdown(element) {
       mainDrop = 0;
     } else {
       mainDrop = dropSpeed;
-    }
-      siblings.slideUp(mainDrop);
-      clicked.slideToggle(mainDrop, function() {
-        clickedChildren.slideUp();
-      });
+    };
+    siblings.slideUp(mainDrop);
+    clicked.slideToggle(mainDrop, function() {
+    clickedChildren.slideUp();
+    });
 };
 
 //------------- Landing Page --------------
@@ -245,22 +252,24 @@ function landing() {
     winH = winH - $('.nav').height();
     if(w >= 768 && w < 1024) {
       winH = winH - $('.nav-c').height();
-    }
-  }
+    };
+  };
   $('.landing').css('height', winH);
 };
 
 //------------------- Parallax --------------
 function parallax() {
-  $('.parallax').each(function() {
-    var top = $(window).scrollTop();
-    var offsetTop = $(this).offset().top;
-    var offsetLeft = $(this).offset().left;
-    var xPos = $(this).hasClass('landing') || $(this).hasClass('center') ? 'center ' : offsetLeft + 'px ';
-    $(this).css('backgroundAttachment', 'fixed');
-    $(this).css('backgroundPosition', xPos + -((top - offsetTop) / 5) + 'px');
-  });
-}
+  if(mobile === false) {
+    $('.parallax').each(function() {
+      var top = $(window).scrollTop();
+      var offsetTop = $(this).offset().top;
+      var offsetLeft = $(this).offset().left;
+      var xPos = $(this).hasClass('landing') || $(this).hasClass('center') ? 'center ' : offsetLeft + 'px ';
+      $(this).css('backgroundAttachment', 'fixed');
+      $(this).css('backgroundPosition', xPos + -((top - offsetTop) / 5) + 'px');
+    });
+  };
+};
 
 //---------------- Navbar change on scroll ----------
 function navChange(id, src, src2) {
@@ -271,8 +280,8 @@ function navChange(id, src, src2) {
   } else {
     $(id).prop('disabled', true);
     $('.brand img').attr('src', src);
-  }
-}
+  };
+};
 
 //------------------- Navbar Active Switch -------------------
 function active() {
@@ -283,12 +292,12 @@ function active() {
     } else if(!($(this).hasClass('active'))) {
       element.removeClass('active');
       $(this).addClass('active');
-    }
+    };
   }, function() {
       $(this).removeClass('active');
       element.addClass('active');
   });
-}
+};
 
 //------------- Fade when entering viewport ------------------
 function fade() {
@@ -297,12 +306,13 @@ function fade() {
     var offset = $(this).offset().top;
     if(top > (offset + 1)) {
       $(this).css('opacity', '1');
-    }
+    };
   });
-}
+};
 
 //---------------- On Ready ----------------
 $(document).ready(function() {
+  isMobile();
   dropClose();
   resize();
   logoMove();
