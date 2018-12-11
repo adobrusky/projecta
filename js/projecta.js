@@ -78,13 +78,9 @@ function navScroll(scroll) {
       navHeight = navHeight+$('.nav-c').height();
     };
     if(w < 1024) {
-      if (current > prev) {//Scrolling Down
-        if (current < navHeight) {
-          $('.nav').css('top', -current + 'px');
-        } else {
-          $('.nav').css('top', -navHeight + 'px');
-        };
-      } else {//Scrolling Up
+      if (current > prev) {// If Scrolling Down
+        $('.nav').css('top', -navHeight + 'px');
+      } else {// If Scrolling Up
         $('.nav').css('top', 0 + 'px');
       };
     };
