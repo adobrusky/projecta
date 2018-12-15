@@ -148,12 +148,10 @@ function resize() {
     $('.content').css('marginTop', $('.nav').height());
     $('body').removeClass('noScroll');
     $('.overlay').hide().css('backgroundColor', 'rgba(0, 0, 0, 0)');
-    $('.brand').css('height', '100%');
   } else {
     $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
     $('.nav-c').css('right', '0');
     $('.content').css('marginTop', navHeight);
-    $('.brand').css('height', $('.nav').height());
   };
   if(w >= 768 && w < 1024) {
     itemWidth = navItemWidth/itemCount;
