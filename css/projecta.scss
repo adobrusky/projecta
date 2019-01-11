@@ -29,16 +29,16 @@ body {
   &.fade {
     transition: 1s opacity;
   }
+}
 
-  .footer {
-    background-color: $lcolor;
-    border-top: 1px solid $dcolor;
-    height: 70px;
-    width: 100%;
-    margin-top: auto;
-    align-self: flex-end;
-    justify-content: center;
-  }
+.footer {
+  background-color: $lcolor;
+  border-top: 1px solid $dcolor;
+  height: 70px;
+  width: 100%;
+  margin-top: auto;
+  align-self: flex-end;
+  justify-content: center;
 }
 
 .content {
@@ -47,16 +47,6 @@ body {
   //flex-wrap: wrap;
   flex-shrink: 0;
   flex-grow: 0;
-}
-
-.footer {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  list-style-type: none;
-  //flex: 1;
 }
 
 .img {
