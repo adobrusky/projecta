@@ -1,30 +1,32 @@
-//----------- Global variables ---------------
-var prev = 0;
-var count = countFunc();
-var require=false;
-var itemWidth;
-var navWidth;
-var w = window.innerWidth;
-var itemDefault = false;
+//----------- Global letiables ---------------
+let prev = 0;
+let count = countFunc();
+let require=false;
+let itemWidth;
+let navWidth;
+let screenWidth = window.innerWidth;
+let itemDefault = false;
 
-//-------------------- Editable JS Variables for External Use ---------------------------
-var navItemWidth = 80;
-var carouselInterval = 10000;
-var navDuration = 600;
-var navShrink = 2.5;
-var carouselDirection = 'right';
-var carouselFade = 200;
-var dropSpeed = 400;
+//-------------------- Editable JS letiables for External Use ---------------------------
+let navItemWidth = 80;
+let carouselInterval = 10000;
+let navDuration = 600;
+let navShrink = 2.5;
+let carouselDirection = 'right';
+let carouselFade = 200;
+let dropSpeed = 400;
+let medium = 768;
+let large = 1024;
 
 //------------ Navbar ---------
 function countFunc() {
-  var x = $('.item').length;
+  let x = $('.item').length;
   return (x)/2;
 };
 
 //--------------- Test for if the user is on a mobile device -----------
 function isMobile() {
-  if(/webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (/Android/i.test(navigator.userAgent) && w <= 768)) {
+  if(/webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (/Android/i.test(navigator.userAgent) && screenWidth <= medium)) {
     return true;
   } else {
     return false;
@@ -42,9 +44,9 @@ function calcNavWidth() {
 };
 
 //Nav Open and Close
-var navTransition = navDuration/1000 + 's';
+let navTransition = navDuration/1000 + 's';
 function navClose() {
-  if(w < 768) {
+  if(screenWidth < medium) {
     navWidth = $('.nav-c').width();
     $('.nav-c').css({'transition':'right ' + navTransition, 'right':-navWidth});
     $('.overlay').css('backgroundColor', 'rgba(0, 0, 0, 0)');
@@ -73,12 +75,12 @@ function navOpen() {
 //Nav Scroll Function
 function navScroll(scroll) {
   if($('.nav').hasClass('hide')) {
-    var current = $(window).scrollTop();
-    var navHeight = $('.nav').height()+1;
-    if (w >= 768) {
+    let current = $(window).scrollTop();
+    let navHeight = $('.nav').height()+1;
+    if (screenWidth >= medium) {
       navHeight = navHeight+$('.nav-c').height();
     };
-    if(w < 1024) {
+    if(screenWidth < large) {
       if (current > prev) {// If Scrolling Down
         $('.nav').css('top', -navHeight + 'px');
       } else {// If Scrolling Up
@@ -92,15 +94,15 @@ function navScroll(scroll) {
 //Nav Logo Controller
 function logoMove() {
   //Test Width
-  if(w > 1023) {
+  if(screenWidth > large) {
     require=true;
   } else {
     require=false;
   };
-  var brandPos = 0;
+  let brandPos = 0;
   if ($('.brand').hasClass('brand-left')) {
     brandPos = 1;
-    if (w > 1023) {
+    if (screenWidth > large) {
       $('.brand').css('marginRight', 'auto');
       $('.item').css('width', 'auto');
       itemDefault = true;
@@ -109,7 +111,7 @@ function logoMove() {
     };
   } else if ($('.brand').hasClass('brand-right')) {
     brandPos = $('.nav-c > li').length;
-    if (w > 1023) {
+    if (screenWidth > large) {
       itemDefault = true;
       $('.item').css('width', 'auto');
       $('.brand').css('marginLeft', 'auto');
@@ -130,19 +132,19 @@ function logoMove() {
 
 //--------- Resize Function ---------
 function resize() {
-  var navHeight = $('.nav').height()+$('.nav-c').height();
+  let navHeight = $('.nav').height()+$('.nav-c').height();
   itemCount = count*2;
   navWidth = $('.nav-c').width();
-  if (w > 1023) {
+  if (screenWidth > large) {
     navHeight = $('.nav-c').height();
   };
-  if(w < 436) {
+  if(screenWidth < 436) {
     $('.close i').addClass('fa-2x');
   } else {
     $('.close i').removeClass('fa-2x');
   };
   //436 is mobile margin
-  if (w < 768) {
+  if (screenWidth < medium) {
     $('.item-dropdown a').css('transform', 'none');
     $('.carousel > li > i.fa').removeClass('fa-4x').addClass('fa-3x')
     $('.nav-c').css('right', -navWidth);
@@ -156,9 +158,9 @@ function resize() {
     $('.content').css('marginTop', navHeight);
     $('.brand').css('height', $('.nav').height());
   };
-  if(w >= 768 && w < 1024) {
+  if(screenWidth >= medium && screenWidth < large) {
     itemWidth = navItemWidth/itemCount;
-  } else if(w > 1023) {
+  } else if(screenWidth > large) {
     itemWidth=(navItemWidth-(navItemWidth/navShrink))/itemCount;
     if(itemDefault == true) {
       $('.item').css('width', 'auto');
@@ -175,14 +177,14 @@ function resize() {
 
 //slider for carousel
 function slide(dir) {
-  var active_index = $('.active-img').index();
+  let active_index = $('.active-img').index();
   if (dir == 'right') {
-    var new_index = active_index + 1;
+    let new_index = active_index + 1;
     if (new_index == $('.carousel').children('li').length - 1) {
       new_index = 0;
     };
   } else if (dir == 'left') {
-    var new_index = active_index - 1;
+    let new_index = active_index - 1;
     if (new_index == 0) {
       new_index = $('.carousel').children('li').length - 1;
     };
@@ -194,7 +196,7 @@ function slideTo(index) {
   switchIndicator(index);
   $('.active-img').fadeOut(carouselFade, function() {
     $('.active-img').removeClass('active-img');
-    var new_active = $('.carousel').children().get(index);
+    let new_active = $('.carousel').children().get(index);
     $(new_active).addClass('active-img').hide();
     $(new_active).fadeIn(carouselFade);
   });
@@ -203,8 +205,8 @@ function slideTo(index) {
 function switchIndicator(index) {
   $('.active-indicator i').removeClass('fa-circle').addClass('fa-circle-o');
   $('.active-indicator').removeClass('active-indicator');
-  var new_active_indicator = $('.indicators').children().get(index);
-  var indicator = $(new_active_indicator).children().get(0);
+  let new_active_indicator = $('.indicators').children().get(index);
+  let indicator = $(new_active_indicator).children().get(0);
   $(indicator).removeClass('fa-circle-o').addClass('fa-circle');
   $(new_active_indicator).addClass('active-indicator');
 };
@@ -218,17 +220,17 @@ function disableButton(ele, dur) {
 
 //---------------- Drop-drown -----------
 function dropClose() {
-  if(w < 768) {
+  if(screenWidth < medium) {
     calcNavWidth();
   };
 };
 
 function dropdown(element) {
-  var clicked = $(element).parent().children('.dropdown');
-  var clickedChildren = clicked.find('.dropdown');
-  var siblings = clicked.parent().siblings().find('.dropdown');
-  var mainDrop;
-  if(w > 767) {
+  let clicked = $(element).parent().children('.dropdown');
+  let clickedChildren = clicked.find('.dropdown');
+  let siblings = clicked.parent().siblings().find('.dropdown');
+  let mainDrop;
+  if(screenWidth > medium) {
     mainDrop = 0;
   } else {
     mainDrop = dropSpeed;
@@ -241,27 +243,26 @@ function dropdown(element) {
 
 //------------- Landing Page --------------
 function landing() {
-  var winW = window.innerWidth;
-  var winH = $(window).height();
+  let windowHeight = $(window).height();
   if($('.landing').hasClass('no-margin')) {
     $('.content').has('.landing').css('marginTop', '0');
   } else {
-    winH = winH - $('.nav').height();
-    if(w >= 768 && w < 1024) {
-      winH = winH - $('.nav-c').height();
+    windowHeight = windowHeight - $('.nav').height();
+    if(screenWidth >= medium && screenWidth < large) {
+      windowHeight = windowHeight - $('.nav-c').height();
     };
   };
-  $('.landing').css('height', winH);
+  $('.landing').css('height', windowHeight);
 };
 
 //------------------- Parallax --------------
 function parallax() {
   if(!(isMobile())) {
     $('.parallax').each(function() {
-      var top = $(window).scrollTop();
-      var offsetTop = $(this).offset().top;
-      var offsetLeft = $(this).offset().left;
-      var xPos = $(this).hasClass('landing') || $(this).hasClass('center') ? 'center ' : offsetLeft + 'px ';
+      let top = $(window).scrollTop();
+      let offsetTop = $(this).offset().top;
+      let offsetLeft = $(this).offset().left;
+      let xPos = $(this).hasClass('landing') || $(this).hasClass('center') ? 'center ' : offsetLeft + 'px ';
       $(this).css('backgroundAttachment', 'fixed');
       $(this).css('backgroundPosition', xPos + -((top - offsetTop) / 5) + 'px');
     });
@@ -270,7 +271,7 @@ function parallax() {
 
 //---------------- Navbar change on scroll ----------
 function navChange(id, src, src2) {
-  var scroll = $(window).scrollTop();
+  let scroll = $(window).scrollTop();
   if(scroll > 0) {
     $(id).prop('disabled', false);
     $('.brand img').attr('src', src2);
@@ -282,7 +283,7 @@ function navChange(id, src, src2) {
 
 //------------------- Navbar Active Switch -------------------
 function active() {
-  var element = $('.item.active');
+  let element = $('.item.active');
   $('.item').hover(function() {
     if(($(this).hasClass('nav-btn'))) {
       $(this).addClass('active');
@@ -299,8 +300,8 @@ function active() {
 //------------- Fade when entering viewport ------------------
 function fade() {
   $('.fade').each(function() {
-    var top = $(window).scrollTop() + $(window).height();
-    var offset = $(this).offset().top;
+    let top = $(window).scrollTop() + $(window).height();
+    let offset = $(this).offset().top;
     if(top > (offset + 1)) {
       $(this).css('opacity', '1');
     };
@@ -325,7 +326,7 @@ $(document).ready(function() {
 
   window.addEventListener('orientationchange', function() {}, false);
   $(window).on('orientationchange', function() {
-    w = window.innerWidth;
+    screenWidth = window.innerWidth;
     resize();
     logoMove();
     landing();
@@ -333,13 +334,13 @@ $(document).ready(function() {
   });
 
   $(window).resize(function() {
-    w = window.innerWidth;
+    screenWidth = window.innerWidth;
     resize();
     logoMove();
     landing();
     dropClose();
   });
-  if (w < 768) {
+  if (screenWidth < medium) {
     calcNavWidth();
   }
 
@@ -371,7 +372,7 @@ $(document).ready(function() {
 
   //Indicator for Carousel
   $('.indicator').click(function() {
-    var index = $(this).index();
+    let index = $(this).index();
     slideTo(index);
   });
 
@@ -389,7 +390,7 @@ $(document).ready(function() {
 
   $('.item-dropdown > a').keydown(function(event){
     console.log(this);
-    var keyCode = (event.keyCode ? event.keyCode : event.which);
+    let keyCode = (event.keyCode ? event.keyCode : event.which);
     if (keyCode == 13) {
       dropdown(this);
     }
