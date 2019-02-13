@@ -178,13 +178,14 @@ function resize() {
 //slider for carousel
 function slide(dir) {
   let active_index = $('.active-img').index();
+  let new_index;
   if (dir == 'right') {
-    let new_index = active_index + 1;
+    new_index = active_index + 1;
     if (new_index == $('.carousel').children('li').length - 1) {
       new_index = 0;
     };
   } else if (dir == 'left') {
-    let new_index = active_index - 1;
+    new_index = active_index - 1;
     if (new_index == 0) {
       new_index = $('.carousel').children('li').length - 1;
     };
