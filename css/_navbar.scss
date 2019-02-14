@@ -73,7 +73,7 @@
     &.active {
       & > a {
         color: $tcolor;
-        transform:scale(1.1);
+        //transform:scale(1.1);
       }
       &.nav-btn {
         button {
@@ -192,14 +192,14 @@
         }
       }
       .item.item-dropdown a:hover{
-        transform:scale(1);
+        //transform:scale(1);
       }
       .close {
         display:none;
       }
       .item.active {
         a {
-          transform:scale(1.1);
+          //transform:scale(1.1);
         }
         &.nav-btn {
         }

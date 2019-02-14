@@ -34,13 +34,11 @@
       overflow: visible;
       .item-dropdown {
         &.active {
-          .dropdown {
-            transform: scale(1);
-          }
+
         }
         .dropdown {
           height: auto;
-          padding: 0px;
+          padding: 5px;
           background-color: $lcolor;
           overflow: visible;
           position:absolute;
@@ -48,10 +46,17 @@
           z-index:100;
           display:none;
           .subitem {
+            width: auto;
             a {
               background-color: $lcolor;
               border:none;
               z-index:100;
+              padding: 0px;
+              width: auto;
+              font-size: 15px;
+              text-align: left;
+              position: relative;
+              left: 0px;
               display:block;
             }
           }

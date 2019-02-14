@@ -71,7 +71,7 @@ function navOpen() {
     $('.overlay').css('transition', 'background-color ' + navTransition);
   }, navDuration);
 };
-
+TODO: FINSIH THE STUFF WITH DROPCLOSE AND SCROLLING BELOW
 //Nav Scroll Function
 function navScroll(scroll) {
   if($('.nav').hasClass('hide')) {
@@ -83,9 +83,13 @@ function navScroll(scroll) {
     if(screenWidth < large) {
       if (current > prev) {// If Scrolling Down
         $('.nav').css('top', -navHeight + 'px');
+        dropClose();
       } else {// If Scrolling Up
         $('.nav').css('top', 0 + 'px');
+        dropClose();
       };
+    } else {
+      dropClose();
     };
     return current;
   };
