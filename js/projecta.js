@@ -52,26 +52,26 @@ function navClose() {
     $('.overlay').css('backgroundColor', 'rgba(0, 0, 0, 0)');
     $('body').removeClass('noScroll');
     setTimeout(function() {
-      $('.overlay').hide().css('transition', 'background-color ' + navTransition);
+      $('.overlay').fadeOut(navTransition)
       $('.nav-c').css('transition', 'all .5s, right 0s');
     }, navDuration);
   } else {
     $('.nav-c').css('transition', 'all .5s, right 0s');
-    $('.overlay').css({'backgroundColor':'rgba(255, 255, 255, 0)','transition':'backgroundColor ' + navTransition}).hide();
+    $('.overlay').css({'backgroundColor':'rgba(255, 255, 255, 0)'}).fadeOut(navTransition);
     $('body').removeClass('noScroll');
   };
 };
 
 function navOpen() {
   $('.nav-c').css({'transition':'right ' + navTransition, 'right':'0'});
-  $('.overlay').show().css('backgroundColor', 'rgba(0, 0, 0, 0.5)');
+  $('.overlay').fadeIn(navTransition).css('backgroundColor', 'rgba(0, 0, 0, 0.5)');
   $('body').addClass('noScroll');
   setTimeout(function() {
     $('.nav-c').css('transition', 'all .5s, right 0s');
     $('.overlay').css('transition', 'background-color ' + navTransition);
   }, navDuration);
 };
-TODO: FINSIH THE STUFF WITH DROPCLOSE AND SCROLLING BELOW
+//TODO: FINSIH THE STUFF WITH DROPCLOSE AND SCROLLING BELOW
 //Nav Scroll Function
 function navScroll(scroll) {
   if($('.nav').hasClass('hide')) {
@@ -89,7 +89,7 @@ function navScroll(scroll) {
         dropClose();
       };
     } else {
-      dropClose();
+              dropClose();
     };
     return current;
   };
@@ -225,9 +225,7 @@ function disableButton(ele, dur) {
 
 //---------------- Drop-drown -----------
 function dropClose() {
-  if(screenWidth < medium) {
-    calcNavWidth();
-  };
+  calcNavWidth();
 };
 
 function dropdown(element) {
