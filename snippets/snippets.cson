@@ -6,9 +6,9 @@
       <!-- Navbar -->
       <ul class="nav">
         <li class="brand"><img src="" alt=""></li>
-        <li class="nav-t"><i class="fa fa-2x fa-bars"></i></li>
+        <li class="burger"><i class="fa fa-2x fa-bars"></i></li>
         <li class="overlay"></li>
-        <li class="nav-c">
+        <li class="nav-items">
           <ul>
             <li class="close"><i class="fa fa-2x fa-close"></i></li>
             <li class="item active"><a href="">LINK</a></li>

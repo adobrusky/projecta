@@ -29,7 +29,7 @@
   background-color:$lcolor;
   list-style-type: none;
   transition: top .4s ease-in-out;
-  .nav-c {
+  .nav-items {
     flex-basis:100%;
     display:flex;
     z-index:3;
@@ -115,7 +115,7 @@
   }
 }
 
-.nav-t {
+.burger {
   background-color:$lcolor;
   height: auto;
   border-radius:6px 6px;
@@ -141,7 +141,7 @@
 }
 
 @media only screen and (max-width: 436px) {
-  .nav > .nav-t {
+  .nav > .burger {
     padding: 2.2%;
   }
 }
@@ -160,7 +160,7 @@
     height:10vh;
     flex-wrap: wrap;
     justify-content: center;
-    .nav-c {
+    .nav-items {
       flex-direction: row;
       justify-content: center;
       height: 55%;
@@ -205,7 +205,7 @@
         }
       }
   }
-    .nav-t {
+    .burger {
       display:none;
     }
   }
@@ -214,7 +214,7 @@
 
 @media only screen and (min-width: 1024px) {
   .nav {
-    .nav-c {
+    .nav-items {
       min-height:100%;
       display:flex;
       justify-content:center;

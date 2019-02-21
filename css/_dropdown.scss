@@ -1,5 +1,5 @@
 @import "variables";
-.nav-c > .item-dropdown {
+.nav-items > .item-dropdown {
   cursor: pointer;
   & > a {
     transition: transform .8s
@@ -30,7 +30,7 @@
 @media only screen and (min-width: 768px) {
   .nav {
     overflow: visible;
-    .nav-c {
+    .nav-items {
       overflow: visible;
       .item-dropdown {
         &.active {
