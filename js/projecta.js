@@ -15,6 +15,7 @@ let navShrink = 2.5;
 let carouselDirection = 'right';
 let carouselFade = 200;
 let dropSpeed = 400;
+let small = 436;
 let medium = 768;
 let large = 1024;
 
@@ -64,7 +65,7 @@ function navClose() {
 
 function navOpen() {
   $('.nav-items').css({'transition':'right ' + navTransition, 'right':'0'});
-  $('.overlay').fadeIn(navTransition).css('backgroundColor', 'rgba(0, 0, 0, 0.5)');
+  $('.overlay').fadeIn(navTransition);
   $('body').addClass('noScroll');
   setTimeout(function() {
     $('.nav-items').css('transition', 'all .5s, right 0s');
@@ -73,7 +74,7 @@ function navOpen() {
 };
 //TODO: FINSIH THE STUFF WITH DROPCLOSE AND SCROLLING BELOW
 //Nav Scroll Function
-function navScroll(scroll) {
+function hideNavbar(scroll) {
   if($('.nav').hasClass('hide')) {
     let current = $(window).scrollTop();
     let navHeight = $('.nav').height()+1;
@@ -138,7 +139,7 @@ function resize() {
   if (screenWidth > large) {
     navHeight = $('.nav-items').height();
   };
-  if(screenWidth < 436) {
+  if(screenWidth < small) {
     $('.close i').addClass('fa-2x');
   } else {
     $('.close i').removeClass('fa-2x');
@@ -171,7 +172,6 @@ function resize() {
   $('.item').css('width', itemWidth + '%');
   $('.nav').css('top', 0 + 'px');
 };
-
 
 //---------- Carousel--------------------
 
@@ -379,7 +379,7 @@ $(document).ready(function() {
 
   //Navbar Slides up or down on scroll
   $(window).scroll(function() {
-    prev = navScroll(prev);
+    prev = hideNavbar(prev);
     parallax();
     fade();
   });
