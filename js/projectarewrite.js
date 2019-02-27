@@ -33,6 +33,7 @@ function openNavbar() {
   $('body').addClass('noScroll');
 };
 
+//TODO FINISH NAVBAR RESIZE FUNCTION
 function navbarResize() {
   let navbarHeight = $('.nav').height()+$('.nav-items').height();
   let navbarItemCount = ($('.item').length) / 2;
