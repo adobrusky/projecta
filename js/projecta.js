@@ -48,29 +48,20 @@ function calcNavWidth() {
 let navTransition = navDuration/1000 + 's';
 function navClose() {
   if(screenWidth < medium) {
-    navWidth = $('.nav-items').width();
-    $('.nav-items').css({'transition':'right ' + navTransition, 'right':-navWidth});
-    $('.overlay').css('backgroundColor', 'rgba(0, 0, 0, 0)');
+    let navWidth = $('.nav-items').width();
+    $('.nav-items').css('right', -navWidth);
     $('body').removeClass('noScroll');
-    setTimeout(function() {
-      $('.overlay').fadeOut(navTransition)
-      $('.nav-items').css('transition', 'all .5s, right 0s');
-    }, navDuration);
+    $('.overlay').fadeOut(navTransition)
   } else {
-    $('.nav-items').css('transition', 'all .5s, right 0s');
-    $('.overlay').css({'backgroundColor':'rgba(255, 255, 255, 0)'}).fadeOut(navTransition);
+    $('.overlay').fadeOut(navTransition);
     $('body').removeClass('noScroll');
   };
 };
 
 function navOpen() {
-  $('.nav-items').css({'transition':'right ' + navTransition, 'right':'0'});
+  $('.nav-items').css('right', '0');
   $('.overlay').fadeIn(navTransition);
   $('body').addClass('noScroll');
-  setTimeout(function() {
-    $('.nav-items').css('transition', 'all .5s, right 0s');
-    $('.overlay').css('transition', 'background-color ' + navTransition);
-  }, navDuration);
 };
 //TODO: FINSIH THE STUFF WITH DROPCLOSE AND SCROLLING BELOW
 //Nav Scroll Function
@@ -151,7 +142,6 @@ function resize() {
     $('.nav-items').css('right', -navWidth);
     $('.content').css('marginTop', $('.nav').height());
     $('body').removeClass('noScroll');
-    $('.overlay').hide().css('backgroundColor', 'rgba(0, 0, 0, 0)');
     $('.brand').css('height', '100%');
   } else {
     $('.carousel > li > i.fa').removeClass('fa-3x').addClass('fa-4x')
@@ -309,6 +299,14 @@ function fade() {
   });
 };
 
+//---------- Disable Transitions -------------
+function disableTransitions() {
+  $('*').addClass('disabletransition');
+  setTimeout(function () {
+    $('*').removeClass('disabletransition');
+  }, 1);
+};
+
 //---------------- On Ready ----------------
 $(document).ready(function() {
   isMobile();
@@ -340,6 +338,7 @@ $(document).ready(function() {
     logoMove();
     landing();
     dropClose();
+    disableTransitions();
   });
   if (screenWidth < medium) {
     calcNavWidth();
