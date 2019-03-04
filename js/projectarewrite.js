@@ -1,7 +1,7 @@
 // Global Variables
-let small = 436;
-let medium = 768;
-let large = 1024;
+const small = 436;
+const medium = 768;
+const large = 1024;
 let screenWidth = window.innerWidth;
 
 // Check for if Device is on mobile or if less than 768px
@@ -17,6 +17,7 @@ function isMobile() {
 let navbarWidth = $('.nav-items').width();
 let navbarTransitionSpeed = 500;
 let navbarItemCount = ($('.item').length) / 2;
+let prev = 0;
 
 function closeNavbar() {
   if(screenWidth < medium) {
@@ -24,6 +25,7 @@ function closeNavbar() {
     $('body').removeClass('noScroll');
     $('.overlay').fadeOut(navbarTransitionSpeed)
   } else {
+    $('.nav-items').css('right', '0px');
     $('.overlay').fadeOut(navbarTransitionSpeed);
     $('body').removeClass('noScroll');
   };
@@ -64,10 +66,11 @@ function brandPosition() {
   };
 };
 
-function hideNavbar(scroll) {
+
+function hideNavbar() {
   if($('.nav').hasClass('hide')) {
     let current = $(window).scrollTop();
-    let navHeight = $('.nav').height()+1;
+    let navHeight = $('.nav').height();
     if (screenWidth >= medium) {
       navHeight = navHeight+$('.nav-items').height();
     };
@@ -91,7 +94,6 @@ function setItemWidth() {
   });
 
   let maxWidth = Math.max.apply(Math, itemWidths);
-  console.log(maxWidth);
   $('.item').css('width', maxWidth + 'px');
 };
 
@@ -140,12 +142,12 @@ function active() {
   });
 };
 
-//Disabled all transitions while resizing
+//Disabled all transitions while resizing to prevent weird resize animations
 function disableTransitions() {
   $('*').addClass('disabletransition');
   setTimeout(function () {
     $('*').removeClass('disabletransition');
-  }, 1);
+  }, 200);
 };
 
 //Resizing Function
@@ -221,6 +223,8 @@ function setup() {
 
   $(window).scroll(function() {
     fade();
+    parallax();
+    prev = hideNavbar();
   });
 
 };
