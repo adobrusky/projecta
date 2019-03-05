@@ -77,6 +77,7 @@ function hideNavbar() {
     if(screenWidth < large) {
       if (current > prev) {// If Scrolling Down
         $('.nav').css('top', -navHeight + 'px');
+        closeDropdowns();
       } else {// If Scrolling Up
         $('.nav').css('top', 0 + 'px');
       };
@@ -114,6 +115,7 @@ function navbarResize() {
   };
 
   if (screenWidth < medium) {
+    $('.item-dropdown a').css('transform', 'none');
     $('.content').css('marginTop', $('.nav').height());
     $('.brand').css('height', '100%');
     $('.nav-items').css('right', '0px');
@@ -125,6 +127,7 @@ function navbarResize() {
   closeNavbar();
   brandPosition();
   setItemWidth();
+  closeDropdowns();
 };
 
 function active() {
@@ -142,6 +145,29 @@ function active() {
   });
 };
 
+//Dropdown functions
+function dropdown(element) {
+  let clicked = $(element).parent().children('.dropdown');
+  let clickedChildren = clicked.find('.dropdown');
+  let siblings = clicked.parent().siblings().find('.dropdown');
+  siblings.slideUp(400);
+  clicked.slideToggle(400, function() {
+    clickedChildren.slideUp();
+  });
+};
+
+//Closes dropdowns and calculates the necessary width
+function closeDropdowns() {
+  if(screenWidth < medium) {
+    $('.dropdown').show();
+    $('.fa-caret-down').css('width', parseInt($('.fa-caret-down').css('width')) * 2 + 1);
+    navbarWidth = $('.nav-items').outerWidth();
+    $('.fa-caret-down').css('width', 'auto');
+    $('.nav-items').css('width', navbarWidth);
+  };
+  $('.dropdown').hide();
+};
+
 //Disabled all transitions while resizing to prevent weird resize animations
 function disableTransitions() {
   $('*').addClass('disabletransition');
@@ -155,6 +181,7 @@ function windowResize() {
   screenWidth = window.innerWidth;
   disableTransitions();
   navbarResize();
+  landing();
 };
 
 //Items with fade class fade in when entering viewport
@@ -201,16 +228,23 @@ function landing() {
 function setup() {
   $('.close').click(function() {
     closeNavbar();
+    closeDropdowns();
   });
   $('.overlay').click(function() {
     closeNavbar();
+    closeDropdowns();
   });
   $('.burger').click(function() {
     openNavbar();
   });
+  $('.item-dropdown > a, .subitem > a').click(function() {
+    dropdown(this);
+  });
 
   fade();
   active();
+  landing();
+  parallax();
 
   $('.overlay').hide();
 
