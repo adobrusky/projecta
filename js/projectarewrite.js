@@ -179,8 +179,8 @@ function disableTransitions() {
 //Resizing Function
 function windowResize() {
   screenWidth = window.innerWidth;
-  disableTransitions();
   navbarResize();
+  disableTransitions();
   landing();
 };
 
@@ -205,6 +205,7 @@ function parallax() {
       let xPos = $(this).hasClass('landing') || $(this).hasClass('center') ? 'center ' : offsetLeft + 'px ';
       $(this).css('backgroundAttachment', 'fixed');
       $(this).css('backgroundPosition', xPos + -((top - offsetTop) / 5) + 'px');
+      console.log(top + " " + offsetTop + " " + xPos + -((top - offsetTop) / 5) + 'px');
     });
   };
 };
@@ -241,10 +242,10 @@ function setup() {
     dropdown(this);
   });
 
-  fade();
   active();
   landing();
   parallax();
+  fade();
 
   $('.overlay').hide();
 
