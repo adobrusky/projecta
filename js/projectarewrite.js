@@ -19,22 +19,14 @@ let navbarTransitionSpeed = 500;
 let navbarItemCount = ($('.item').length) / 2;
 let prev = 0;
 
-function closeNavbar() {
-  if(screenWidth < medium) {
+function toggleNavbar() {
+  $('.overlay').fadeToggle(navbarTransitionSpeed);
+  $('body').toggleClass('noScroll');
+  if(screenWidth < medium && $('.nav-items').css('right') === '0px') {
     $('.nav-items').css('right', -navbarWidth);
-    $('body').removeClass('noScroll');
-    $('.overlay').fadeOut(navbarTransitionSpeed)
   } else {
     $('.nav-items').css('right', '0px');
-    $('.overlay').fadeOut(navbarTransitionSpeed);
-    $('body').removeClass('noScroll');
   };
-};
-
-function openNavbar() {
-  $('.nav-items').css('right', '0');
-  $('.overlay').fadeIn(navbarTransitionSpeed);
-  $('body').addClass('noScroll');
 };
 
 function brandPosition() {
@@ -117,14 +109,13 @@ function navbarResize() {
   if (screenWidth < medium) {
     $('.item-dropdown a').css('transform', 'none');
     $('.content').css('marginTop', $('.nav').height());
-    $('.brand').css('height', '100%');
-    $('.nav-items').css('right', '0px');
+    $('.nav-items').css('right', -navbarWidth);
   } else {
     $('.content').css('marginTop', navbarHeight);
     $('.brand').css('height', $('.nav').height());
+    $('.nav-items').css('right', '0px');
   };
 
-  closeNavbar();
   brandPosition();
   setItemWidth();
   closeDropdowns();
@@ -228,15 +219,15 @@ function landing() {
 //Main setup Function
 function setup() {
   $('.close').click(function() {
-    closeNavbar();
+    toggleNavbar();
     closeDropdowns();
   });
   $('.overlay').click(function() {
-    closeNavbar();
+    toggleNavbar();
     closeDropdowns();
   });
   $('.burger').click(function() {
-    openNavbar();
+    toggleNavbar();
   });
   $('.item-dropdown > a, .subitem > a').click(function() {
     dropdown(this);
