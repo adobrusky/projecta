@@ -171,7 +171,6 @@ function disableTransitions() {
 function windowResize() {
   screenWidth = window.innerWidth;
   navbarResize();
-  disableTransitions();
   landing();
 };
 
@@ -182,6 +181,7 @@ function fade() {
     let offset = $(this).offset().top;
     if(top > (offset + 1)) {
       $(this).css('opacity', '1');
+      console.log(this + " " + top + " " + offset);
     };
   });
 };
@@ -243,14 +243,18 @@ function setup() {
   window.addEventListener('orientationchange', function() {}, false);
   $(window).on('orientationchange', function() {
     windowResize();
+    //disableTransitions();
   });
 
-  $(window).resize(windowResize);
+  $(window).resize(function() {
+    windowResize();
+    //disableTransitions();
+  });
 
   $(window).scroll(function() {
-    fade();
     parallax();
     prev = hideNavbar();
+    fade();
   });
 
 };
