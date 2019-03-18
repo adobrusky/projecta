@@ -34,7 +34,7 @@ function brandPosition() {
   let brandOffset = 0;
   if ($('.brand').hasClass('brand-left')) {
     brandOffset = 1;
-    if (screenWidth > large) {
+    if (screenWidth >= large) {
       $('.brand').css('marginRight', 'auto');
       $('.item').css('width', 'auto');
     } else {
@@ -42,7 +42,7 @@ function brandPosition() {
     };
   } else if ($('.brand').hasClass('brand-right')) {
     brandOffset = $('.nav-items > li').length;
-    if (screenWidth > large) {
+    if (screenWidth >= large) {
       $('.item').css('width', 'auto');
       $('.brand').css('marginLeft', 'auto');
     } else {
@@ -52,7 +52,7 @@ function brandPosition() {
     brandOffset = navbarItemCount + 1;
   };
 
-  if(screenWidth > large) {
+  if(screenWidth >= large) {
     $('.nav-items > ul > li:nth-child('+ brandOffset + ')').after($('.nav > .brand'));
   } else {
     $('.nav > li:first-child').before($('.nav-items > ul > .brand'));
@@ -179,7 +179,7 @@ function fade() {
     let offset = $(this).offset().top;
     if(top > (offset + 1) || $('body').has('fade')) {
       $(this).css('opacity', '1');
-      console.log(top + " " + offset);
+      console.log(top + " " + offset + " " + navbarHeight);
     };
   });
 };
