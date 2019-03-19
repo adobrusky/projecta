@@ -175,12 +175,12 @@ function windowResize() {
 //Items with fade class fade in when entering viewport
 function fade() {
   $('.fade').each(function() {
-    let top = $(window).scrollTop() + $(window).height();
-    let offset = $(this).offset().top;
-    if(top > (offset + 1) || $('body').has('fade')) {
+    let elementTop = $(this).offset().top;
+    let scrollTop = $(window).scrollTop();
+    if(scrollTop + 1 > elementTop) {
       $(this).css('opacity', '1');
-      console.log(top + " " + offset + " " + navbarHeight);
     };
+    console.log(elementTop + ' ' + scrollTop);
   });
 };
 
