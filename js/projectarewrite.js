@@ -3,6 +3,7 @@ const small = 436;
 const medium = 768;
 const large = 1024;
 let screenWidth = window.innerWidth;
+let screenHeight = window.innerHeight;
 
 // Check for if Device is on mobile or if less than 768px
 function isMobile() {
@@ -168,6 +169,7 @@ function disableTransitions() {
 //Resizing Function
 function windowResize() {
   screenWidth = window.innerWidth;
+  screenHeight = window.innerHeight;
   navbarResize();
   landing();
 };
@@ -175,12 +177,12 @@ function windowResize() {
 //Items with fade class fade in when entering viewport
 function fade() {
   $('.fade').each(function() {
-    let elementTop = $(this).offset().top;
-    let scrollTop = $(window).scrollTop();
-    if(scrollTop + 1 > elementTop) {
+    let elementTop = $(this).offset().top + 1;
+    let viewport = $(window).scrollTop() + screenHeight;
+    if(viewport > elementTop) {
       $(this).css('opacity', '1');
     };
-    console.log(elementTop + ' ' + scrollTop);
+    console.log(viewport + ' ' + elementTop);
   });
 };
 
@@ -200,16 +202,15 @@ function parallax() {
 
 //Sets the height of the landing an adds a margin if necessary
 function landing() {
-  let windowHeight = $(window).height();
   if($('.landing').hasClass('no-margin')) {
     $('.content').has('.landing').css('marginTop', '0');
   } else {
-    windowHeight = windowHeight - $('.nav').height();
+    screenHeight = screenHeight - $('.nav').height();
     if(screenWidth >= medium && screenWidth < large) {
-      windowHeight = windowHeight - $('.nav-items').height();
+      screenHeight = screenHeight - $('.nav-items').height();
     };
   };
-  $('.landing').css('height', windowHeight);
+  $('.landing').css('height', screenHeight);
 };
 
 
