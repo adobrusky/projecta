@@ -182,7 +182,6 @@ function fade() {
     if(viewport > elementTop) {
       $(this).css('opacity', '1');
     };
-    console.log(viewport + ' ' + elementTop);
   });
 };
 
@@ -233,8 +232,7 @@ function setup() {
 
   active();
   landing();
-  parallax();
-  fade();
+  //parallax();
 
   $('.overlay').hide();
 
@@ -251,7 +249,7 @@ function setup() {
 
   $(window).scroll(function() {
     prev = hideNavbar();
-    parallax();
+    //parallax();
     fade();
   });
 
