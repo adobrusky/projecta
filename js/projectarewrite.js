@@ -63,8 +63,8 @@ function brandPosition() {
 
 function hideNavbar() {
   if($('.nav').hasClass('hide')) {
-    let current = $(window).scrollTop();
-
+    let current = $('.content').scrollTop();
+    console.log(current);
     if(screenWidth < large) {
       if (current > prev && current > navbarHeight) {// If Scrolling Down
         $('.nav').css('top', -navbarHeight + 'px');
@@ -182,36 +182,17 @@ function fade() {
     if(viewport > elementTop) {
       $(this).css('opacity', '1');
     };
+    console.log(viewport + ' ' + elementTop);
   });
-};
-
-//Creates the parallax effect
-function parallax() {
-  if(!(isMobile())) {
-    $('.parallax').each(function() {
-      let top = $(window).scrollTop();
-      let offsetTop = $(this).offset().top;
-      let offsetLeft = $(this).offset().left;
-      let xPos = $(this).hasClass('landing') || $(this).hasClass('center') ? 'center ' : offsetLeft + 'px ';
-      $(this).css('backgroundAttachment', 'fixed');
-      $(this).css('backgroundPosition', xPos + -((top - offsetTop) / 5) + 'px');
-    });
-  };
 };
 
 //Sets the height of the landing an adds a margin if necessary
 function landing() {
-  if($('.landing').hasClass('no-margin')) {
-    $('.content').has('.landing').css('marginTop', '0');
-  } else {
-    screenHeight = screenHeight - $('.nav').height();
-    if(screenWidth >= medium && screenWidth < large) {
-      screenHeight = screenHeight - $('.nav-items').height();
-    };
+  if($('.content').has('.landing')) {
+    $('.content').has('.landing').css({'marginTop':'0', 'height':'100vh'});
   };
-  $('.landing').css('height', screenHeight);
+  $('.landing').css('minHeight', screenHeight);
 };
-
 
 //Main setup Function
 function setup() {
@@ -232,7 +213,7 @@ function setup() {
 
   active();
   landing();
-  //parallax();
+  fade();
 
   $('.overlay').hide();
 
@@ -247,7 +228,7 @@ function setup() {
     disableTransitions();
   });
 
-  $(window).scroll(function() {
+  $('.content').scroll(function() {
     prev = hideNavbar();
     //parallax();
     fade();

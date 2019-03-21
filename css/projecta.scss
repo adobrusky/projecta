@@ -48,9 +48,14 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  //flex-wrap: wrap;
   flex-shrink: 0;
   flex-grow: 0;
+  overflow-y: auto;
+  perspective: 1px;
+  & > .container {
+    background-color: white;
+    min-height: 100%;
+  }
 }
 
 .img {
@@ -84,4 +89,3 @@ body {
 @import "dropdown";
 @import "carousel";
 @import "landing";
-@import "parallax";
