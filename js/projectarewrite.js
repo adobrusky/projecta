@@ -5,15 +5,6 @@ const large = 1024;
 let screenWidth = window.innerWidth;
 let screenHeight = window.innerHeight;
 
-// Check for if Device is on mobile or if less than 768px
-function isMobile() {
-  if(/webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (/Android/i.test(navigator.userAgent) && screenWidth <= medium)) {
-    return true;
-  } else {
-    return false;
-  };
-};
-
 //------------ Navbar Functions
 let navbarWidth = $('.nav-items').width();
 let navbarHeight;
