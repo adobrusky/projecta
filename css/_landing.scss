@@ -15,8 +15,7 @@
     left: 0;
     transform: translateZ(-1px) scale(2);
     background-size: 100%;
-    z-index: -100;
-    background-image: url('../img/landing.jpg');
+    z-index: -1;
     background-size: cover;
     background-position: center;
   }

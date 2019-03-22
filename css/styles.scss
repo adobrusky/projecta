@@ -17,10 +17,8 @@
   }
 }
 
-.test {
-  background-image:url('../img/landing.jpg');
-  background-size: cover;
-  min-height: 400px;
+.landing::after {
+  background-image: url('../img/landing.jpg');
 }
 
 @media only screen and (min-width: 436px) {

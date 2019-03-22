@@ -52,10 +52,9 @@ function brandPosition() {
 };
 
 
-function hideNavbar() {
+function hideNavbar(element) {
   if($('.nav').hasClass('hide')) {
-    let current = $('.content').scrollTop();
-    console.log(current);
+    let current = $(element).scrollTop();
     if(screenWidth < large) {
       if (current > prev && current > navbarHeight) {// If Scrolling Down
         $('.nav').css('top', -navbarHeight + 'px');
@@ -103,7 +102,7 @@ function navbarResize() {
   };
 
   $('.nav').css('top', 0 + 'px');
-  $('.brand').css('maxHeight', $('.nav').height());
+  $('.brand').css('height', $('.nav').height());
   $('.content').css('marginTop', navbarHeight);
 
   brandPosition();
@@ -142,12 +141,34 @@ function closeDropdowns() {
   if(screenWidth < medium) {
     $('.dropdown').show();
     $('.fa-caret-down').css('width', parseInt($('.fa-caret-down').css('width')) * 2 + 1);
-    navbarWidth = $('.nav-items').outerWidth();
+    let tempWidth = $('.nav-items').outerWidth();
     $('.fa-caret-down').css('width', 'auto');
-    $('.nav-items').css('width', navbarWidth);
+    $('.nav-items').css('width', tempWidth);
   };
   $('.dropdown').hide();
 };
+
+//Items with fade class fade in when entering viewport
+function fade() {
+  $('.fade').each(function() {
+    let elementTop = $(this).offset().top + 1;
+    let viewport = $(window).scrollTop() + screenHeight;
+    if(viewport > elementTop) {
+      $(this).css('opacity', '1');
+    };
+  });
+};
+
+//Sets the height of the landing an adds a margin if necessary
+function landing() {
+  if($('.content').has('.landing')) {
+    $('.content').has('.landing').css({'marginTop':'0', 'height':'100vh'});
+  };
+  $('.landing').css('minHeight', screenHeight);
+};
+
+//Carousel functions
+
 
 //Disabled all transitions while resizing to prevent weird resize animations
 function disableTransitions() {
@@ -163,26 +184,6 @@ function windowResize() {
   screenHeight = window.innerHeight;
   navbarResize();
   landing();
-};
-
-//Items with fade class fade in when entering viewport
-function fade() {
-  $('.fade').each(function() {
-    let elementTop = $(this).offset().top + 1;
-    let viewport = $(window).scrollTop() + screenHeight;
-    if(viewport > elementTop) {
-      $(this).css('opacity', '1');
-    };
-    console.log(viewport + ' ' + elementTop);
-  });
-};
-
-//Sets the height of the landing an adds a margin if necessary
-function landing() {
-  if($('.content').has('.landing')) {
-    $('.content').has('.landing').css({'marginTop':'0', 'height':'100vh'});
-  };
-  $('.landing').css('minHeight', screenHeight);
 };
 
 //Main setup Function
@@ -220,8 +221,12 @@ function setup() {
   });
 
   $('.content').scroll(function() {
-    prev = hideNavbar();
-    //parallax();
+    prev = hideNavbar($(this));
+    fade();
+  });
+
+  $(window).scroll(function() {
+    prev = hideNavbar($(this));
     fade();
   });
 

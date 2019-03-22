@@ -113,7 +113,7 @@
     'prefix': 'landing'
     'body': """
       <!-- Landing Page -->
-      <div class="landing" style="background-image:url('img/landing.png')">
+      <div class="landing"> <!-- Apply the background image by giving .landing::after the background image -->
         <div>
 
         </div>
@@ -302,21 +302,6 @@
       </div>
       """
 # Javascript snippets
-'.source.js':
-  'Dynamic Variables':
-    'prefix': 'vars'
-    'body': """
-      //-------------------- Editable JS letiables for External Use ---------------------------
-      navItemWidth = 80;
-      carouselInterval = 10000;
-      navDuration = 600;
-      navShrink = 2.5;
-      carouselDirection = 'right';
-      carouselFade = 200;
-      dropSpeed = 400;
-      medium = 768;
-      large = 1024;
-      """
 
 # CSS Snippets
 '.source.css':
