@@ -1,76 +1,28 @@
-@import "variables";
 .carousel {
-  width: 100%;
-  padding:10px 0px 10px 0px;
-  height:120vw;
-  max-height:600px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  overflow: hidden;
   list-style-type: none;
-
-  .indicators {
-    position:relative;
-    display:flex;
-
-    .indicator i {
-      padding: 2px;
-      border: none;
+  flex-direction: column;
+  .carousel-images {
+    ul {
+      list-style-type: none;
     }
   }
-
-  li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .fa {
-      border: 1px solid $dcolor;
-      border-radius: 5px;
-      color:$tcolor;
-      padding: 0px 15px 0px 15px;
-      transition: color 0.3s ease-in-out;
-      &:hover {
-        color: black;
+  .carousel-indicators {
+    ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-around;
+      .indicator {
+        background-color: white;
+        border: 2px solid $tcolor;
+        transition: background-color .3s;
+        height: 15px;
+        width: 15px;
+        border-radius: 999px 999px;
+        &:hover {
+          background-color: $tcolor;
+        }
       }
     }
-    .image {
-      display: none;
-      width:100%;
-      height:100%;
-    }
-    a {
-      display: flex;
-      height: 100%;
-      width: 100%;
-      justify-content: center;
-    }
-  }
-  .active-img {
-    width: 100%;
-    height: 100%;
-  }
-  .active-img > a > .image {
-    display: block;
-  }
-
-  .image {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .carousel {
-    height: 80vw;
-    max-height: 500px;
-  }
-}
-
-@media only screen and (max-width: 436px) {
-  .carousel {
-    height: 130vw;
   }
 }
