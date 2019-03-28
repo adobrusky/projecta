@@ -50,8 +50,6 @@ body {
   flex-direction: column;
   flex-shrink: 0;
   flex-grow: 0;
-  overflow-y: auto;
-  perspective: 1px;
   & > .container {
     background-color: white;
   }

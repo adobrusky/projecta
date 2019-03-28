@@ -3,8 +3,16 @@
   list-style-type: none;
   flex-direction: column;
   .carousel-images {
+    max-height: 500px;
     ul {
       list-style-type: none;
+      height: 100%;
+      li {
+        img {
+          display: none;
+          height: 100%;
+        }
+      }
     }
   }
   .carousel-indicators {

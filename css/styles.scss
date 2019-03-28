@@ -17,6 +17,10 @@
   }
 }
 
+.carousel {
+  max-height: 500px;
+}
+
 .landing::after {
   background-image: url('../img/landing.jpg');
 }

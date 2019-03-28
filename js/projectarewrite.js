@@ -162,13 +162,15 @@ function fade() {
 //Sets the height of the landing an adds a margin if necessary
 function landing() {
   if($('.content').has('.landing')) {
-    $('.content').has('.landing').css({'marginTop':'0', 'height':'100vh'});
+    $('.content').has('.landing').css({'marginTop':'0', 'height':'100vh', 'perspective':'1px', 'overflowY':'auto'});
   };
   $('.landing').css('minHeight', screenHeight);
 };
 
 //Carousel functions
-
+function carousel() {
+  $('.carousel-images .active img').css('display', 'block');
+};
 
 //Disabled all transitions while resizing to prevent weird resize animations
 function disableTransitions() {
@@ -206,6 +208,7 @@ function setup() {
   active();
   landing();
   fade();
+  carousel();
 
   $('.overlay').hide();
 
