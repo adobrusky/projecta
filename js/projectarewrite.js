@@ -104,6 +104,7 @@ function navbarResize() {
   $('.nav').css('top', 0 + 'px');
   $('.brand').css('height', $('.nav').height());
   $('.content').css('marginTop', navbarHeight);
+  $('.overlay').hide();
 
   brandPosition();
   setItemWidth();
