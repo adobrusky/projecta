@@ -51,10 +51,9 @@ function brandPosition() {
   };
 };
 
-
-function hideNavbar(element) {
+function hideNavbar() {
   if($('.nav').hasClass('hide')) {
-    let current = $(element).scrollTop();
+    let current = $(window).scrollTop();
     if(screenWidth < large) {
       if (current > prev && current > navbarHeight) {// If Scrolling Down
         $('.nav').css('top', -navbarHeight + 'px');
@@ -84,7 +83,7 @@ function navbarResize() {
   navbarWidth = $('.nav-items').width();
   navbarHeight = $('.nav').height();
 
-  if (screenWidth > medium && screenWidth < large) {
+  if (screenWidth >= medium && screenWidth < large) {
     navbarHeight = $('.nav').height() + $('.nav-items').height();
   };
 
@@ -94,7 +93,7 @@ function navbarResize() {
     $('.close i').removeClass('fa-2x');
   };
 
-  if (screenWidth < medium) {
+  if(screenWidth < medium) {
     $('.item-dropdown a').css('transform', 'none');
     $('.nav-items').css('right', -navbarWidth);
   } else {
@@ -105,6 +104,7 @@ function navbarResize() {
   $('.brand').css('height', $('.nav').height());
   $('.content').css('marginTop', navbarHeight);
   $('.overlay').hide();
+  $('body').removeClass('noScroll');
 
   brandPosition();
   setItemWidth();
@@ -163,9 +163,9 @@ function fade() {
 //Sets the height of the landing an adds a margin if necessary
 function landing() {
   if($('.content').has('.landing')) {
-    $('.content').has('.landing').css({'marginTop':'0', 'height':'100vh', 'perspective':'1px', 'overflowY':'auto'});
+    $('.content').has('.landing').css('marginTop', '0');
   };
-  $('.landing').css('minHeight', screenHeight);
+  $('.landing').css({'minHeight':screenHeight, 'backgroundPosition':'center ' + ($(window).scrollTop() * 0.4) + 'px'});
 };
 
 //Carousel functions
@@ -181,6 +181,20 @@ function disableTransitions() {
   }, 200);
 };
 
+//Disables button temporarily when clicked to prevent spamming
+function disableButton(element) {
+  $(element).addClass('disabled');
+  setTimeout(function () {
+    $(element).removeClass('disabled');
+  }, 800);
+};
+
+function disableNavbarButtons() {
+  disableButton($('.burger'));
+  disableButton($('.close'));
+  disableButton($('.overlay'));
+};
+
 //Resizing Function
 function windowResize() {
   screenWidth = window.innerWidth;
@@ -194,24 +208,26 @@ function setup() {
   $('.close').click(function() {
     toggleNavbar();
     closeDropdowns();
+    disableNavbarButtons();
   });
   $('.overlay').click(function() {
     toggleNavbar();
     closeDropdowns();
+    disableNavbarButtons();
   });
   $('.burger').click(function() {
     toggleNavbar();
+    disableNavbarButtons();
   });
   $('.item-dropdown > a, .subitem > a').click(function() {
     dropdown(this);
+    disableButton(this);
   });
 
   active();
   landing();
   fade();
   carousel();
-
-  $('.overlay').hide();
 
   window.addEventListener('orientationchange', function() {}, false);
   $(window).on('orientationchange', function() {
@@ -224,14 +240,10 @@ function setup() {
     disableTransitions();
   });
 
-  $('.content').scroll(function() {
-    prev = hideNavbar($(this));
-    fade();
-  });
-
   $(window).scroll(function() {
-    prev = hideNavbar($(this));
+    prev = hideNavbar();
     fade();
+    landing();
   });
 
 };
