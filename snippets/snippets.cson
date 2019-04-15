@@ -113,7 +113,7 @@
     'prefix': 'landing'
     'body': """
       <!-- Landing Page -->
-      <div class="landing"> <!-- Apply the background image by giving .landing::after the background image -->
+      <div class="landing" style="background-image:url('')">
         <div>
 
         </div>
