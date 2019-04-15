@@ -1,0 +1,11 @@
+@import "variables";
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  .image {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+}
