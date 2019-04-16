@@ -4,8 +4,44 @@
   flex-wrap: wrap;
   .image {
     width: 100%;
+    border: 1px solid $dcolor;
+    margin: 5px 0px 5px 0px;
     img {
       width: 100%;
+      transition: opacity .3s;
+      &:hover {
+        opacity: .7;
+      }
+    }
+    p {
+      padding: 5px;
+      font-size: 15px;
+      text-align: center;
     }
   }
+}
+
+@media only screen and (min-width: 436px) {
+  .gallery {
+    justify-content: space-between;
+    .image {
+      width: 49%;
+    }
+  }
+}
+
+@media only screen and (min-width: 620px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+  .gallery {
+    .image {
+      width: 24%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
 }

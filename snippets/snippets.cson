@@ -119,6 +119,18 @@
         </div>
       </div>
       """
+  'Image Gallery':
+    'prefix': 'gallery'
+    'body': """
+      <div class="gallery">
+        <div class="image">
+          <a href="" target="_blank">
+            <img src="" alt="">
+          </a>
+          <p>Description here</p>
+        </div>
+      </div>
+      """
 
 #Gridsystem
   'Row-S 2 Columns':
