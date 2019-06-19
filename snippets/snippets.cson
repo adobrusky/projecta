@@ -113,9 +113,21 @@
     'prefix': 'landing'
     'body': """
       <!-- Landing Page -->
-      <div class="landing"> <!-- Apply the background image by giving .landing::after the background image -->
+      <div class="landing" style="background-image:url('')">
         <div>
 
+        </div>
+      </div>
+      """
+  'Image Gallery':
+    'prefix': 'gallery'
+    'body': """
+      <div class="gallery">
+        <div class="image">
+          <a href="" target="_blank">
+            <img src="" alt="">
+          </a>
+          <p>Description here</p>
         </div>
       </div>
       """
