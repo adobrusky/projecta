@@ -324,3 +324,11 @@
 
       }
       """
+  'ProjectA Add Font':
+    'prefix': 'font'
+    'body': """
+      @font-face {
+        font-family: myFirstFont;
+        src: url(sansation_light.woff);
+      }
+      """
