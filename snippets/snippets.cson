@@ -17,6 +17,20 @@
         </li>
       </ul>
       """
+  'Simple Navbar':
+    'prefix': 'snav'
+    'body': """
+      <!-- Navbar -->
+      <ul class="nav">
+        <li class="brand"><img src="" alt=""></li>
+        <li class="nav-items">
+          <ul>
+            <li class="item active"><a href="">LINK</a></li>
+            <li class="item"><a href="">LINK</a></li>
+          </ul>
+        </li>
+      </ul>
+      """
   'Content':
     'prefix': 'content'
     'body': """
@@ -342,5 +356,39 @@
       @font-face {
         font-family: myFirstFont;
         src: url(sansation_light.woff);
+      }
+      """
+  'ProjectA Simple Navbar':
+    'prefix': 'snav'
+    'body': """
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+
+      .nav {
+        display: flex;
+        list-style-type: none;
+        justify-content: space-around;
+        background-color: #757575;
+        .brand img {
+          height: 75px;
+        }
+        .nav-items ul {
+          list-style-type: none;
+          display: flex;
+          height: 100%;
+          .item {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            a {
+              text-decoration: none;
+              color: white;
+              padding: 10px;
+            }
+          }
+        }
       }
       """
