@@ -20,7 +20,7 @@
   flex-wrap:nowrap;
   top:0;
   height: 11vh;
-  max-height: 100px;
+  max-height: 85px;
   min-height: 75px;
   z-index:1;
   position:fixed;
@@ -45,7 +45,6 @@
   .item {
     position: relative;
     display:block;
-    font-size: 22px;
     a {
       padding:10px 20px 10px 20px;
       display: flex;
@@ -53,6 +52,7 @@
       height: 100%;
       transition: transform .4s, color .4s;
       text-decoration:none;
+      font-size: 20px;
       color:$dcolor;
     }
     &.nav-btn {
@@ -179,7 +179,7 @@
         a {
           text-align:center;
           width:100%;
-          font-size: 2vw;
+          font-size: 1.9vw;
           align-items:center;
           justify-content:center;
           transition:transform .4s;
