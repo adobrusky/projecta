@@ -21,7 +21,7 @@
     'prefix': 'snav'
     'body': """
       <!-- Navbar -->
-      <ul class="nav">
+      <nav class="nav">
         <li class="brand"><img src="" alt=""></li>
         <li class="nav-items">
           <ul>
@@ -29,7 +29,7 @@
             <li class="item"><a href="">LINK</a></li>
           </ul>
         </li>
-      </ul>
+      </nav>
       """
   'Content':
     'prefix': 'content'
@@ -328,7 +328,20 @@
       </div>
       """
 # Javascript snippets
-
+'.source.js':
+  'ProjectA Fade Function':
+    'prefix': 'fade'
+    'body': """
+      function fade() {
+        $('.fade').each(function() {
+          let elementTop = $(this).offset().top + 1;
+          let viewport = $(window).scrollTop() + screenHeight;
+          if(viewport > elementTop) {
+            $(this).css('opacity', '1');
+          };
+        });
+      };
+      """
 # CSS Snippets
 '.source.css':
   'ProjectA Media Queries':
@@ -393,5 +406,35 @@
             }
           }
         }
+      }
+      """
+  'ProjectA Fade':
+    'prefix': 'fade'
+    'body': """
+      html {
+        height: 100%;
+        min-height: 100vh;
+        width: 100%;
+        min-width: 300px;
+        scroll-behavior: smooth;
+      }
+
+      .fade {
+        opacity: 0;
+        transition: 3s opacity;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 100vh;
+        width: 100%;
+        animation: fadein 1s;
+      }
+
+      @keyframes fadein {
+        from {opacity: 0;}
+        to {opacity: 1;}
       }
       """
