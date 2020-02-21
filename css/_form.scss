@@ -3,16 +3,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  align-items: center;
+  margin: auto;
   input[type=text] {
     width: 46%;
     height: 50px;
     margin: 5px;
     border: none;
-    color: $dcolor;
+    color: $darkergray;
     padding: 15px;
-    background-color: $lcolor;
+    background-color: $vlightgray;
     font-size: 17px;
     &:focus {
       outline: 1px solid $lblue;
@@ -24,9 +24,9 @@
     height: 115px;
     margin: 5px;
     border: none;
-    color: $dcolor;
+    color: $darkergray;
     padding: 15px;
-    background-color: $lcolor;
+    background-color: $vlightgray;
     font-size: 17px;
     &:focus {
       outline: 1px solid $lblue;
@@ -34,7 +34,7 @@
   }
   .submit {
     padding: 10px;
-    color: white;
+    color: $white;
     border: none;
     margin: auto;
     margin-top: 10px;
@@ -104,9 +104,49 @@
 }
 
 @media only screen and (min-width: 768px) {
-
+  .form {
+     width: 70%;
+    .radioContainer {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 10px 0px 0px 0px;
+      .radioBtn {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        padding-left: 35px;
+        margin:0px 10px 12px 10px;
+        cursor: pointer;
+        line-height: 25px;
+        font-size: 17px;
+        -webkit-user-select: none;
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 1024px) {
-
+  .form {
+    width: 50%;
+    .radioContainer {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 10px 0px 0px 0px;
+      .radioBtn {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        padding-left: 35px;
+        margin:0px 10px 12px 10px;
+        cursor: pointer;
+        line-height: 25px;
+        font-size: 17px;
+        -webkit-user-select: none;
+      }
+    }
+  }
 }

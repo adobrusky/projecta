@@ -96,7 +96,7 @@
           <meta http-equiv="X-UA-Compatible" content="ie=edge">
           <!-- CSS -->
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-          <link rel="stylesheet" href="https://gitcdn.link/repo/pip-delorean/projecta/dev/css/projecta.css">
+          <link rel="stylesheet" href="css/projecta.css">
           <title>Document</title>
         </head>
         <body>
@@ -104,7 +104,7 @@
 
           <!-- JS -->
           <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-          <script src="https://gitcdn.link/repo/pip-delorean/projecta/dev/js/projecta.js"></script>
+          <script src="js/projecta.js"></script>
         </body>
       </html>
       """
@@ -326,6 +326,23 @@
 
         </div>
       </div>
+      """
+  'Form':
+    'prefix': 'form'
+    'body': """
+        <form class="form" action="index.html" method="post">
+            <input type="text" placeholder="Input 1">
+            <input type="text" placeholder="Input 2">
+
+            <div class="radioContainer">
+              <label class="radioBtn">Radio 1
+                <input type="radio" checked="checked" name="radio">
+                <span class="check"></span>
+              </label>
+            </div>
+
+            <textarea placeholder="Textarea 1"></textarea>
+        </form>
       """
 # Javascript snippets
 '.source.js':
