@@ -72,7 +72,6 @@
     &.active {
       & > a {
         color: $tcolor;
-        //transform:scale(1.1);
       }
       &.nav-btn {
         button {
@@ -82,9 +81,6 @@
         }
       }
     }
-  }
-  .item-dropdown i {
-    padding-left:2%;
   }
   .close {
     display:block;

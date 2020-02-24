@@ -127,15 +127,31 @@ function active() {
 };
 
 //Dropdown functions
-function dropdown(element) {
+function dropdownMobile(element) {
   let clicked = $(element).parent().children('.dropdown');
   let clickedChildren = clicked.find('.dropdown');
   let siblings = clicked.parent().siblings().find('.dropdown');
   siblings.slideUp(400);
+  $(element).parent().siblings().find('.fa-caret-down').removeClass('carot-flip');
+  clicked.find('.fa-caret-down').removeClass('carot-flip');
+  $(element).children('.fa-caret-down').toggleClass('carot-flip');
   clicked.slideToggle(400, function() {
     clickedChildren.slideUp();
   });
 };
+
+function dropdown(element) {
+  let clicked = $(element).parent().children('.dropdown');
+  let clickedChildren = clicked.find('.dropdown');
+  let siblings = clicked.parent().siblings().find('.dropdown');
+  siblings.fadeOut(400);
+  $(element).parent().siblings().find('.fa-caret-down').removeClass('carot-flip');
+  clicked.find('.fa-caret-down').removeClass('carot-flip');
+  $(element).children('.fa-caret-down').toggleClass('carot-flip');
+  clicked.fadeToggle(400, function() {
+    clickedChildren.fadeOut();
+  });
+}
 
 //Closes dropdowns and calculates the necessary width
 function closeDropdowns() {
@@ -147,6 +163,7 @@ function closeDropdowns() {
     $('.nav-items').css('width', tempWidth);
   };
   $('.dropdown').hide();
+  $('.item-dropdown').find('.fa-caret-down').removeClass('carot-flip');
 };
 
 //Items with fade class fade in when entering viewport
@@ -220,7 +237,11 @@ function setup() {
     disableNavbarButtons();
   });
   $('.item-dropdown > a, .subitem > a').click(function() {
-    dropdown(this);
+    if(screenWidth >= 768) {
+      dropdown(this);
+    } else {
+      dropdownMobile(this);
+    }
     disableButton(this);
   });
 
