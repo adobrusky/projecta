@@ -44,9 +44,6 @@
     .nav-items {
       overflow: visible;
       .item-dropdown {
-        &.active {
-
-        }
         .dropdown {
           height: auto;
           padding: 5px;
@@ -62,9 +59,9 @@
               background-color: $lcolor;
               border:none;
               z-index:100;
-              padding: 0px;
+              padding: 10px;
               width: auto;
-              font-size: 15px;
+              font-size: 18px;
               text-align: left;
               position: relative;
               left: 0px;
