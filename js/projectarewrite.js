@@ -155,13 +155,13 @@ function dropdown(element) {
 
 //Closes dropdowns and calculates the necessary width
 function closeDropdowns() {
-  if(screenWidth < medium) {
+/*  if(screenWidth < medium) {
     $('.dropdown').show();
     $('.fa-caret-down').css('width', parseInt($('.fa-caret-down').css('width')) * 2 + 1);
     let tempWidth = $('.nav-items').outerWidth();
     $('.fa-caret-down').css('width', 'auto');
     $('.nav-items').css('width', tempWidth);
-  };
+  }; */
   $('.dropdown').hide();
   $('.item-dropdown').find('.fa-caret-down').removeClass('carot-flip');
 };

@@ -55,30 +55,9 @@
       font-size: 20px;
       color:$dcolor;
     }
-    &.nav-btn {
-      display:flex;
-      align-items: center;
-      button {
-        font-size: 22px;
-        padding:10px 20px 10px 20px;
-        height: 75%;
-        background-color: $lcolor;
-        border:none;
-        box-shadow: 1px 1px 1px $dcolor;
-        color:$dcolor;
-        transition: background-color .4s, transform .4s, box-shadow .4s;
-      }
-    }
     &.active {
       & > a {
         color: $tcolor;
-      }
-      &.nav-btn {
-        button {
-          background-color: $ldcolor;
-          transform:scale(0.95);
-          box-shadow: none;
-        }
       }
     }
   }
@@ -180,29 +159,14 @@
           justify-content:center;
           transition:transform .4s;
         }
-        &.nav-btn {
-          button {
-            font-size: 2vw;
-          }
-        }
       }
-      .item.item-dropdown a:hover{
-        //transform:scale(1);
-      }
-      .close {
-        display:none;
-      }
-      .item.active {
-        a {
-          //transform:scale(1.1);
-        }
-        &.nav-btn {
-        }
-      }
-  }
-    .burger {
+    }
+    .close {
       display:none;
     }
+  }
+  .burger {
+    display:none;
   }
 }
 
@@ -230,7 +194,7 @@
           }
         }
         .item.active {
-          a {
+          & > a {
             color:$dcolor;
             &:before {
               height: 100%;
@@ -251,19 +215,10 @@
           border:none;
           transition: color .4s;
         }
-        &.nav-btn {
-          justify-content: center;
-          padding-right:10px;
-          button {
-            padding:10px;
-            height:50%;
-            font-size:1.2vw;
-          }
-        }
       }
       .item.active {
         border-bottom:none;
-        a {
+        & > a {
           color:$tcolor;
           transform:none;
         }
